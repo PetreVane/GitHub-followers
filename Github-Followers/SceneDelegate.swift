@@ -15,25 +15,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
-        
-//        adding a Navigation Controller with houses a ViewContoroller
-//        let searchNavController = UINavigationController(rootViewController: SearchViewController())
-//        let favoritesNavController = UINavigationController(rootViewController: FavoritesViewController())
-        
-
-//        let tabBarController = UITabBarController()
-//        tabBarController.viewControllers = [searchNavController, favoritesNavController]
-
         guard let windowScene = (scene as? UIWindowScene) else { return }
+        
         // init window with the frameSize of the windowScene bounds
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+        
         //assign windowScene to window
         window?.windowScene = windowScene
+        
         //assign the root ViewController
         window?.rootViewController = createTabBar()
+        
         // show the ViewController
         window?.makeKeyAndVisible()
     }
+    
     
     /// Adds a Navigation controller for SearchViewController()
     func createSearchNavController() -> UINavigationController {
