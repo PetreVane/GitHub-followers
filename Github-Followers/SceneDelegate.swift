@@ -59,7 +59,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         tabBar.viewControllers = [createSearchNavController(), createFavoritesNavController()]
         
         // adding tint color for TabBar
-        UITabBar.appearance().tintColor = .systemTeal
+        UITabBar.appearance().tintColor = .systemGreen
         
         return tabBar
     }
