@@ -29,6 +29,16 @@ class GFTextField: UITextField {
         layer.borderWidth = 2
         layer.borderColor = UIColor.systemGray.cgColor
         
-        textColor = .label
+        textColor = .label // dark on white mode & white on dark mode
+        
+        font = UIFont.preferredFont(forTextStyle: .title2)
+        adjustsFontSizeToFitWidth = true
+        minimumFontSize = 12
+        
+        backgroundColor = .tertiarySystemBackground
+        autocorrectionType = .no
+        placeholder = "Type a username"
+        
+    
     }
 }
