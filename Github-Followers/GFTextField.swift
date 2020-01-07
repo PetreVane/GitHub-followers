@@ -22,20 +22,26 @@ class GFTextField: UITextField {
     
     /// Adds customization to TextField
     private func configure() {
-        // prepares for autoLayout
+        // autoLayout
         translatesAutoresizingMaskIntoConstraints = false
-    
+        
+        // shape
         layer.cornerRadius = 10
         layer.borderWidth = 2
-        layer.borderColor = UIColor.systemGray.cgColor
         
+        // color
+        layer.borderColor = UIColor.systemGray.cgColor
         textColor = .label // dark on white mode & white on dark mode
         
+        //font
         font = UIFont.preferredFont(forTextStyle: .title2)
         adjustsFontSizeToFitWidth = true
         minimumFontSize = 12
         
+        // background
         backgroundColor = .tertiarySystemBackground
+        
+        // placeholder & autocorrect
         autocorrectionType = .no
         placeholder = "Type a username"
         

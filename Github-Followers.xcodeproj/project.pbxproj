@@ -67,11 +67,11 @@
 				0BC091EE23BA15E800E3548B /* ViewController.swift */,
 				0B2899F423BE3B8C002D84F8 /* SearchViewController.swift */,
 				0B2899F623BE3BD0002D84F8 /* FavoritesViewController.swift */,
+				0B2899F823BFA383002D84F8 /* GFButton.swift */,
+				0B2899FA23BFAA3B002D84F8 /* GFTextField.swift */,
 				0BC091F323BA15ED00E3548B /* Assets.xcassets */,
 				0BC091F523BA15ED00E3548B /* LaunchScreen.storyboard */,
 				0BC091F823BA15ED00E3548B /* Info.plist */,
-				0B2899F823BFA383002D84F8 /* GFButton.swift */,
-				0B2899FA23BFAA3B002D84F8 /* GFTextField.swift */,
 			);
 			path = "Github-Followers";
 			sourceTree = "<group>";

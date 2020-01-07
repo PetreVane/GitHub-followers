@@ -29,18 +29,25 @@ class GFButton: UIButton {
         super.init(frame: .zero)
         self.backgroundColor = backgroundColor
         self.setTitle(title, for: .normal)
-        // calling configure so each custom button has custom radius & font
-        configure()
+        
+        //adding customisation
+        configure() 
     }
     
     
     /// Sets custom corner radius & font for buttons
     private func configure() {
+        
+        // shape
         layer.cornerRadius = 10
+        
+        // color
         titleLabel?.textColor = .white
+        
+        //font
         titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
         
-        // use AutoLayout -> sets autoresizingMask to false
+        // autoLayout
         translatesAutoresizingMaskIntoConstraints = false
     }
     
