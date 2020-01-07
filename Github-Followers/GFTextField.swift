@@ -30,8 +30,12 @@ class GFTextField: UITextField {
         layer.borderWidth = 2
         
         // color
-        layer.borderColor = UIColor.systemGray.cgColor
+        layer.borderColor = UIColor.systemGray4.cgColor
         textColor = .label // dark on white mode & white on dark mode
+        tintColor = .label
+        
+        //text allignment
+        textAlignment = .center
         
         //font
         font = UIFont.preferredFont(forTextStyle: .title2)
