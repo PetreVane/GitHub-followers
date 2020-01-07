@@ -49,6 +49,10 @@ class GFTextField: UITextField {
         autocorrectionType = .no
         placeholder = "Type a username"
         
+        //custom return button on keyboard
+        keyboardType = .default
+        returnKeyType = .go
+        
     
     }
 }
