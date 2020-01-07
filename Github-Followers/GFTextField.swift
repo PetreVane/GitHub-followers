@@ -36,6 +36,7 @@ class GFTextField: UITextField {
         
         //text allignment
         textAlignment = .center
+        clearButtonMode = .whileEditing
         
         //font
         font = UIFont.preferredFont(forTextStyle: .title2)
