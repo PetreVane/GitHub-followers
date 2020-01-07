@@ -78,6 +78,9 @@ class SearchViewController: UIViewController {
             followButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50),
             followButton.heightAnchor.constraint(equalToConstant: 50)
         ])
+
+        //add target
+        followButton.addTarget(self, action: #selector(pushUserListVC), for: .touchUpInside)
     }
     
     /// Keyboard dissmis
@@ -87,6 +90,15 @@ class SearchViewController: UIViewController {
         view.addGestureRecognizer(tapGesture)
     }
     
+    @objc func pushUserListVC() {
+       
+        print("Follow button pressed")
+        let followersVC = UsersListViewController()
+        followersVC.user = userNameTextField.text!
+        followersVC.title = userNameTextField.text!
+        navigationController?.pushViewController(followersVC, animated: true)
+    }
+    
 }
 
 extension SearchViewController: UITextFieldDelegate {
@@ -94,6 +106,7 @@ extension SearchViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         print("Textfield should return now ...")
+        pushUserListVC()
         return true
     }
 

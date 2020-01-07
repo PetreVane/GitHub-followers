@@ -10,11 +10,14 @@ import UIKit
 
 class UsersListViewController: UIViewController {
 
-    var user: String?
+    var user: String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        print("User initilized with value: \(user)")
+        view.backgroundColor = .systemBackground
+        navigationController?.isNavigationBarHidden = false
     }
     
 
