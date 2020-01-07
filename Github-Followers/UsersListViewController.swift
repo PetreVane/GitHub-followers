@@ -18,6 +18,8 @@ class UsersListViewController: UIViewController {
         print("User initilized with value: \(user)")
         view.backgroundColor = .systemBackground
         navigationController?.isNavigationBarHidden = false
+        navigationController?.navigationBar.prefersLargeTitles = true
+//        navigationController?.navigationBar.tintColor = .systemGreen
     }
     
 

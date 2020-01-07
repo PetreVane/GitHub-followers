@@ -13,6 +13,9 @@ class SearchViewController: UIViewController {
     let logoImageView = UIImageView()
     let userNameTextField = GFTextField()
     let followButton = GFButton(backgroundColor: .systemGreen, title: "Show followers")
+    var isUserNameEntered: Bool {
+        return userNameTextField.text!.isEmpty ? false : true
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,7 +95,7 @@ class SearchViewController: UIViewController {
     
     @objc func pushUserListVC() {
        
-        print("Follow button pressed")
+        guard isUserNameEntered else { print("No userName typed"); return }
         let followersVC = UsersListViewController()
         followersVC.user = userNameTextField.text!
         followersVC.title = userNameTextField.text!
