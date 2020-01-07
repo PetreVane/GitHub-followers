@@ -22,6 +22,10 @@ class SearchViewController: UIViewController {
         configureLogoView()
         configureTextField()
         configureFollowButton()
+        dismissKeyboardGesture()
+        
+        //delegates
+        userNameTextField.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,7 +34,8 @@ class SearchViewController: UIViewController {
         navigationController?.isNavigationBarHidden = true
     }
     
-
+    
+    /// Adds image & sets imageView constraints
     func configureLogoView() {
         // autoLayout
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -48,6 +53,7 @@ class SearchViewController: UIViewController {
         ])
     }
     
+    /// Sets textField constraints
     func configureTextField() {
         // adds textField to view
         view.addSubview(userNameTextField)
@@ -61,7 +67,7 @@ class SearchViewController: UIViewController {
         ])
     }
     
-    
+    ///Sets button constraints
     func configureFollowButton() {
         view.addSubview(followButton)
         
@@ -74,4 +80,21 @@ class SearchViewController: UIViewController {
         ])
     }
     
+    /// Keyboard dissmis
+    func dismissKeyboardGesture() {
+        
+        let tapGesture = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+}
+
+extension SearchViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        print("Textfield should return now ...")
+        return true
+    }
+
 }
