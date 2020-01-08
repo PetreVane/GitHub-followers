@@ -95,7 +95,7 @@ class SearchViewController: UIViewController {
     
     @objc func pushUserListVC() {
        
-        guard isUserNameEntered else { print("No userName typed"); return }
+        guard isUserNameEntered else { presentAlert(with: "Empty username", message: "Please enter someone's unsername. We need to know who to look for 🧐", buttonTitle: "Dismiss"); return }
         let followersVC = UsersListViewController()
         followersVC.user = userNameTextField.text!
         followersVC.title = userNameTextField.text!
