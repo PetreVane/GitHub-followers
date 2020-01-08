@@ -9,6 +9,8 @@
 import UIKit
 
 class GFBodyLabel: UILabel {
+    
+     //MARK: - Initialization
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,6 +26,8 @@ class GFBodyLabel: UILabel {
         self.textAlignment = textAlignment
         configure()
     }
+    
+     //MARK: - Configuration
     
     private func configure() {
         //autoLayout

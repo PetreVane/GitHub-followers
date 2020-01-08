@@ -10,6 +10,8 @@ import UIKit
 
 class GFButton: UIButton {
 
+     //MARK: - Initialization
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -34,6 +36,7 @@ class GFButton: UIButton {
         configure() 
     }
     
+     //MARK: - Configuration
     
     /// Sets custom corner radius & font for buttons
     private func configure() {

@@ -9,7 +9,9 @@
 import UIKit
 
 class UsersListViewController: UIViewController {
-
+    
+ //MARK: - Initialization
+    
     var user: String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +21,6 @@ class UsersListViewController: UIViewController {
         view.backgroundColor = .systemBackground
         navigationController?.isNavigationBarHidden = false
         navigationController?.navigationBar.prefersLargeTitles = true
-//        navigationController?.navigationBar.tintColor = .systemGreen
     }
     
 

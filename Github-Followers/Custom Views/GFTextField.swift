@@ -10,6 +10,8 @@ import UIKit
 
 class GFTextField: UITextField {
 
+     //MARK: - Initialization
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -19,6 +21,7 @@ class GFTextField: UITextField {
         fatalError("init(coder:) has not been implemented")
     }
     
+     //MARK: - Configuration
     
     /// Adds customization to TextField
     private func configure() {

@@ -10,6 +10,8 @@ import UIKit
 
 class GFTitleLabel: UILabel {
 
+     //MARK: - Initialization
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -26,6 +28,7 @@ class GFTitleLabel: UILabel {
         configure()
     }
     
+     //MARK: - Configuration
     
     private func configure() {
         // autoLayout

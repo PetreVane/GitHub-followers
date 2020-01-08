@@ -10,6 +10,8 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
+     //MARK: - Initialization
+    
     let logoImageView = UIImageView()
     let userNameTextField = GFTextField()
     let followButton = GFButton(backgroundColor: .systemGreen, title: "Show followers")
@@ -37,6 +39,7 @@ class SearchViewController: UIViewController {
         navigationController?.isNavigationBarHidden = true
     }
     
+     //MARK: - Logo View
     
     /// Adds image & sets imageView constraints
     func configureLogoView() {
@@ -56,6 +59,8 @@ class SearchViewController: UIViewController {
         ])
     }
     
+     //MARK: - TextField
+    
     /// Sets textField constraints
     func configureTextField() {
         // adds textField to view
@@ -69,6 +74,8 @@ class SearchViewController: UIViewController {
             userNameTextField.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
+    
+     //MARK: - Button
     
     ///Sets button constraints
     func configureFollowButton() {
@@ -103,6 +110,8 @@ class SearchViewController: UIViewController {
     }
     
 }
+
+ //MARK: - TextField Delegate methods
 
 extension SearchViewController: UITextFieldDelegate {
     
