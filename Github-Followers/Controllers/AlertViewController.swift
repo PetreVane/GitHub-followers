@@ -121,7 +121,7 @@ class AlertViewController: UIViewController {
         // bodyLabel constraints
         
         NSLayoutConstraint.activate([
-            bodyLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
+            bodyLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
             bodyLabel.bottomAnchor.constraint(equalTo: actionButton.topAnchor, constant: 12),
             bodyLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding),
             bodyLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding)
