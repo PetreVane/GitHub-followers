@@ -85,18 +85,6 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		0B85B0F423C63AA700449C82 /* Support */ = {
-			isa = PBXGroup;
-			children = (
-				0BC091EA23BA15E700E3548B /* AppDelegate.swift */,
-				0BC091EC23BA15E800E3548B /* SceneDelegate.swift */,
-				0BC091F323BA15ED00E3548B /* Assets.xcassets */,
-				0BC091F523BA15ED00E3548B /* LaunchScreen.storyboard */,
-				0BC091F823BA15ED00E3548B /* Info.plist */,
-			);
-			path = Support;
-			sourceTree = "<group>";
-		};
 		0B85B0F523C63FB400449C82 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +92,18 @@
 				0B85B0F823C6555200449C82 /* User.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		0B85B0FA23C66EF900449C82 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				0BC091F823BA15ED00E3548B /* Info.plist */,
+				0BC091EA23BA15E700E3548B /* AppDelegate.swift */,
+				0BC091EC23BA15E800E3548B /* SceneDelegate.swift */,
+				0BC091F323BA15ED00E3548B /* Assets.xcassets */,
+				0BC091F523BA15ED00E3548B /* LaunchScreen.storyboard */,
+			);
+			name = Support;
 			sourceTree = "<group>";
 		};
 		0BC091DE23BA15E700E3548B = {
@@ -125,7 +125,7 @@
 		0BC091E923BA15E700E3548B /* Github-Followers */ = {
 			isa = PBXGroup;
 			children = (
-				0B85B0F423C63AA700449C82 /* Support */,
+				0B85B0FA23C66EF900449C82 /* Support */,
 				0B85B0F523C63FB400449C82 /* Models */,
 				0B85B0F323C63A9300449C82 /* Controllers */,
 				0B85B0F223C63A7800449C82 /* Custom Views */,
