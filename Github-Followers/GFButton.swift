@@ -30,7 +30,7 @@ class GFButton: UIButton {
         self.backgroundColor = backgroundColor
         self.setTitle(title, for: .normal)
         
-        //adding customisation
+        //adding customization
         configure() 
     }
     
