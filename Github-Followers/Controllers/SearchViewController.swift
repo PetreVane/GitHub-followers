@@ -36,7 +36,8 @@ class SearchViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationController?.isNavigationBarHidden = true
+        navigationController?.setNavigationBarHidden(true, animated: true)
+
     }
     
      //MARK: - Logo View
@@ -107,6 +108,9 @@ class SearchViewController: UIViewController {
         followersVC.user = userNameTextField.text!
         followersVC.title = userNameTextField.text!
         navigationController?.pushViewController(followersVC, animated: true)
+        
+        // dismisses the keyboard before transition
+        self.view.endEditing(true)
     }
     
 }
@@ -117,7 +121,6 @@ extension SearchViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        print("Textfield should return now ...")
         pushUserListVC()
         return true
     }
