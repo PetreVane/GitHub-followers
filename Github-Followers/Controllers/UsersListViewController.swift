@@ -13,13 +13,15 @@ class UsersListViewController: UIViewController {
  //MARK: - Initialization
     
     var user: String = ""
+    let networkManager = NetworkManager.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        print("User initilized with value: \(user)")
+//        print("User initilized with value: \(user)")
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
+        fetchUsers()
 
     }
     
@@ -30,4 +32,19 @@ class UsersListViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
+    
+    func fetchUsers() {
+        networkManager.getFollowers(for: user, page: 1) { result in
+            
+            switch result {
+            case .failure(let error):
+                self.presentAlert(with: "What? An error!? 😕", message: error.localizedDescription , buttonTitle: "Dismiss")
+                
+            case .success(let listOfFollowers):
+                for follower in listOfFollowers {
+                    print("\(follower.login) follows \(self.user)")
+                }
+            }
+        }
+    }
 }
