@@ -45,7 +45,8 @@ class GFButton: UIButton {
         layer.cornerRadius = 10
         
         // color
-        titleLabel?.textColor = .white
+//        titleLabel?.textColor = .white
+        setTitleColor(.white, for: .normal)
         
         //font
         titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline)

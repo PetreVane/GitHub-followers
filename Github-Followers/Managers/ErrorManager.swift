@@ -10,6 +10,7 @@ import Foundation
 
 
 enum ErrorManager: Error {
+    
     case failedURL
     case failedNetworkRequest
     case unexpectedStatusCode
@@ -20,17 +21,17 @@ enum ErrorManager: Error {
     var localizedDescription: String {
         
         switch self {
-            
+
         case .failedURL:
-            return "Soometing went wrong when trying to cast String type to URL type"
+            return "Soometing went wrong when trying to cast String type to URL type."
         case .failedNetworkRequest:
-            return "Something went wrong. Make sure you're connected to Internet and try again later"
+            return "Something went wrong. Make sure you're connected to Internet and try again later."
         case .unexpectedStatusCode:
-            return "Server responded with unexpected status code."
+            return "Unable to find the requested user 🥺"
         case .invalidData:
             return "Invalid data returned by the server."
         case .failedJSONParsing:
-            return "Failed parsing JSON returned by your network request"
+            return "Failed parsing JSON returned by your network request."
         }
     }
 }
