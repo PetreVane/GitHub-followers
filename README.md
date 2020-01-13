@@ -3,4 +3,5 @@ Simple iOS app that lists your Github followers
 
 
 Under Development: 
-this is a simple iOS app, which makes use of Guthub API. The purpose of this project is to get acquinted with GitHub API.
+this is a simple iOS app, which makes use of Github API. Getting acquinted with GitHub API is one of the goals of this project.
+In addition, this project visual interface is developed entirely in code, without using Storyboards.
