@@ -63,6 +63,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B723D9523CCDA1E0023DE33 /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				0B7AB62B23C5E58D007BF49D /* GFTitleLabel.swift */,
+				0B7AB62D23C5EB09007BF49D /* GFBodyLabel.swift */,
+			);
+			name = Labels;
+			sourceTree = "<group>";
+		};
+		0B723D9623CCDAF90023DE33 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				0B2899F823BFA383002D84F8 /* GFButton.swift */,
+			);
+			name = Buttons;
+			sourceTree = "<group>";
+		};
+		0B723D9823CCDBDD0023DE33 /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				0B2899FA23BFAA3B002D84F8 /* GFTextField.swift */,
+			);
+			name = TextField;
+			sourceTree = "<group>";
+		};
+		0B723D9923CCDBED0023DE33 /* ImageViews */ = {
+			isa = PBXGroup;
+			children = (
+				0B8A74C023C7C4E700179F89 /* GFAvatarImageView.swift */,
+			);
+			name = ImageViews;
+			sourceTree = "<group>";
+		};
 		0B85B0F023C63A5C00449C82 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -74,11 +107,11 @@
 		0B85B0F223C63A7800449C82 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
-				0B2899F823BFA383002D84F8 /* GFButton.swift */,
-				0B2899FA23BFAA3B002D84F8 /* GFTextField.swift */,
-				0B7AB62B23C5E58D007BF49D /* GFTitleLabel.swift */,
-				0B7AB62D23C5EB09007BF49D /* GFBodyLabel.swift */,
-				0B8A74C023C7C4E700179F89 /* GFAvatarImageView.swift */,
+				0B723D9923CCDBED0023DE33 /* ImageViews */,
+				0B723D9823CCDBDD0023DE33 /* TextField */,
+				0B723D9623CCDAF90023DE33 /* Buttons */,
+				0B723D9523CCDA1E0023DE33 /* Labels */,
+				0B8A74BD23C7BEB300179F89 /* Cells */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -86,7 +119,6 @@
 		0B85B0F323C63A9300449C82 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0B8A74BD23C7BEB300179F89 /* Cells */,
 				0B2899F423BE3B8C002D84F8 /* SearchViewController.swift */,
 				0B7AB60523C4E451007BF49D /* UsersListViewController.swift */,
 				0B2899F623BE3BD0002D84F8 /* FavoritesViewController.swift */,
