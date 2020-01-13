@@ -96,8 +96,9 @@ class SearchViewController: UIViewController {
     
     /// Keyboard dissmis
     func dismissKeyboardGesture() {
-        
+        // have a gesture
         let tapGesture = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        // adds gesture to view
         view.addGestureRecognizer(tapGesture)
     }
     
