@@ -19,7 +19,7 @@ class UsersListViewController: UIViewController {
     var user: String = ""
     let networkManager = NetworkManager.sharedInstance
     var collectionView: UICollectionView!
-    var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
+    var diffDataSource: UICollectionViewDiffableDataSource<Section, Follower>!
     var listOfUsers: [Follower] = []
     
     
@@ -27,13 +27,13 @@ class UsersListViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+
+
         configureView()
         fetchFollower()
         configureCollectionView()
         configureDataSource()
         
-//        collectionView.dataSource = self
-//        collectionView.delegate = self
 
     }
     
@@ -44,6 +44,7 @@ class UsersListViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
+    
     /// Initializes and configures the CollectionView
     func configureCollectionView() {
         
@@ -53,7 +54,6 @@ class UsersListViewController: UIViewController {
         collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: FollowerCell.reuseIdentifier)
         
     }
-    
     
     func configureCollectionViewFlowLayout() -> UICollectionViewFlowLayout {
         
@@ -81,9 +81,8 @@ class UsersListViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
-    
     func configureDataSource() {
-        dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
+        diffDataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCell.reuseIdentifier, for: indexPath) as? FollowerCell else { return UICollectionViewCell() }
             cell.userNameLabel.text = self.listOfUsers[indexPath.item].login
             
@@ -96,7 +95,7 @@ class UsersListViewController: UIViewController {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Follower>()
         snapshot.appendSections([.main])
         snapshot.appendItems(self.listOfUsers)
-        dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
+        diffDataSource.apply(snapshot, animatingDifferences: true, completion: nil)
         
     }
     /// Fetches information about a given Github follower
