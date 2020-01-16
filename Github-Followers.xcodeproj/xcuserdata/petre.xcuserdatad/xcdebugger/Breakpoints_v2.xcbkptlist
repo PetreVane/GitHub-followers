@@ -10,7 +10,7 @@
             uuid = "0E7D14B7-D885-4E57-B386-47A2AC36E9B5"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
-            continueAfterRunningActions = "No"
+            continueAfterRunningActions = "Yes"
             scope = "1"
             stopOnStyle = "1">
          </BreakpointContent>

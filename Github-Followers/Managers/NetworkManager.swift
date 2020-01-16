@@ -6,7 +6,7 @@
 //  Copyright © 2020 Petre Vane. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 
 class NetworkManager {
@@ -23,7 +23,7 @@ class NetworkManager {
     ///   - user: GitHub user name for which the followers are requested
     ///   - page: Followers page number
     ///   - completion: Result of the request
-    func getFollowers(for user: String, page: Int, completion: @escaping result) {
+    func fetchFollowers(for user: String, page: Int, completion: @escaping result) {
         
         // declares the endpoint URL
         let endPointURL: String = "https://api.github.com/users/\(user)/followers?per_page=100&page=\(page)"
@@ -47,5 +47,26 @@ class NetworkManager {
             }
         }
         task.resume()
+    }
+    
+    
+    /// Fetches avatar images of GitHub followers
+    /// - Parameters:
+    ///   - StringUrl: URL of the avatar, casted as String
+    ///   - completion: escaping completion containing the avatar
+    func fetchAvatars(from StringUrl: String, completion: @escaping (UIImage) -> Void) {
+        
+        guard let imageURL = URL(string: StringUrl) else { return }
+        
+        let task = URLSession.shared.dataTask(with: imageURL) { (data, response, error) in
+            
+            guard error == nil else { return }
+            guard let serverResponse = response as? HTTPURLResponse, serverResponse.statusCode == 200 else { return }
+            guard let receivedData = data else { return }
+            
+            if let image = UIImage(data: receivedData) {
+                completion(image)
+            }
+        }; task.resume()
     }
  }

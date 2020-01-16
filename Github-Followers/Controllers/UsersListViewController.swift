@@ -63,7 +63,11 @@ class UsersListViewController: UIViewController {
     func configureDataSource() {
         diffDataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCell.reuseIdentifier, for: indexPath) as? FollowerCell else { return UICollectionViewCell() }
-            cell.userNameLabel.text = self.listOfUsers[indexPath.item].login
+            
+            let follower = self.listOfUsers[indexPath.item]
+//            cell.userNameLabel.text = follower.login
+            cell.set(follower: follower)
+//            cell.userNameLabel.text = self.listOfUsers[indexPath.item].login
             
             return cell
             
@@ -79,7 +83,7 @@ class UsersListViewController: UIViewController {
     }
     /// Fetches information about a given Github follower
     func fetchFollower() {
-        networkManager.getFollowers(for: user, page: 1) { [weak self] result in
+        networkManager.fetchFollowers(for: user, page: 1) { [weak self] result in
             
             guard let self = self else { return }
             
