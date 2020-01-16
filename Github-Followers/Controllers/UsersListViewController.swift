@@ -27,14 +27,11 @@ class UsersListViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-
-
         configureView()
         fetchFollower()
         configureCollectionView()
         configureDataSource()
         
-
     }
     
     
@@ -48,32 +45,14 @@ class UsersListViewController: UIViewController {
     /// Initializes and configures the CollectionView
     func configureCollectionView() {
         
-        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: configureCollectionViewFlowLayout())
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: Helper.configureCollectionViewFlowLayout(for: view))
         view.addSubview(collectionView)
         collectionView.backgroundColor = .systemBackground
         collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: FollowerCell.reuseIdentifier)
         
     }
     
-    func configureCollectionViewFlowLayout() -> UICollectionViewFlowLayout {
-        
-        let flowLayout = UICollectionViewFlowLayout()
-        // gets the width of the screen
-        let width = view.bounds.width
-        // adds some leading & trailing padding
-        let padding: CGFloat = 12
-        let distanceBetweenItems: CGFloat = 10
-        // the total available width for cells
-        let availableWidth = width - (padding * 2) - (distanceBetweenItems * 2)
-        // size of 1 cell
-        let itemWidth = availableWidth / 3
-        // assigns padding to layout
-        flowLayout.sectionInset = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
-        //assigns item size as CGSize
-        flowLayout.itemSize = CGSize(width: itemWidth, height: itemWidth + 35)
-                
-        return flowLayout
-    }
+
     
     /// Configures properties of UsersListViewController
     func configureView() {
@@ -100,7 +79,9 @@ class UsersListViewController: UIViewController {
     }
     /// Fetches information about a given Github follower
     func fetchFollower() {
-        networkManager.getFollowers(for: user, page: 1) { result in
+        networkManager.getFollowers(for: user, page: 1) { [weak self] result in
+            
+            guard let self = self else { return }
             
             switch result {
             case .failure(let error):
