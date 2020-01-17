@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0B1C185423CD102D00E81AF6 /* UsersListViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C185323CD102D00E81AF6 /* UsersListViewController+DataSource.swift */; };
 		0B1C185623CDCFFE00E81AF6 /* UsersListViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C185523CDCFFE00E81AF6 /* UsersListViewController+SearchBar.swift */; };
 		0B2899F523BE3B8C002D84F8 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2899F423BE3B8C002D84F8 /* SearchViewController.swift */; };
 		0B2899F723BE3BD0002D84F8 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2899F623BE3BD0002D84F8 /* FavoritesViewController.swift */; };
@@ -33,7 +32,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0B1C185323CD102D00E81AF6 /* UsersListViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UsersListViewController+DataSource.swift"; sourceTree = "<group>"; };
 		0B1C185523CDCFFE00E81AF6 /* UsersListViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UsersListViewController+SearchBar.swift"; sourceTree = "<group>"; };
 		0B2899F423BE3B8C002D84F8 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		0B2899F623BE3BD0002D84F8 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
@@ -116,7 +114,6 @@
 			isa = PBXGroup;
 			children = (
 				0B85B0EE23C6104B00449C82 /* UIViewController+Ext.swift */,
-				0B1C185323CD102D00E81AF6 /* UsersListViewController+DataSource.swift */,
 				0B1C185523CDCFFE00E81AF6 /* UsersListViewController+SearchBar.swift */,
 			);
 			path = Extensions;
@@ -298,7 +295,6 @@
 				0B85B0F723C6549E00449C82 /* Follower.swift in Sources */,
 				0B8A74BC23C7870E00179F89 /* ErrorManager.swift in Sources */,
 				0B60B2EA23D105C9003042C0 /* CacheManager.swift in Sources */,
-				0B1C185423CD102D00E81AF6 /* UsersListViewController+DataSource.swift in Sources */,
 				0B85B0ED23C5F69700449C82 /* AlertViewController.swift in Sources */,
 				0B8A74BA23C7803D00179F89 /* NetworkManager.swift in Sources */,
 				0BC091ED23BA15E800E3548B /* SceneDelegate.swift in Sources */,

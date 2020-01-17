@@ -8,21 +8,21 @@
 
 import UIKit
 
-extension UsersListViewController: UICollectionViewDataSource {
+//extension UsersListViewController: UICollectionViewDataSource {
+//
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return listOfUsers.count
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCell.reuseIdentifier, for: indexPath) as? FollowerCell else { return UICollectionViewCell() }
+//
+//        cell.userNameLabel.text = listOfUsers[indexPath.row].login
+//        return cell
+//    }
+//
+//
+//}
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return listOfUsers.count
-    }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCell.reuseIdentifier, for: indexPath) as? FollowerCell else { return UICollectionViewCell() }
-
-        cell.userNameLabel.text = listOfUsers[indexPath.row].login
-        return cell
-    }
-
-
-}
-
-extension UsersListViewController: UICollectionViewDelegate { }
 
