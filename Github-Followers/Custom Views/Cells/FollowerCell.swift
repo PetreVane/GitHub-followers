@@ -13,7 +13,7 @@ class FollowerCell: UICollectionViewCell {
     static let reuseIdentifier = "followerCell"
     let networkManager = NetworkManager.sharedInstance
     let cacheManager = CacheManager.sharedInstance
-    let userNameLabel = GFTitleLabel(textAlignment: .center, fontSize: 16)
+    let userNameLabel = GFTitleLabel(textAlignment: .center, fontSize: 12)
     let cellImage = GFAvatarImageView(frame: .zero)
     
     override init(frame: CGRect) {
@@ -27,7 +27,7 @@ class FollowerCell: UICollectionViewCell {
     
     /// Assigns text & image collectionView cell label and UIImage
     /// - Parameter follower: Github follower instance
-    func set(follower: Follower) {
+    func show(_ follower: Follower) {
         userNameLabel.text = follower.login
         
         // checks if the image already exists in cache
@@ -51,6 +51,7 @@ class FollowerCell: UICollectionViewCell {
     }
     
     private func configure() {
+        
         self.addSubview(cellImage)
         self.addSubview(userNameLabel)
         translatesAutoresizingMaskIntoConstraints = false
@@ -71,3 +72,4 @@ class FollowerCell: UICollectionViewCell {
         ])
     }
 }
+

@@ -9,6 +9,7 @@
 import Foundation
 
 
+/// Enumerates possible errors taking place while making a network call and handlig JSON received from network
 enum ErrorManager: Error {
     
     case failedURL

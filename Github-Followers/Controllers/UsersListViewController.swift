@@ -17,6 +17,8 @@ class UsersListViewController: UIViewController {
     }
     
     var user: String = ""
+    var pageNumber = 1
+    var userHasMoreFollowers = true
     let networkManager = NetworkManager.sharedInstance
     var collectionView: UICollectionView!
     var diffDataSource: UICollectionViewDiffableDataSource<Section, Follower>!
@@ -28,10 +30,10 @@ class UsersListViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         configureView()
-        fetchFollower()
+        fetchFollowers(for: user, page: pageNumber)
         configureCollectionView()
         configureDataSource()
-        
+
     }
     
     
@@ -41,12 +43,16 @@ class UsersListViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
+    deinit {
+        print("View has been deinitialized")
+    }
+    
     
     /// Initializes and configures the CollectionView
     func configureCollectionView() {
-        
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: Helper.configureCollectionViewFlowLayout(for: view))
         view.addSubview(collectionView)
+        collectionView.delegate = self
         collectionView.backgroundColor = .systemBackground
         collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: FollowerCell.reuseIdentifier)
         
@@ -60,18 +66,27 @@ class UsersListViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
-    func configureDataSource() {
-        diffDataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCell.reuseIdentifier, for: indexPath) as? FollowerCell else { return UICollectionViewCell() }
+    
+    /// Fetches information about a given Github follower
+    func fetchFollowers(for user: String, page: Int) {
+        print("PageNumber is \(pageNumber)")
+        guard userHasMoreFollowers else { return }
+        
+        networkManager.fetchFollowers(for: user, page: pageNumber) { [weak self] result in
             
-            let follower = self.listOfUsers[indexPath.item]
-//            cell.userNameLabel.text = follower.login
-            cell.set(follower: follower)
-//            cell.userNameLabel.text = self.listOfUsers[indexPath.item].login
+            guard let self = self else { return }
             
-            return cell
-            
-        })
+            switch result {
+                
+            case .failure(let error):
+                self.presentAlert(with: "What? An error!? 😕", message: error.localizedDescription , buttonTitle: "Dismiss")
+                
+            case .success(let followers):
+                if followers.count < 100 { self.userHasMoreFollowers = false }
+                self.listOfUsers.append(contentsOf: followers)
+                DispatchQueue.main.async { self.updateData() }
+            }
+        }
     }
     
     func updateData() {
@@ -81,23 +96,40 @@ class UsersListViewController: UIViewController {
         diffDataSource.apply(snapshot, animatingDifferences: true, completion: nil)
         
     }
-    /// Fetches information about a given Github follower
-    func fetchFollower() {
-        networkManager.fetchFollowers(for: user, page: 1) { [weak self] result in
+    
+    func configureDataSource() {
+        diffDataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCell.reuseIdentifier, for: indexPath) as? FollowerCell else { return UICollectionViewCell() }
             
-            guard let self = self else { return }
+            let follower = self.listOfUsers[indexPath.item]
+            cell.show(follower)
+
+            return cell
             
-            switch result {
-            case .failure(let error):
-                self.presentAlert(with: "What? An error!? 😕", message: error.localizedDescription , buttonTitle: "Dismiss")
-                
-            case .success(let listOfFollowers):
-                for follower in listOfFollowers {
-                    print("\(follower.login) follows \(self.user)")
-                    self.listOfUsers = listOfFollowers
-                    DispatchQueue.main.async { self.updateData() }
-                }
-            }
+        })
+    }
+}
+
+extension UsersListViewController: UICollectionViewDelegate {
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        
+        // the (vertical) dimension of content that is scrolled out of screen
+        let offsetY = scrollView.contentOffset.y
+        
+        // gets the total height of the content
+        let contentHeight = scrollView.contentSize.height
+        
+        // gets the height of the (device)screen
+        let frameHeight = scrollView.frame.size.height
+        
+        // difference between content shown and existing content that should be shown
+        let remainingContent = contentHeight - offsetY
+        
+        if remainingContent < frameHeight {
+        // reached the end of the content
+            pageNumber += 1
+            fetchFollowers(for: user, page: pageNumber)
         }
     }
 }
