@@ -87,6 +87,7 @@ class UsersListViewController: UIViewController {
                 if followers.count < 100 { self.userHasMoreFollowers = false }
                 self.listOfUsers.append(contentsOf: followers)
                 DispatchQueue.main.async { self.updateData() }
+                
             }
         }
     }
