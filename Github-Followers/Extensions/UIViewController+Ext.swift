@@ -8,15 +8,66 @@
 
 import UIKit
 
+
+fileprivate var containerView: UIView!
+
 extension UIViewController {
     
-    func presentAlert(with title: String, message: String, buttonTitle: String) {
+    /// Shows an alert to the user
+    /// - Parameters:
+    ///   - title: represents the alert title
+    ///   - message: message contained by the alert
+    ///   - buttonTitle: text contained by the button
+    func presentAlert(withTitle title: String, message: String, buttonTitle: String) {
     
         DispatchQueue.main.async {
             let alert = AlertViewController(title: title, message: message, buttonTitle: buttonTitle)
             alert.modalPresentationStyle = .overFullScreen
             alert.modalTransitionStyle = .crossDissolve
             self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    /// Adds a view which contains an Activity Indicator
+    func presentLoadingView() {
+
+        // sets containerView to match the size of the view
+        containerView = UIView(frame: view.bounds)
+        view.addSubview(containerView)
+
+        // custom settings
+        containerView.backgroundColor = .systemBackground
+        containerView.alpha = 0 // transparent
+
+        // animating background fadding
+        UIView.animate(withDuration: 0.3) { containerView.alpha = 0.8 }
+
+
+        // activity indicator
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        containerView.addSubview(activityIndicator)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+
+        //  activity indicator constraints
+        NSLayoutConstraint.activate([
+            activityIndicator.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
+            activityIndicator.centerXAnchor.constraint(equalTo: containerView.centerXAnchor)
+            ])
+
+        // starting the activity indicator
+        activityIndicator.startAnimating()
+    }
+    
+    
+    
+    /// Dismisses the view containing an Activity Indicator
+    func dismissLoadingView() {
+        
+        DispatchQueue.main.async {
+            containerView.removeFromSuperview()
+            containerView = nil
+            
+            
         }
     }
     

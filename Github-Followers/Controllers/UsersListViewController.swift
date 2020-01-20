@@ -69,17 +69,19 @@ class UsersListViewController: UIViewController {
     
     /// Fetches information about a given Github follower
     func fetchFollowers(for user: String, page: Int) {
-        print("PageNumber is \(pageNumber)")
+
+        presentLoadingView()
         guard userHasMoreFollowers else { return }
         
         networkManager.fetchFollowers(for: user, page: pageNumber) { [weak self] result in
             
             guard let self = self else { return }
+            self.dismissLoadingView()
             
             switch result {
                 
             case .failure(let error):
-                self.presentAlert(with: "What? An error!? 😕", message: error.localizedDescription , buttonTitle: "Dismiss")
+                self.presentAlert(withTitle: "What? An error!? 😕", message: error.localizedDescription , buttonTitle: "Dismiss")
                 
             case .success(let followers):
                 if followers.count < 100 { self.userHasMoreFollowers = false }
