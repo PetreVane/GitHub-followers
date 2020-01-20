@@ -66,9 +66,21 @@ extension UIViewController {
         DispatchQueue.main.async {
             containerView.removeFromSuperview()
             containerView = nil
-            
-            
         }
+    }
+    
+    
+    /// Adds an EmptyState view to calling ViewController
+    /// - Parameters:
+    ///   - message: text passed to EmptyState label
+    ///   - view: ViewController from which the EmptyState is called
+    func showEmptyState(withMessage message: String, view: UIView) {
+        // init emptyState
+        let emptyState = EmptyState(message: message)
+        // establish the frame size
+        emptyState.frame = view.bounds
+        // adds the emptyState view to viewController
+        view.addSubview(emptyState)
     }
     
 }

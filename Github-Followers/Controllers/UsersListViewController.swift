@@ -88,6 +88,12 @@ class UsersListViewController: UIViewController {
                 self.listOfUsers.append(contentsOf: followers)
                 DispatchQueue.main.async { self.updateData() }
                 
+                if self.listOfUsers.isEmpty {
+                    let message = "This user has no followers yet. Wanna be the first one? 🤔"
+                    DispatchQueue.main.async {
+                        self.showEmptyState(withMessage: message, view: self.view)
+                    }
+                }
             }
         }
     }

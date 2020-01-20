@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// View shown when a user has no Followers
 class EmptyState: UIView {
 
     let messageLabel =  GFTitleLabel(textAlignment: .center, fontSize: 25)
@@ -24,10 +25,13 @@ class EmptyState: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    /// Initializes EmptyState with text
+    /// - Parameter message: text passed to EmptyState label
     init(message: String) {
         super.init(frame: .zero)
         self.messageLabel.text = message
         configureLabel()
+        configureLogo()
         
     }
     
@@ -43,7 +47,6 @@ class EmptyState: UIView {
         // constraints
         NSLayoutConstraint.activate([
         
-            // messageLabel
             messageLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -155),
             messageLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
             messageLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
@@ -59,12 +62,13 @@ class EmptyState: UIView {
         logoView.image = UIImage(named: "empty-state-logo")
         logoView.translatesAutoresizingMaskIntoConstraints = false
         
+        // constraints
         NSLayoutConstraint.activate([
             
             logoView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1.3),
             logoView.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1.3),
-            logoView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 200),
-            logoView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 140)
+            logoView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 170),
+            logoView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 40)
         ])
     }
 }
