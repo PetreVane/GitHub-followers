@@ -12,9 +12,7 @@ import UIKit
 class NetworkManager {
     
     static let sharedInstance = NetworkManager()
-    
-    private init () { }
-    
+        
     typealias result = ((Result<[Follower], ErrorManager>) -> Void)
     
     

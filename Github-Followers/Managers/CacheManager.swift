@@ -25,7 +25,6 @@ struct CacheManager {
     }
     
     
-    
     /// Retrieves images from cache
     /// - Parameter key: used in saving the image to cache
     func retrieveImage(withIdentifier key: String) -> UIImage? {

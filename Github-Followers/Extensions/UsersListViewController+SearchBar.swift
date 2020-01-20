@@ -14,5 +14,4 @@ extension UsersListViewController: UISearchResultsUpdating {
         print("Updating USersListVC now ...")
     }
     
-    
 }
