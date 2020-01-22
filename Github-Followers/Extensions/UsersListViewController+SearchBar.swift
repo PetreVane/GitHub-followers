@@ -8,10 +8,3 @@
 
 import UIKit
 
-extension UsersListViewController: UISearchResultsUpdating {
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        print("Updating USersListVC now ...")
-    }
-    
-}
