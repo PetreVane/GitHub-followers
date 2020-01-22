@@ -10,9 +10,9 @@
             uuid = "0ED89DE3-301E-494F-9D69-822990DE77A9"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
-            continueAfterRunningActions = "No"
+            continueAfterRunningActions = "Yes"
             scope = "0"
-            stopOnStyle = "0">
+            stopOnStyle = "1">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

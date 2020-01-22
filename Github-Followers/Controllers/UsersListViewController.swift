@@ -22,17 +22,20 @@ class UsersListViewController: UIViewController {
     let networkManager = NetworkManager.sharedInstance
     var collectionView: UICollectionView!
     var diffDataSource: UICollectionViewDiffableDataSource<Section, Follower>!
-    var listOfUsers: [Follower] = []
+    var listOfFollowers: [Follower] = []
+    var sortedFollowers: [Follower] = []
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
         configureView()
-        fetchFollowers(for: user, page: pageNumber)
+        configureSearchController()
         configureCollectionView()
+        fetchFollowers(for: user, page: pageNumber)
         configureDataSource()
+        configureSearchController()
+        
 
     }
     
@@ -85,11 +88,11 @@ class UsersListViewController: UIViewController {
                 
             case .success(let followers):
                 if followers.count < 100 { self.userHasMoreFollowers = false }
-                self.listOfUsers.append(contentsOf: followers)
-                DispatchQueue.main.async { self.updateData() }
+                self.listOfFollowers.append(contentsOf: followers)
+                DispatchQueue.main.async { self.updateData(with: followers) }
                 
-                if self.listOfUsers.isEmpty {
-                    let message = "This user has no followers yet. Wanna be the first one? 🤔"
+                if self.listOfFollowers.isEmpty {
+                    let message = "This user has no followers yet. Go follow this user 😀"
                     DispatchQueue.main.async {
                         self.showEmptyState(withMessage: message, view: self.view)
                     }
@@ -98,10 +101,10 @@ class UsersListViewController: UIViewController {
         }
     }
     
-    func updateData() {
+    func updateData(with followers: [Follower]) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Follower>()
         snapshot.appendSections([.main])
-        snapshot.appendItems(self.listOfUsers)
+        snapshot.appendItems(followers)
         diffDataSource.apply(snapshot, animatingDifferences: true, completion: nil)
         
     }
@@ -110,12 +113,20 @@ class UsersListViewController: UIViewController {
         diffDataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCell.reuseIdentifier, for: indexPath) as? FollowerCell else { return UICollectionViewCell() }
             
-            let follower = self.listOfUsers[indexPath.item]
+            let follower = self.listOfFollowers[indexPath.item]
             cell.show(follower)
 
             return cell
             
         })
+    }
+    
+    
+    func configureSearchController() {
+        let searchController = UISearchController()
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.placeholder = "Search for a user here ..."
+        navigationItem.searchController = searchController
     }
 }
 
@@ -141,4 +152,32 @@ extension UsersListViewController: UICollectionViewDelegate {
             fetchFollowers(for: user, page: pageNumber)
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("Cell at indexPath \(indexPath) has been tapped   ")
+    }
+}
+
+extension UsersListViewController: UISearchResultsUpdating, UISearchBarDelegate {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+   
+        guard let filter = searchController.searchBar.text?.lowercased() else { return }
+        if filter.isEmpty {
+            updateData(with: listOfFollowers)
+        } else {
+            sortedFollowers = listOfFollowers.filter({ follower -> Bool in
+                return follower.login.lowercased().contains(filter)
+            })
+
+            updateData(with: sortedFollowers)
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        sortedFollowers.removeAll()
+        updateData(with: listOfFollowers)
+    }
+    
+    
 }
