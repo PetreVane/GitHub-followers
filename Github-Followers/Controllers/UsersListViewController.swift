@@ -17,7 +17,7 @@ class UsersListViewController: UIViewController {
         case main
     }
     
-    var user: String!
+    var currentUser: String!
     var unfilteredFollowers: [Follower] = []
     var filteredFollowers: [Follower] = []
     var pageNumber = 1
@@ -30,16 +30,13 @@ class UsersListViewController: UIViewController {
     var diffDataSource: UICollectionViewDiffableDataSource<Section, Follower>!
     
     
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         configureView()
         configureSearchController()
         configureCollectionView()
-        fetchFollowers(for: user, page: pageNumber)
+        fetchFollowers(for: currentUser, at: pageNumber)
         configureDataSource()
                 
     }
@@ -77,10 +74,12 @@ class UsersListViewController: UIViewController {
       }
     
     /// Fetches information about a given Github follower
-    func fetchFollowers(for user: String, page: Int) {
+    /// - Parameters:
+    ///   - user: GitHub user for which the request is mafe
+    ///   - page: page number; this is useful for a user that has multiple followers that do not fit in a single page
+    func fetchFollowers(for user: String, at page: Int) {
+
         presentLoadingView()
-//        guard userHasMoreFollowers else { return }
-        
         networkManager.fetchFollowers(for: user, page: pageNumber) { [weak self] result in
             
             guard let self = self else { return }
@@ -119,9 +118,8 @@ class UsersListViewController: UIViewController {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Follower>()
         snapshot.appendSections([.main])
         snapshot.appendItems(followers)
-        DispatchQueue.main.async { self.diffDataSource.apply(snapshot, animatingDifferences: true, completion: nil) }
+        DispatchQueue.main.async { self.diffDataSource.apply(snapshot, animatingDifferences: true) }
     }
-    
 }
 
 extension UsersListViewController: UICollectionViewDelegate {
@@ -130,20 +128,27 @@ extension UsersListViewController: UICollectionViewDelegate {
         
         // the (vertical) dimension of content that is scrolled out of screen
         let offsetY = scrollView.contentOffset.y
-        
+//        print("OffsetY is: \(offsetY)")
         // gets the total height of the content
         let contentHeight = scrollView.contentSize.height
-        
+//        print("Content height is: \(contentHeight)")
         // gets the height of the (device)screen
         let frameHeight = scrollView.frame.size.height
-        
+//        print("Frame height is: \(frameHeight)")
         // difference between content shown and existing content that should be shown
-        let remainingContent = contentHeight - offsetY
+//        let remainingContent = contentHeight - offsetY
         
-        if remainingContent < frameHeight {
-        // reached the end of the content
+//        if remainingContent < frameHeight {
+//        guard userHasMoreFollowers else { return }
+//        // reached the end of the content
+//            pageNumber += 1
+//            fetchFollowers(for: currentUser, at: pageNumber)
+//        }
+        
+        if offsetY > contentHeight - frameHeight {
+            guard userHasMoreFollowers else { return }
             pageNumber += 1
-            fetchFollowers(for: user, page: pageNumber)
+            fetchFollowers(for: currentUser, at: pageNumber)
         }
     }
     
@@ -155,10 +160,8 @@ extension UsersListViewController: UICollectionViewDelegate {
         let destinationVC = FollowerInfoVC()
         destinationVC.follower = tappedFollower
         let navigationController = UINavigationController(rootViewController: destinationVC)
-        present(navigationController, animated: true, completion: nil)
-        
+        present(navigationController, animated: true)
     }
-    
 }
 
 
@@ -171,15 +174,16 @@ extension UsersListViewController: UISearchResultsUpdating, UISearchBarDelegate 
 
         guard let filter = searchController.searchBar.text?.lowercased() else { return }
         guard !filter.isEmpty else { return }
-        filteredFollowers = unfilteredFollowers.filter({ $0.login.lowercased().contains(filter) })
         isFilteringActive = true
+        filteredFollowers = unfilteredFollowers.filter { $0.login.lowercased().contains(filter) }
         updateData(with: filteredFollowers)
 
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         isFilteringActive = false
-        filteredFollowers.removeAll()
         updateData(with: unfilteredFollowers)
+        //        filteredFollowers.removeAll()
+
     }
 }

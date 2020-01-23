@@ -13,9 +13,9 @@ struct User: Codable {
     
     let login: String
     let avatarURL: String
-    let name: String?
-    let location: String?
-    let email, bio: String?
+    var name: String?
+    var location: String?
+    var email, bio: String?
     let publicRepos, publicGists, followers, following: Int
     let htmlURL: String
     let createdAt: String

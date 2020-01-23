@@ -67,4 +67,33 @@ class NetworkManager {
             }
         }; task.resume()
     }
+    
+    typealias userDetails = ((Result<User, ErrorManager>) -> Void)
+    /// Fetches details about a given GitHub follower
+    /// - Parameters:
+    ///   - follower: name of the follower
+    ///   - completion: escaping result of the request
+    func fetchFollowerDetails(for follower: String, completion: @escaping userDetails) {
+        
+        let endPointURL: String = "https://api.github.com/users/\(follower)/"
+        guard let url = URL(string: endPointURL) else { return }
+        
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            
+            guard error == nil else { completion(.failure(.failedNetworkRequest)); return }
+            guard let serverResponse = response as? HTTPURLResponse,
+                serverResponse.statusCode == 200 else {completion(.failure(.unexpectedStatusCode)); return }
+            
+            guard let receivedData = data else { completion(.failure(.invalidData)); return }
+            let decoder = JSONDecoder()
+            
+            do {
+                let userDetails = try decoder.decode(User.self, from: receivedData)
+                completion(.success(userDetails))
+                
+            } catch {
+                completion(.failure(.failedJSONParsing))
+            }
+        }; task.resume()
+    }
  }
