@@ -25,7 +25,7 @@ class FollowerCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    /// Assigns text & image collectionView cell label and UIImage
+    /// Assigns text & image to a collectionView cell
     /// - Parameter follower: Github follower instance
     func show(_ follower: Follower) {
         userNameLabel.text = follower.login
