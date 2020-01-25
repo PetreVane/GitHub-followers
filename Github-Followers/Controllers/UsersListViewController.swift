@@ -119,6 +119,7 @@ class UsersListViewController: UIViewController {
         snapshot.appendSections([.main])
         snapshot.appendItems(followers)
         DispatchQueue.main.async { self.diffDataSource.apply(snapshot, animatingDifferences: true) }
+        print("Your list contains \(followers.count) cells")
     }
 }
 
@@ -154,6 +155,7 @@ extension UsersListViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        print("You selected cell number: \(indexPath.item)")
         let listOfFollowers = isFilteringActive ? filteredFollowers : unfilteredFollowers
         let tappedFollower = listOfFollowers[indexPath.item]
         

@@ -12,7 +12,8 @@ class FollowerInfoVC: UIViewController {
     
     let avatarImageView = GFAvatarImageView(frame: .zero)
     let nameLabel = GFTitleLabel(textAlignment: .center, fontSize: 20)
-    var follower: Follower?
+    var follower: Follower!
+    let networkManager = NetworkManager.sharedInstance
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -31,6 +32,7 @@ class FollowerInfoVC: UIViewController {
 
         configureNavigationBar()
         configureNameLabel()
+        fetchDetails(for: follower)
 
     }
     
@@ -51,7 +53,7 @@ class FollowerInfoVC: UIViewController {
     private func configureNameLabel() {
         view.addSubview(nameLabel)
         
-        nameLabel.text = follower?.login
+//        nameLabel.text = follower?.login
         nameLabel.backgroundColor = .secondarySystemBackground
         nameLabel.textColor = .systemBlue
         nameLabel.layer.cornerRadius = 10
@@ -67,6 +69,23 @@ class FollowerInfoVC: UIViewController {
             nameLabel.heightAnchor.constraint(equalToConstant: 40)
         ])
         
+    }
+    
+    func fetchDetails(for follower: Follower) {
+        let followerName = follower.login
+        networkManager.fetchDetails(for: followerName) { [weak self] result in
+            
+            guard let self = self else { return }
+            
+            switch result {
+            case .failure(let error):
+                print("Errors: \(error.localizedDescription)")
+                
+            case .success(let userDetails):
+                DispatchQueue.main.async { self.nameLabel.text = "Name: \(userDetails.login) " }
+                print("User details: \(userDetails.login)")
+            }
+        }
     }
 
 }

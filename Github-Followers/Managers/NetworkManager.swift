@@ -13,6 +13,7 @@ class NetworkManager {
     
     static let sharedInstance = NetworkManager()
         
+    private init() { }
     typealias result = ((Result<[Follower], ErrorManager>) -> Void)
     
     
@@ -73,9 +74,9 @@ class NetworkManager {
     /// - Parameters:
     ///   - follower: name of the follower
     ///   - completion: escaping result of the request
-    func fetchFollowerDetails(for follower: String, completion: @escaping userDetails) {
+    func fetchDetails(for follower: String, completion: @escaping userDetails) {
         
-        let endPointURL: String = "https://api.github.com/users/\(follower)/"
+        let endPointURL: String = "https://api.github.com/users/\(follower)"
         guard let url = URL(string: endPointURL) else { return }
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
