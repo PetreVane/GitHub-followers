@@ -10,8 +10,8 @@ import UIKit
 
 class FollowerInfoVC: UIViewController {
     
-    let avatarImageView = GFAvatarImageView(frame: .zero)
-    let nameLabel = GFTitleLabel(textAlignment: .center, fontSize: 20)
+    let avatarImageView = AvatarImageView(frame: .zero)
+    let nameLabel = TitleLabel(textAlignment: .center, fontSize: 20)
     var follower: Follower!
     let networkManager = NetworkManager.sharedInstance
     

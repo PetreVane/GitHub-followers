@@ -13,8 +13,8 @@ class FollowerCell: UICollectionViewCell {
     static let reuseIdentifier = "followerCell"
     let networkManager = NetworkManager.sharedInstance
     let cacheManager = CacheManager.sharedInstance
-    let userNameLabel = GFTitleLabel(textAlignment: .center, fontSize: 12)
-    let cellImage = GFAvatarImageView(frame: .zero)
+    let userNameLabel = TitleLabel(textAlignment: .center, fontSize: 12)
+    let cellImage = AvatarImageView(frame: .zero)
     
     override init(frame: CGRect) {
         super.init(frame: frame)

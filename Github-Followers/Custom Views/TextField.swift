@@ -1,5 +1,5 @@
 //
-//  GFTextField.swift
+//  TextField.swift
 //  Github-Followers
 //
 //  Created by Petre Vane on 03/01/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GFTextField: UITextField {
+class TextField: UITextField {
 
      //MARK: - Initialization
     

@@ -13,8 +13,8 @@ class SearchViewController: UIViewController {
      //MARK: - Initialization
     
     let logoImageView = UIImageView()
-    let userNameTextField = GFTextField()
-    let followButton = GFButton(backgroundColor: .systemGreen, title: "Show followers")
+    let userNameTextField = TextField()
+    let followButton = CustomButton(backgroundColor: .systemGreen, title: "Show followers")
     var isUserNameEntered: Bool {
         return userNameTextField.text!.isEmpty ? false : true
     }

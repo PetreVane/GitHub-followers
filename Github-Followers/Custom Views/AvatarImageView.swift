@@ -1,5 +1,5 @@
 //
-//  GFAvatarImageView.swift
+//  AvatarImageView.swift
 //  Github-Followers
 //
 //  Created by Petre Vane on 09/01/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GFAvatarImageView: UIImageView {
+class AvatarImageView: UIImageView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)

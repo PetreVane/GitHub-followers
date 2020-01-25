@@ -1,5 +1,5 @@
 //
-//  GFButton.swift
+//  CustomButton.swift
 //  Github-Followers
 //
 //  Created by Petre Vane on 03/01/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GFButton: UIButton {
+class CustomButton: UIButton {
 
      //MARK: - Initialization
     
