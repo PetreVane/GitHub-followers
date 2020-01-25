@@ -13,7 +13,7 @@ class UsersListViewController: UIViewController {
  //MARK: - Initialization
     
     /// Main Section of CollectionView with Diffable Data Source
-    enum Section {
+    enum Section: CaseIterable {
         case main
     }
     
@@ -92,15 +92,15 @@ class UsersListViewController: UIViewController {
             case .success(let followers):
                 if followers.count < 100 { self.userHasMoreFollowers = false }
                 self.unfilteredFollowers.append(contentsOf: followers)
+                self.updateData(with: self.unfilteredFollowers)
                 if self.unfilteredFollowers.isEmpty {
                     let message = "This user has no followers yet. Go follow this user 😀"
                     DispatchQueue.main.async { self.showEmptyState(withMessage: message, view: self.view); return }
                 }
-                 self.updateData(with: followers)
             }
         }
     }
-    
+        
     /// Configures CollectionView Diffable DataSource
     func configureDataSource() {
         diffDataSource = UICollectionViewDiffableDataSource<Section, Follower>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, follower) -> UICollectionViewCell? in
