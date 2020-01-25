@@ -10,7 +10,6 @@ import UIKit
 
 class SecondaryTitleLabel: UILabel {
 
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -20,9 +19,9 @@ class SecondaryTitleLabel: UILabel {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(textAlignment: NSTextAlignment) {
+    init(fontSize: CGFloat) {
         super.init(frame: .zero)
-        self.textAlignment = textAlignment
+        self.font = UIFont.monospacedSystemFont(ofSize: fontSize, weight: .medium)
         configure()
     }
     
@@ -31,12 +30,11 @@ class SecondaryTitleLabel: UILabel {
         
         translatesAutoresizingMaskIntoConstraints = false
         adjustsFontSizeToFitWidth = true
-        font = UIFont.preferredFont(forTextStyle: .title2)
         numberOfLines = 1
         minimumScaleFactor = 0.9
         
         layer.cornerRadius = 10
-        backgroundColor = .systemBackground
+        backgroundColor = .secondaryLabel
         
     }
     
