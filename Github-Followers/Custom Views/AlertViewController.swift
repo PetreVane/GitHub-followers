@@ -13,9 +13,9 @@ class AlertViewController: UIViewController {
     
     //MARK: - Initialization
     let containerView = UIView()
-    let titleLabel = GFTitleLabel(textAlignment: .center, fontSize: 20)
-    let bodyLabel = GFBodyLabel(textAlignment: .left)
-    let actionButton = GFButton(backgroundColor: .systemRed, title: "Ok, let's move on")
+    let titleLabel = TitleLabel(textAlignment: .center, fontSize: 20)
+    let bodyLabel = BodyLabel(textAlignment: .left)
+    let actionButton = CustomButton(backgroundColor: .systemRed, title: "Ok, let's move on")
     
     var alertTitle: String?
     var alertMessage: String?

@@ -157,7 +157,7 @@ extension UsersListViewController: UICollectionViewDelegate {
         
         print("You selected cell number: \(indexPath.item)")
         let listOfFollowers = isFilteringActive ? filteredFollowers : unfilteredFollowers
-        let tappedFollower = listOfFollowers[indexPath.item]
+        let tappedFollower = listOfFollowers[indexPath.item].login
         
         let destinationVC = FollowerInfoVC()
         destinationVC.follower = tappedFollower

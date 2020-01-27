@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0B0B227023DC7F9C000C0785 /* HeaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0B226F23DC7F9C000C0785 /* HeaderVC.swift */; };
 		0B0B227223DC8100000C0785 /* SecondaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0B227123DC8100000C0785 /* SecondaryTitleLabel.swift */; };
+		0B0B227423DC8E0C000C0785 /* UIView+constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0B227323DC8E0C000C0785 /* UIView+constraints.swift */; };
 		0B16555A23D615D100ED5979 /* EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B16555923D615D100ED5979 /* EmptyState.swift */; };
 		0B2899F523BE3B8C002D84F8 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2899F423BE3B8C002D84F8 /* SearchViewController.swift */; };
 		0B2899F723BE3BD0002D84F8 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2899F623BE3BD0002D84F8 /* FavoritesViewController.swift */; };
@@ -37,6 +38,7 @@
 /* Begin PBXFileReference section */
 		0B0B226F23DC7F9C000C0785 /* HeaderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderVC.swift; sourceTree = "<group>"; };
 		0B0B227123DC8100000C0785 /* SecondaryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryTitleLabel.swift; sourceTree = "<group>"; };
+		0B0B227323DC8E0C000C0785 /* UIView+constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+constraints.swift"; sourceTree = "<group>"; };
 		0B16555923D615D100ED5979 /* EmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyState.swift; sourceTree = "<group>"; };
 		0B2899F423BE3B8C002D84F8 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		0B2899F623BE3BD0002D84F8 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				0B85B0EE23C6104B00449C82 /* UIViewController+Ext.swift */,
+				0B0B227323DC8E0C000C0785 /* UIView+constraints.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				0B2899F923BFA383002D84F8 /* CustomButton.swift in Sources */,
 				0B2899F523BE3B8C002D84F8 /* SearchViewController.swift in Sources */,
 				0B8A74C123C7C4E700179F89 /* AvatarImageView.swift in Sources */,
+				0B0B227423DC8E0C000C0785 /* UIView+constraints.swift in Sources */,
 				0B2899F723BE3BD0002D84F8 /* FavoritesViewController.swift in Sources */,
 				0B0B227223DC8100000C0785 /* SecondaryTitleLabel.swift in Sources */,
 				0B60B2E823D07958003042C0 /* Helper.swift in Sources */,

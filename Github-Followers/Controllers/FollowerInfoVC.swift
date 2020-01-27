@@ -10,9 +10,7 @@ import UIKit
 
 class FollowerInfoVC: UIViewController {
     
-    let avatarImageView = AvatarImageView(frame: .zero)
-    let nameLabel = TitleLabel(textAlignment: .center, fontSize: 20)
-    var follower: Follower!
+    var follower: String!
     let networkManager = NetworkManager.sharedInstance
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -22,16 +20,13 @@ class FollowerInfoVC: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-//    init(follower: Follower)
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
 
         configureNavigationBar()
-        configureNameLabel()
         fetchDetails(for: follower)
 
     }
@@ -46,34 +41,10 @@ class FollowerInfoVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
-    private func configureAvatar() {
-        view.addSubview(avatarImageView)
-    }
     
-    private func configureNameLabel() {
-        view.addSubview(nameLabel)
-        
-//        nameLabel.text = follower?.login
-        nameLabel.backgroundColor = .secondarySystemBackground
-        nameLabel.textColor = .systemBlue
-        nameLabel.layer.cornerRadius = 10
-        nameLabel.clipsToBounds = true
-        nameLabel.layer.borderColor = UIColor.systemFill.cgColor
-        nameLabel.layer.borderWidth = 1
-        
-        NSLayoutConstraint.activate([
-        
-            nameLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
-            nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            nameLabel.heightAnchor.constraint(equalToConstant: 40)
-        ])
-        
-    }
-    
-    func fetchDetails(for follower: Follower) {
-        let followerName = follower.login
-        networkManager.fetchDetails(for: followerName) { [weak self] result in
+    func fetchDetails(for follower: String) {
+
+        networkManager.fetchDetails(for: follower) { [weak self] result in
             
             guard let self = self else { return }
             
@@ -81,11 +52,13 @@ class FollowerInfoVC: UIViewController {
             case .failure(let error):
                 print("Errors: \(error.localizedDescription)")
                 
-            case .success(let userDetails):
-                DispatchQueue.main.async { self.nameLabel.text = "Name: \(userDetails.login) " }
-                print("User details: \(userDetails.login)")
+            case .success(let user):
+                print("User details: \(user.login)")
+                DispatchQueue.main.async {
+                    let childVC = HeaderVC(user: user)
+                    self.present(childVC, animated: true)
+                }
             }
         }
     }
-
 }
