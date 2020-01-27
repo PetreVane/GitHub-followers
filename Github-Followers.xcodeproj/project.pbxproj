@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B04A26423DEE0AF00BCD9C5 /* SFSymbos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B04A26323DEE0AF00BCD9C5 /* SFSymbos.swift */; };
 		0B0B227023DC7F9C000C0785 /* HeaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0B226F23DC7F9C000C0785 /* HeaderVC.swift */; };
 		0B0B227223DC8100000C0785 /* SecondaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0B227123DC8100000C0785 /* SecondaryTitleLabel.swift */; };
 		0B0B227423DC8E0C000C0785 /* UIView+constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0B227323DC8E0C000C0785 /* UIView+constraints.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B04A26323DEE0AF00BCD9C5 /* SFSymbos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbos.swift; sourceTree = "<group>"; };
 		0B0B226F23DC7F9C000C0785 /* HeaderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderVC.swift; sourceTree = "<group>"; };
 		0B0B227123DC8100000C0785 /* SecondaryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryTitleLabel.swift; sourceTree = "<group>"; };
 		0B0B227323DC8E0C000C0785 /* UIView+constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+constraints.swift"; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				0B60B2E723D07958003042C0 /* Helper.swift */,
+				0B04A26323DEE0AF00BCD9C5 /* SFSymbos.swift */,
 			);
 			path = "Additional Files";
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 			files = (
 				0B85B0F923C6555200449C82 /* User.swift in Sources */,
 				0B0B227023DC7F9C000C0785 /* HeaderVC.swift in Sources */,
+				0B04A26423DEE0AF00BCD9C5 /* SFSymbos.swift in Sources */,
 				0BC091EB23BA15E700E3548B /* AppDelegate.swift in Sources */,
 				0B85B0EF23C6104B00449C82 /* UIViewController+Ext.swift in Sources */,
 				0B2899F923BFA383002D84F8 /* CustomButton.swift in Sources */,

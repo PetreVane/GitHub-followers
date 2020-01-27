@@ -32,7 +32,7 @@ class SecondaryTitleLabel: UILabel {
         adjustsFontSizeToFitWidth = true
         numberOfLines = 1
         minimumScaleFactor = 0.9
-        
+        lineBreakMode = .byTruncatingTail
         layer.cornerRadius = 10
         backgroundColor = .secondaryLabel
         

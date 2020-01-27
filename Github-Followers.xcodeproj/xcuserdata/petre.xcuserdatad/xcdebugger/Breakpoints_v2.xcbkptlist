@@ -12,7 +12,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             scope = "0"
-            stopOnStyle = "1">
+            stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
