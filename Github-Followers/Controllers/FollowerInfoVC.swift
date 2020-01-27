@@ -12,6 +12,7 @@ class FollowerInfoVC: UIViewController {
     
     var follower: String!
     let networkManager = NetworkManager.sharedInstance
+    let headerView = UIView()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -27,8 +28,8 @@ class FollowerInfoVC: UIViewController {
         // Do any additional setup after loading the view.
 
         configureNavigationBar()
+        configureHeaderView()
         fetchDetails(for: follower)
-
     }
     
     func configureNavigationBar() {
@@ -53,12 +54,32 @@ class FollowerInfoVC: UIViewController {
                 print("Errors: \(error.localizedDescription)")
                 
             case .success(let user):
-                print("User details: \(user.login)")
                 DispatchQueue.main.async {
-                    let childVC = HeaderVC(user: user)
-                    self.present(childVC, animated: true)
+                    self.add(childVC: HeaderVC(user: user), to: self.headerView)
                 }
             }
         }
     }
+    
+    func configureHeaderView() {
+        view.addSubview(headerView)
+        headerView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+        
+            headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            headerView.heightAnchor.constraint(equalToConstant: 180)
+        ])
+        
+    }
+    
+    func add(childVC: UIViewController, to container: UIView) {
+        self.addChild(childVC)
+        container.addSubview(childVC.view)
+        childVC.view.frame = container.bounds
+        childVC.didMove(toParent: self)
+    }
+    
 }
