@@ -26,4 +26,5 @@ class AvatarImageView: UIImageView {
         image = UIImage(named: "avatar-placeholder")
     }
     
+
 }
