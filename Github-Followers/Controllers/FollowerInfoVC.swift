@@ -64,12 +64,13 @@ class FollowerInfoVC: UIViewController {
     func configureHeaderView() {
         view.addSubview(headerView)
         headerView.translatesAutoresizingMaskIntoConstraints = false
+        let padding: CGFloat = 0
         
         NSLayoutConstraint.activate([
         
-            headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
+            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: padding),
             headerView.heightAnchor.constraint(equalToConstant: 180)
         ])
         
