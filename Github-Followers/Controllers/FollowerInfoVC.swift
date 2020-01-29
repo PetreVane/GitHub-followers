@@ -1,5 +1,5 @@
 //
-//  FollowerInfoVC.swift
+//  FollowerInfoController.swift
 //  Github-Followers
 //
 //  Created by Petre Vane on 22/01/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FollowerInfoVC: UIViewController {
+class FollowerInfoController: UIViewController {
     
     var follower: String!
     let networkManager = NetworkManager.sharedInstance
