@@ -70,7 +70,7 @@ class ReusableView: UIView {
     /// Sets ReusableView content type
     /// - Parameter contentType: enumeration of content type
     ///
-    /// This method sets the content type for each of the containers presented by FollowerInfoVC
+    /// This method sets the content type for each of the containers presented by FollowerInfoController
     func set(contentType: ContentType, withCount count: Int) {
         
         switch contentType {

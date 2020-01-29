@@ -35,7 +35,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     /// Adds a Navigation controller for SearchViewController()
     func createSearchNavController() -> UINavigationController {
-        let seachVC = SearchViewController()
+        let seachVC = SearchController()
         seachVC.title = "Search"
         seachVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
         
@@ -43,10 +43,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         return searchNavController
     }
     
-    /// Adds a Navigation controller for FavoritesViewController()
+    /// Adds a Navigation controller for FavoritesController()
     func createFavoritesNavController() -> UINavigationController {
         
-        let favoritesVC = FavoritesViewController()
+        let favoritesVC = FavoritesController()
         favoritesVC.title = "Favorites"
         favoritesVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
         

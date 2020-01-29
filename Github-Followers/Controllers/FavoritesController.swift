@@ -1,5 +1,5 @@
 //
-//  FavoritesViewController.swift
+//  FavoritesController.swift
 //  Github-Followers
 //
 //  Created by Petre Vane on 02/01/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FavoritesViewController: UIViewController {
+class FavoritesController: UIViewController {
 
      //MARK: - Initialization
     

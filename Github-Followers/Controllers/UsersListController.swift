@@ -1,5 +1,5 @@
 //
-//  UsersListViewController.swift
+//  UsersListController.swift
 //  Github-Followers
 //
 //  Created by Petre Vane on 07/01/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UsersListViewController: UIViewController {
+class UsersListController: UIViewController {
     
  //MARK: - Initialization
     
@@ -47,7 +47,7 @@ class UsersListViewController: UIViewController {
     }
     
     
-    /// Configures properties of UsersListViewController
+    /// Configures properties of UsersListController
     func configureView() {
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -123,7 +123,7 @@ class UsersListViewController: UIViewController {
     }
 }
 
-extension UsersListViewController: UICollectionViewDelegate {
+extension UsersListController: UICollectionViewDelegate {
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         
@@ -159,7 +159,7 @@ extension UsersListViewController: UICollectionViewDelegate {
         let listOfFollowers = isFilteringActive ? filteredFollowers : unfilteredFollowers
         let tappedFollower = listOfFollowers[indexPath.item].login
         
-        let destinationVC = FollowerInfoVC()
+        let destinationVC = FollowerInfoController()
         destinationVC.follower = tappedFollower
         let navigationController = UINavigationController(rootViewController: destinationVC)
         present(navigationController, animated: true)
@@ -167,7 +167,7 @@ extension UsersListViewController: UICollectionViewDelegate {
 }
 
 
-extension UsersListViewController: UISearchResultsUpdating, UISearchBarDelegate {
+extension UsersListController: UISearchResultsUpdating, UISearchBarDelegate {
 
 
     /// Updates search Result

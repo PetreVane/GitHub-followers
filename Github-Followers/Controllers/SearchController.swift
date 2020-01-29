@@ -1,5 +1,5 @@
 //
-//  SearchViewController.swift
+//  SearchController.swift
 //  Github-Followers
 //
 //  Created by Petre Vane on 02/01/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class SearchController: UIViewController {
     
      //MARK: - Initialization
     
@@ -105,7 +105,7 @@ class SearchViewController: UIViewController {
     @objc func pushUserListVC() {
        
         guard isUserNameEntered else { presentAlert(withTitle: "Empty username", message: "Please enter someone's unsername. We need to know who to look for 🧐", buttonTitle: "Dismiss"); return }
-        let followersVC = UsersListViewController()
+        let followersVC = UsersListController()
         followersVC.currentUser = userNameTextField.text!
         followersVC.title = userNameTextField.text!
         navigationController?.pushViewController(followersVC, animated: true)
@@ -118,7 +118,7 @@ class SearchViewController: UIViewController {
 
  //MARK: - TextField Delegate methods
 
-extension SearchViewController: UITextFieldDelegate {
+extension SearchController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
