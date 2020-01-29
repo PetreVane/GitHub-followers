@@ -15,6 +15,7 @@ class FollowerInfoVC: UIViewController {
     let headerView = UIView()
     let subHeaderView = UIView()
     let middleView = UIView()
+   
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -122,5 +123,6 @@ class FollowerInfoVC: UIViewController {
         childVC.view.frame = container.bounds
         childVC.didMove(toParent: self)
     }
+    
     
 }

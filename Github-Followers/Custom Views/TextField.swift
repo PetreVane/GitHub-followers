@@ -56,7 +56,5 @@ class TextField: UITextField {
         //custom return button on keyboard
         keyboardType = .default
         returnKeyType = .go
-        
-    
     }
 }
