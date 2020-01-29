@@ -165,8 +165,8 @@
 				0B2899F423BE3B8C002D84F8 /* SearchController.swift */,
 				0B7AB60523C4E451007BF49D /* UsersListController.swift */,
 				0B2899F623BE3BD0002D84F8 /* FavoritesController.swift */,
-				0BA55A0323E1D5FA00EEC650 /* ReusableCardController.swift */,
 				0BA55A0523E1D73800EEC650 /* FollowerInfoController.swift */,
+				0BA55A0323E1D5FA00EEC650 /* ReusableCardController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
