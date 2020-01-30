@@ -14,7 +14,7 @@ class HeaderVC: UIViewController {
     let userNameLabel = TitleLabel(textAlignment: .left, fontSize: 34)
     let realNameLabel = SecondaryTitleLabel(fontSize: 18)
     let locationView = UIImageView()
-    let locationNameLabel = SecondaryTitleLabel(fontSize: 18)
+    let locationNameLabel = SecondaryTitleLabel(fontSize: 15)
     let bioLabel = BodyLabel(textAlignment: .left)
     var user: User!
     
@@ -59,18 +59,18 @@ class HeaderVC: UIViewController {
         NSLayoutConstraint.activate([
         
             followerImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: padding),
-            followerImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            followerImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             followerImageView.heightAnchor.constraint(equalToConstant: 90),
             followerImageView.widthAnchor.constraint(equalToConstant: 90),
             
             userNameLabel.topAnchor.constraint(equalTo: followerImageView.topAnchor),
             userNameLabel.leadingAnchor.constraint(equalTo: followerImageView.trailingAnchor, constant: smallPadding),
-            userNameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            userNameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             userNameLabel.heightAnchor.constraint(equalToConstant: 38),
             
             realNameLabel.centerYAnchor.constraint(equalTo: followerImageView.centerYAnchor, constant: smallPadding - 2),
             realNameLabel.leadingAnchor.constraint(equalTo: followerImageView.trailingAnchor, constant: smallPadding),
-            realNameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            realNameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             realNameLabel.heightAnchor.constraint(equalToConstant: 20),
             
             locationView.bottomAnchor.constraint(equalTo: followerImageView.bottomAnchor),
@@ -80,12 +80,12 @@ class HeaderVC: UIViewController {
             
             locationNameLabel.centerYAnchor.constraint(equalTo: locationView.centerYAnchor),
             locationNameLabel.leadingAnchor.constraint(equalTo: locationView.trailingAnchor, constant: smallPadding / 2),
-            locationNameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            locationNameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             locationNameLabel.heightAnchor.constraint(equalToConstant: 20),
             
             bioLabel.topAnchor.constraint(equalTo: followerImageView.bottomAnchor, constant: smallPadding),
             bioLabel.leadingAnchor.constraint(equalTo: followerImageView.leadingAnchor),
-            bioLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            bioLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             bioLabel.heightAnchor.constraint(equalToConstant: 60)
         
         ])

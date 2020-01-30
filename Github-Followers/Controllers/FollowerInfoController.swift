@@ -83,27 +83,24 @@ class FollowerInfoController: UIViewController {
     func configureCustomViews() {
         
         let padding: CGFloat = 20
-        let height: CGFloat = 230
+        let height: CGFloat = 140
         let listOfViews = [headerView, firstCardView, secondCardView]
 
         listOfViews.forEach { customView in
             view.addSubview(customView)
             customView.translatesAutoresizingMaskIntoConstraints = false
-//            customView.backgroundColor = .systemTeal
             
             NSLayoutConstraint.activate([
-            
+
                 customView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
                 customView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding)
             ])
-
         }
        
-                
         NSLayoutConstraint.activate([
         
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
-            headerView.heightAnchor.constraint(equalToConstant: height),
+            headerView.heightAnchor.constraint(equalToConstant: height + 40),
             
             firstCardView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: padding),
             firstCardView.heightAnchor.constraint(equalToConstant: height),
@@ -111,7 +108,6 @@ class FollowerInfoController: UIViewController {
             secondCardView.topAnchor.constraint(equalTo: firstCardView.bottomAnchor, constant: padding),
             secondCardView.heightAnchor.constraint(equalToConstant: height)
         ])
-        
     }
     
     /// Adds a child ViewController to a container
@@ -125,7 +121,5 @@ class FollowerInfoController: UIViewController {
         childVC.view.frame = container.bounds
         childVC.didMove(toParent: self)
     }
-    
-    
 }
 
