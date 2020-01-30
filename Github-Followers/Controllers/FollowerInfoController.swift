@@ -11,11 +11,11 @@ import UIKit
 
 class FollowerInfoController: UIViewController {
     
-    var follower: String!
+    var githubUser: Follower!
     let networkManager = NetworkManager.sharedInstance
     let headerView = UIView()
-    let subHeaderView = UIView()
-    let middleView = UIView()
+    let firstCardView = UIView()
+    let secondCardView = UIView()
    
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -33,7 +33,7 @@ class FollowerInfoController: UIViewController {
 
         configureNavigationBar()
         configureCustomViews()
-        fetchDetails(for: follower)
+        fetchDetails(for: githubUser)
     }
     
     /// Adds visual properties to Navigation Bar
@@ -57,9 +57,9 @@ class FollowerInfoController: UIViewController {
     /// - Parameter follower: GitHub follwer name
     ///
     /// Makes a network request asking for more information about specific user
-    func fetchDetails(for follower: String) {
-
-        networkManager.fetchDetails(for: follower) { [weak self] result in
+    func fetchDetails(for follower: Follower) {
+        let GHUser = follower.login
+        networkManager.fetchDetails(for: GHUser) { [weak self] result in
             
             guard let self = self else { return }
             
@@ -70,6 +70,8 @@ class FollowerInfoController: UIViewController {
             case .success(let user):
                 DispatchQueue.main.async {
                     self.add(childVC: HeaderVC(user: user), to: self.headerView)
+                    self.add(childVC: FirstCard(user: user), to: self.firstCardView)
+                    self.add(childVC: SecondCard(user: user), to: self.secondCardView)
                 }
             }
         }
@@ -80,15 +82,14 @@ class FollowerInfoController: UIViewController {
     /// Each of the custom UIView object contains a child View Controller
     func configureCustomViews() {
         
-        subHeaderView.backgroundColor = .systemBlue
-        middleView.backgroundColor = .systemRed
         let padding: CGFloat = 20
-        let height: CGFloat = 180
-        let listOfViews = [headerView, subHeaderView, middleView]
+        let height: CGFloat = 230
+        let listOfViews = [headerView, firstCardView, secondCardView]
 
         listOfViews.forEach { customView in
             view.addSubview(customView)
             customView.translatesAutoresizingMaskIntoConstraints = false
+//            customView.backgroundColor = .systemTeal
             
             NSLayoutConstraint.activate([
             
@@ -104,11 +105,11 @@ class FollowerInfoController: UIViewController {
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
             headerView.heightAnchor.constraint(equalToConstant: height),
             
-            subHeaderView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: padding),
-            subHeaderView.heightAnchor.constraint(equalToConstant: height),
+            firstCardView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: padding),
+            firstCardView.heightAnchor.constraint(equalToConstant: height),
             
-            middleView.topAnchor.constraint(equalTo: subHeaderView.bottomAnchor, constant: padding),
-            middleView.heightAnchor.constraint(equalToConstant: height)
+            secondCardView.topAnchor.constraint(equalTo: firstCardView.bottomAnchor, constant: padding),
+            secondCardView.heightAnchor.constraint(equalToConstant: height)
         ])
         
     }
