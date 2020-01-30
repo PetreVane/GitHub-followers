@@ -15,13 +15,24 @@ class ReusableCardController: UIViewController {
     let secondView = ReusableView()
     let actionButton = CustomButton()
     
-
+    var user: User!
+    
+    init(user: User) {
+        super.init(nibName: nil, bundle: nil)
+        self.user = user
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         configureCardView()
-        configureCustomViews()
+        layoutCustomViews()
+        configureStackView()
     }
     
     /// Sets ReusableCardController object visual properties
@@ -36,7 +47,7 @@ class ReusableCardController: UIViewController {
     private func configureStackView() {
         
         stackView.axis = .horizontal
-        stackView.distribution = .fillEqually // try .equalSpacing
+        stackView.distribution = .equalSpacing
         
         stackView.addArrangedSubview(firstView)
         stackView.addArrangedSubview(secondView)
@@ -46,14 +57,15 @@ class ReusableCardController: UIViewController {
     /// Sets constraints and visual properties of custom Views
     ///
     /// Adds views to stackView and determines how views are presented
-    private func configureCustomViews() {
+    private func layoutCustomViews() {
         
         let padding: CGFloat = 20
         let listOfViews = [stackView, actionButton]
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         
         listOfViews.forEach { customView in
             view.addSubview(customView)
-            view.translatesAutoresizingMaskIntoConstraints = false
+
         }
         
         NSLayoutConstraint.activate([

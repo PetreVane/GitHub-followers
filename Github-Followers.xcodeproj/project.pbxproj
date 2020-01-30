@@ -32,6 +32,8 @@
 		0BA55A0223E1881C00EEC650 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA55A0123E1881C00EEC650 /* ReusableView.swift */; };
 		0BA55A0423E1D5FA00EEC650 /* ReusableCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA55A0323E1D5FA00EEC650 /* ReusableCardController.swift */; };
 		0BA55A0623E1D73800EEC650 /* FollowerInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA55A0523E1D73800EEC650 /* FollowerInfoController.swift */; };
+		0BA55A0923E1EE6900EEC650 /* FirstCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA55A0823E1EE6900EEC650 /* FirstCard.swift */; };
+		0BA55A0B23E1FC2800EEC650 /* SecondCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA55A0A23E1FC2800EEC650 /* SecondCard.swift */; };
 		0BC091EB23BA15E700E3548B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC091EA23BA15E700E3548B /* AppDelegate.swift */; };
 		0BC091ED23BA15E800E3548B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC091EC23BA15E800E3548B /* SceneDelegate.swift */; };
 		0BC091F423BA15ED00E3548B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BC091F323BA15ED00E3548B /* Assets.xcassets */; };
@@ -64,6 +66,8 @@
 		0BA55A0123E1881C00EEC650 /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		0BA55A0323E1D5FA00EEC650 /* ReusableCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCardController.swift; sourceTree = "<group>"; };
 		0BA55A0523E1D73800EEC650 /* FollowerInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerInfoController.swift; sourceTree = "<group>"; };
+		0BA55A0823E1EE6900EEC650 /* FirstCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstCard.swift; sourceTree = "<group>"; };
+		0BA55A0A23E1FC2800EEC650 /* SecondCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCard.swift; sourceTree = "<group>"; };
 		0BC091E723BA15E700E3548B /* Github-Followers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Github-Followers.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BC091EA23BA15E700E3548B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BC091EC23BA15E800E3548B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -167,6 +171,7 @@
 				0B2899F623BE3BD0002D84F8 /* FavoritesController.swift */,
 				0BA55A0523E1D73800EEC650 /* FollowerInfoController.swift */,
 				0BA55A0323E1D5FA00EEC650 /* ReusableCardController.swift */,
+				0BA55A0723E1EDF300EEC650 /* subClasses */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -208,6 +213,15 @@
 				0B8A74BE23C7BEF200179F89 /* FollowerCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		0BA55A0723E1EDF300EEC650 /* subClasses */ = {
+			isa = PBXGroup;
+			children = (
+				0BA55A0823E1EE6900EEC650 /* FirstCard.swift */,
+				0BA55A0A23E1FC2800EEC650 /* SecondCard.swift */,
+			);
+			name = subClasses;
 			sourceTree = "<group>";
 		};
 		0BC091DE23BA15E700E3548B = {
@@ -310,6 +324,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BA55A0B23E1FC2800EEC650 /* SecondCard.swift in Sources */,
 				0B85B0F923C6555200449C82 /* User.swift in Sources */,
 				0B0B227023DC7F9C000C0785 /* HeaderVC.swift in Sources */,
 				0B04A26423DEE0AF00BCD9C5 /* SFSymbos.swift in Sources */,
@@ -330,6 +345,7 @@
 				0B85B0F723C6549E00449C82 /* Follower.swift in Sources */,
 				0BA55A0423E1D5FA00EEC650 /* ReusableCardController.swift in Sources */,
 				0B8A74BC23C7870E00179F89 /* ErrorManager.swift in Sources */,
+				0BA55A0923E1EE6900EEC650 /* FirstCard.swift in Sources */,
 				0B60B2EA23D105C9003042C0 /* CacheManager.swift in Sources */,
 				0B85B0ED23C5F69700449C82 /* AlertViewController.swift in Sources */,
 				0B16555A23D615D100ED5979 /* EmptyState.swift in Sources */,
