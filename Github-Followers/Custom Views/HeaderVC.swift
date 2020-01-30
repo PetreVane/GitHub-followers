@@ -11,10 +11,10 @@ import UIKit
 class HeaderVC: UIViewController {
 
     let followerImageView = AvatarImageView(frame: .zero)
-    let userNameLabel = TitleLabel(textAlignment: .left, fontSize: 30)
-    let realNameLabel = SecondaryTitleLabel(fontSize: 16)
+    let userNameLabel = TitleLabel(textAlignment: .left, fontSize: 34)
+    let realNameLabel = SecondaryTitleLabel(fontSize: 18)
     let locationView = UIImageView()
-    let locationNameLabel = SecondaryTitleLabel(fontSize: 16)
+    let locationNameLabel = SecondaryTitleLabel(fontSize: 18)
     let bioLabel = BodyLabel(textAlignment: .left)
     var user: User!
     
