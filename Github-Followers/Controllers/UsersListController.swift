@@ -157,10 +157,10 @@ extension UsersListController: UICollectionViewDelegate {
         
 //        print("You selected cell number: \(indexPath.item)")
         let listOfFollowers = isFilteringActive ? filteredFollowers : unfilteredFollowers
-        let tappedFollower = listOfFollowers[indexPath.item].login
+        let tappedFollower = listOfFollowers[indexPath.item]
         
         let destinationVC = FollowerInfoController()
-        destinationVC.follower = tappedFollower
+        destinationVC.githubUser = tappedFollower
         let navigationController = UINavigationController(rootViewController: destinationVC)
         present(navigationController, animated: true)
     }

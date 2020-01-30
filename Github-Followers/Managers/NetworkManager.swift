@@ -72,7 +72,7 @@ class NetworkManager {
     typealias userDetails = ((Result<User, ErrorManager>) -> Void)
     /// Fetches details about a given GitHub follower
     /// - Parameters:
-    ///   - follower: name of the follower
+    ///   - follower: name of the githubUser
     ///   - completion: escaping result of the request
     func fetchDetails(for follower: String, completion: @escaping userDetails) {
         
