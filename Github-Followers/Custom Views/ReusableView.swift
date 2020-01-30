@@ -35,14 +35,15 @@ class ReusableView: UIView {
     ///
     /// Sets constraints and other visual properties of all customViews included by ReusableView container
     private func configure() {
-        let height: CGFloat = 20
+        
         let visualElements = [symbolImage, titleLabel, countLabel]
         symbolImage.contentMode = .scaleAspectFill
+        symbolImage.translatesAutoresizingMaskIntoConstraints = false
+        symbolImage.tintColor = .label
         
         
         visualElements.forEach { customView in
             self.addSubview(customView)
-            customView.translatesAutoresizingMaskIntoConstraints = false
         }
         
         
@@ -50,18 +51,18 @@ class ReusableView: UIView {
         
             symbolImage.topAnchor.constraint(equalTo: self.topAnchor),
             symbolImage.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            symbolImage.heightAnchor.constraint(equalToConstant: height),
-            symbolImage.widthAnchor.constraint(equalToConstant: height),
+            symbolImage.heightAnchor.constraint(equalToConstant: 20),
+            symbolImage.widthAnchor.constraint(equalToConstant: 20),
             
             titleLabel.centerYAnchor.constraint(equalTo: symbolImage.centerYAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: symbolImage.trailingAnchor, constant: 10),
+            titleLabel.leadingAnchor.constraint(equalTo: symbolImage.trailingAnchor, constant: 12),
             titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            titleLabel.heightAnchor.constraint(equalToConstant: height),
+            titleLabel.heightAnchor.constraint(equalToConstant: 18),
             
-            countLabel.topAnchor.constraint(equalTo: symbolImage.bottomAnchor, constant: 5),
+            countLabel.topAnchor.constraint(equalTo: symbolImage.bottomAnchor, constant: 4),
             countLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             countLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            countLabel.heightAnchor.constraint(equalToConstant: height)
+            countLabel.heightAnchor.constraint(equalToConstant: 18)
             
         ])
     }
