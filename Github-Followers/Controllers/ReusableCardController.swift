@@ -51,7 +51,6 @@ class ReusableCardController: UIViewController {
         
         stackView.addArrangedSubview(firstView)
         stackView.addArrangedSubview(secondView)
-        
     }
     
     /// Sets constraints and visual properties of custom Views
@@ -60,13 +59,11 @@ class ReusableCardController: UIViewController {
     private func layoutCustomViews() {
         
         let padding: CGFloat = 20
-        let listOfViews = [stackView, actionButton]
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
-        listOfViews.forEach { customView in
-            view.addSubview(customView)
+        let listOfViews = [stackView, actionButton]
+        listOfViews.forEach { view.addSubview($0) }
 
-        }
         
         NSLayoutConstraint.activate([
         
@@ -79,9 +76,6 @@ class ReusableCardController: UIViewController {
             actionButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             actionButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             actionButton.heightAnchor.constraint(equalToConstant: 44)
-            
         ])
     }
-
-   
 }

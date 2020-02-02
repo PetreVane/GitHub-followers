@@ -24,7 +24,7 @@ class ReusableView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        configure()
     }
     
     required init?(coder: NSCoder) {
@@ -36,15 +36,14 @@ class ReusableView: UIView {
     /// Sets constraints and other visual properties of all customViews included by ReusableView container
     private func configure() {
         
-        let visualElements = [symbolImage, titleLabel, countLabel]
         symbolImage.contentMode = .scaleAspectFill
         symbolImage.translatesAutoresizingMaskIntoConstraints = false
         symbolImage.tintColor = .label
+        titleLabel.backgroundColor = .secondarySystemBackground
+        countLabel.backgroundColor = .secondarySystemBackground
         
-        
-        visualElements.forEach { customView in
-            self.addSubview(customView)
-        }
+        let visualElements = [symbolImage, titleLabel, countLabel]
+        visualElements.forEach { self.addSubview($0) }
         
         
         NSLayoutConstraint.activate([
@@ -72,6 +71,7 @@ class ReusableView: UIView {
     /// - Parameter contentType: enumeration of content type
     ///
     /// This method sets the content type for each of the containers presented by FollowerInfoController
+    /// - Parameter count: Int representing the number of repo, gist or followers
     func set(contentType: ContentType, withCount count: Int) {
         
         switch contentType {

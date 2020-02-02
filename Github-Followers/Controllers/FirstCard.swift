@@ -8,9 +8,7 @@
 
 import UIKit
 
-
 class FirstCard: ReusableCardController {
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -62,11 +62,10 @@ class FollowerInfoController: UIViewController {
         networkManager.fetchDetails(for: GHUser) { [weak self] result in
             
             guard let self = self else { return }
-            
             switch result {
             case .failure(let error):
-                print("Errors: \(error.localizedDescription)")
-                
+//                print("Errors: \(error.localizedDescription)")
+                self.presentAlert(withTitle: "Something went wrong...", message: error.localizedDescription, buttonTitle: "Dismiss")
             case .success(let user):
                 DispatchQueue.main.async {
                     self.add(childVC: HeaderVC(user: user), to: self.headerView)
@@ -91,14 +90,12 @@ class FollowerInfoController: UIViewController {
             customView.translatesAutoresizingMaskIntoConstraints = false
             
             NSLayoutConstraint.activate([
-
-                customView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+                customView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding), 
                 customView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding)
             ])
         }
        
         NSLayoutConstraint.activate([
-        
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
             headerView.heightAnchor.constraint(equalToConstant: height + 40),
             
@@ -116,7 +113,7 @@ class FollowerInfoController: UIViewController {
     ///   - container: custom UIView containing a specific ViewController
     ///
     func add(childVC: UIViewController, to container: UIView) {
-        self.addChild(childVC)
+        addChild(childVC)
         container.addSubview(childVC.view)
         childVC.view.frame = container.bounds
         childVC.didMove(toParent: self)

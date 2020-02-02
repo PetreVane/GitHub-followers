@@ -8,9 +8,7 @@
 
 import UIKit
 
-
 class SecondCard: ReusableCardController {
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +23,6 @@ class SecondCard: ReusableCardController {
     private func configureViews() {
         firstView.set(contentType: .followers, withCount: user.followers)
         secondView.set(contentType: .following, withCount: user.following)
-        actionButton.setButton(color: .systemGreen, title: "See Profile")
+        actionButton.setButton(color: .systemGreen, title: "Get Followerss")
     }
 }

@@ -133,7 +133,7 @@ class AlertViewController: UIViewController {
     
     /// Dismisses the alert controller
     @objc func actionButtonPressed() {
-        print("Action button pressed")
+//        print("Action button pressed")
         dismiss(animated: true, completion: nil)
     }
     
