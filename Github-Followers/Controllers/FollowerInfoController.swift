@@ -16,6 +16,7 @@ class FollowerInfoController: UIViewController {
     let headerView = UIView()
     let firstCardView = UIView()
     let secondCardView = UIView()
+    let dateLabel = SecondaryTitleLabel(fontSize: 14)
    
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -28,8 +29,6 @@ class FollowerInfoController: UIViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
 
         configureNavigationBar()
         configureCustomViews()
@@ -62,15 +61,17 @@ class FollowerInfoController: UIViewController {
         networkManager.fetchDetails(for: GHUser) { [weak self] result in
             
             guard let self = self else { return }
+            
             switch result {
             case .failure(let error):
-//                print("Errors: \(error.localizedDescription)")
                 self.presentAlert(withTitle: "Something went wrong...", message: error.localizedDescription, buttonTitle: "Dismiss")
+                
             case .success(let user):
                 DispatchQueue.main.async {
                     self.add(childVC: HeaderVC(user: user), to: self.headerView)
                     self.add(childVC: FirstCard(user: user), to: self.firstCardView)
                     self.add(childVC: SecondCard(user: user), to: self.secondCardView)
+                    self.setDateLabelText(withDate: user.createdAt)
                 }
             }
         }
@@ -80,10 +81,11 @@ class FollowerInfoController: UIViewController {
     ///
     /// Each of the custom UIView object contains a child View Controller
     func configureCustomViews() {
-        
+        dateLabel.textAlignment = .center
+        dateLabel.backgroundColor = .systemBackground
         let padding: CGFloat = 20
         let height: CGFloat = 140
-        let listOfViews = [headerView, firstCardView, secondCardView]
+        let listOfViews = [headerView, firstCardView, secondCardView, dateLabel]
 
         listOfViews.forEach { customView in
             view.addSubview(customView)
@@ -103,7 +105,10 @@ class FollowerInfoController: UIViewController {
             firstCardView.heightAnchor.constraint(equalToConstant: height),
             
             secondCardView.topAnchor.constraint(equalTo: firstCardView.bottomAnchor, constant: padding),
-            secondCardView.heightAnchor.constraint(equalToConstant: height)
+            secondCardView.heightAnchor.constraint(equalToConstant: height),
+            
+            dateLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -padding),
+            dateLabel.heightAnchor.constraint(equalToConstant: 30)
         ])
     }
     
@@ -117,6 +122,13 @@ class FollowerInfoController: UIViewController {
         container.addSubview(childVC.view)
         childVC.view.frame = container.bounds
         childVC.didMove(toParent: self)
+    }
+    
+    func setDateLabelText(withDate date: Date) {
+        let dateFormater = DateFormatter()
+        dateFormater.dateFormat = "MMMM yyyy"
+        let date = dateFormater.string(from: date)
+        dateLabel.text = "On Github since \(date)"
     }
 }
 

@@ -17,7 +17,7 @@ struct User: Codable {
     var email, bio: String?
     let publicRepos, publicGists, followers, following: Int
     let htmlURL: String
-    let createdAt: String
+    let createdAt: Date
 
     enum CodingKeys: String, CodingKey {
         

@@ -87,6 +87,7 @@ class NetworkManager {
             
             guard let receivedData = data else { completion(.failure(.invalidData)); return }
             let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
             
             do {
                 let userDetails = try decoder.decode(User.self, from: receivedData)
