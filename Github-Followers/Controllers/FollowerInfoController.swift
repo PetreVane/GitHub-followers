@@ -13,9 +13,9 @@ class FollowerInfoController: UIViewController {
     
     var githubUser: Follower!
     let networkManager = NetworkManager.sharedInstance
-    let headerView = UIView()
-    let firstCardView = UIView()
-    let secondCardView = UIView()
+    let headerViewContainer = UIView()
+    let repoCardViewContainer = UIView()
+    let followersCardViewContainer = UIView()
     let dateLabel = SecondaryTitleLabel(fontSize: 14)
    
     
@@ -52,7 +52,7 @@ class FollowerInfoController: UIViewController {
     }
 
     
-    /// Downloads information about a given user
+    /// Fetches information about a given user
     /// - Parameter follower: GitHub follwer name
     ///
     /// Makes a network request asking for more information about specific user
@@ -68,9 +68,9 @@ class FollowerInfoController: UIViewController {
                 
             case .success(let user):
                 DispatchQueue.main.async {
-                    self.add(childVC: HeaderCard(user: user), to: self.headerView)
-                    self.add(childVC: RepoCard(user: user), to: self.firstCardView)
-                    self.add(childVC: FollowersCard(user: user), to: self.secondCardView)
+                    self.add(childVC: HeaderCard(user: user), to: self.headerViewContainer)
+                    self.add(childVC: RepoCard(user: user), to: self.repoCardViewContainer)
+                    self.add(childVC: FollowersCard(user: user), to: self.followersCardViewContainer)
                     self.setDateLabelText(withDate: user.createdAt)
                 }
             }
@@ -85,7 +85,7 @@ class FollowerInfoController: UIViewController {
         dateLabel.backgroundColor = .systemBackground
         let padding: CGFloat = 20
         let height: CGFloat = 140
-        let listOfViews = [headerView, firstCardView, secondCardView, dateLabel]
+        let listOfViews = [headerViewContainer, repoCardViewContainer, followersCardViewContainer, dateLabel]
 
         listOfViews.forEach { customView in
             view.addSubview(customView)
@@ -98,14 +98,14 @@ class FollowerInfoController: UIViewController {
         }
        
         NSLayoutConstraint.activate([
-            headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
-            headerView.heightAnchor.constraint(equalToConstant: height + 40),
+            headerViewContainer.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
+            headerViewContainer.heightAnchor.constraint(equalToConstant: height + 40),
             
-            firstCardView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: padding),
-            firstCardView.heightAnchor.constraint(equalToConstant: height),
+            repoCardViewContainer.topAnchor.constraint(equalTo: headerViewContainer.bottomAnchor, constant: padding),
+            repoCardViewContainer.heightAnchor.constraint(equalToConstant: height),
             
-            secondCardView.topAnchor.constraint(equalTo: firstCardView.bottomAnchor, constant: padding),
-            secondCardView.heightAnchor.constraint(equalToConstant: height),
+            followersCardViewContainer.topAnchor.constraint(equalTo: repoCardViewContainer.bottomAnchor, constant: padding),
+            followersCardViewContainer.heightAnchor.constraint(equalToConstant: height),
             
             dateLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -padding),
             dateLabel.heightAnchor.constraint(equalToConstant: 30)
@@ -124,6 +124,10 @@ class FollowerInfoController: UIViewController {
         childVC.didMove(toParent: self)
     }
     
+    /// Adds Date to DateLabel
+    /// - Parameter date: date at which the GitHub account has been created
+    ///
+    /// Date is formated and added to DateLabel text property
     func setDateLabelText(withDate date: Date) {
         let dateFormater = DateFormatter()
         dateFormater.dateFormat = "MMMM yyyy"
