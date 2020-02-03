@@ -1,5 +1,5 @@
 //
-//  FirstCard.swift
+//  RepoCard.swift
 //  Github-Followers
 //
 //  Created by Petre Vane on 29/01/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FirstCard: ReusableCardController {
+class RepoCard: ReusableCardController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +19,7 @@ class FirstCard: ReusableCardController {
     
     /// Calls a method on a superClass property, to set its content type
     ///
-    /// Sets the content type for (superClass) firstView property, by calling the set() method of ReusableView() class
+    /// Sets the content type for (superClass) firstView property, by calling the set() method of ReusableCardView() class
     private func configureViews() {
         firstView.set(contentType: .repos, withCount: user.publicRepos)
         secondView.set(contentType: .gist, withCount: user.publicGists)

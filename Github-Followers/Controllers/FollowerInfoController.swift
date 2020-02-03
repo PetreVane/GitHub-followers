@@ -68,9 +68,9 @@ class FollowerInfoController: UIViewController {
                 
             case .success(let user):
                 DispatchQueue.main.async {
-                    self.add(childVC: HeaderVC(user: user), to: self.headerView)
-                    self.add(childVC: FirstCard(user: user), to: self.firstCardView)
-                    self.add(childVC: SecondCard(user: user), to: self.secondCardView)
+                    self.add(childVC: HeaderCard(user: user), to: self.headerView)
+                    self.add(childVC: RepoCard(user: user), to: self.firstCardView)
+                    self.add(childVC: FollowersCard(user: user), to: self.secondCardView)
                     self.setDateLabelText(withDate: user.createdAt)
                 }
             }

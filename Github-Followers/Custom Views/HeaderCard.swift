@@ -1,5 +1,5 @@
 //
-//  HeaderVC.swift
+//  HeaderCard.swift
 //  Github-Followers
 //
 //  Created by Petre Vane on 25/01/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HeaderVC: UIViewController {
+class HeaderCard: UIViewController {
 
     let followerImageView = AvatarImageView(frame: .zero)
     let userNameLabel = TitleLabel(textAlignment: .left, fontSize: 34)

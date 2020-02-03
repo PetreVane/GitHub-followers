@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0B04A26423DEE0AF00BCD9C5 /* SFSymbos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B04A26323DEE0AF00BCD9C5 /* SFSymbos.swift */; };
-		0B0B227023DC7F9C000C0785 /* HeaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0B226F23DC7F9C000C0785 /* HeaderVC.swift */; };
+		0B0B227023DC7F9C000C0785 /* HeaderCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0B226F23DC7F9C000C0785 /* HeaderCard.swift */; };
 		0B0B227223DC8100000C0785 /* SecondaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0B227123DC8100000C0785 /* SecondaryTitleLabel.swift */; };
 		0B0B227423DC8E0C000C0785 /* UIView+constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0B227323DC8E0C000C0785 /* UIView+constraints.swift */; };
 		0B16555A23D615D100ED5979 /* EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B16555923D615D100ED5979 /* EmptyState.swift */; };
@@ -29,11 +29,11 @@
 		0B8A74BC23C7870E00179F89 /* ErrorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8A74BB23C7870E00179F89 /* ErrorManager.swift */; };
 		0B8A74BF23C7BEF200179F89 /* FollowerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8A74BE23C7BEF200179F89 /* FollowerCell.swift */; };
 		0B8A74C123C7C4E700179F89 /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8A74C023C7C4E700179F89 /* AvatarImageView.swift */; };
-		0BA55A0223E1881C00EEC650 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA55A0123E1881C00EEC650 /* ReusableView.swift */; };
+		0BA55A0223E1881C00EEC650 /* ReusableCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA55A0123E1881C00EEC650 /* ReusableCardView.swift */; };
 		0BA55A0423E1D5FA00EEC650 /* ReusableCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA55A0323E1D5FA00EEC650 /* ReusableCardController.swift */; };
 		0BA55A0623E1D73800EEC650 /* FollowerInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA55A0523E1D73800EEC650 /* FollowerInfoController.swift */; };
-		0BA55A0923E1EE6900EEC650 /* FirstCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA55A0823E1EE6900EEC650 /* FirstCard.swift */; };
-		0BA55A0B23E1FC2800EEC650 /* SecondCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA55A0A23E1FC2800EEC650 /* SecondCard.swift */; };
+		0BA55A0923E1EE6900EEC650 /* RepoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA55A0823E1EE6900EEC650 /* RepoCard.swift */; };
+		0BA55A0B23E1FC2800EEC650 /* FollowersCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA55A0A23E1FC2800EEC650 /* FollowersCard.swift */; };
 		0BC091EB23BA15E700E3548B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC091EA23BA15E700E3548B /* AppDelegate.swift */; };
 		0BC091ED23BA15E800E3548B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC091EC23BA15E800E3548B /* SceneDelegate.swift */; };
 		0BC091F423BA15ED00E3548B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BC091F323BA15ED00E3548B /* Assets.xcassets */; };
@@ -42,7 +42,7 @@
 
 /* Begin PBXFileReference section */
 		0B04A26323DEE0AF00BCD9C5 /* SFSymbos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbos.swift; sourceTree = "<group>"; };
-		0B0B226F23DC7F9C000C0785 /* HeaderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderVC.swift; sourceTree = "<group>"; };
+		0B0B226F23DC7F9C000C0785 /* HeaderCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HeaderCard.swift; path = "../Custom Views/HeaderCard.swift"; sourceTree = "<group>"; };
 		0B0B227123DC8100000C0785 /* SecondaryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryTitleLabel.swift; sourceTree = "<group>"; };
 		0B0B227323DC8E0C000C0785 /* UIView+constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+constraints.swift"; sourceTree = "<group>"; };
 		0B16555923D615D100ED5979 /* EmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyState.swift; sourceTree = "<group>"; };
@@ -63,11 +63,11 @@
 		0B8A74BB23C7870E00179F89 /* ErrorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorManager.swift; sourceTree = "<group>"; };
 		0B8A74BE23C7BEF200179F89 /* FollowerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerCell.swift; sourceTree = "<group>"; };
 		0B8A74C023C7C4E700179F89 /* AvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
-		0BA55A0123E1881C00EEC650 /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
+		0BA55A0123E1881C00EEC650 /* ReusableCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCardView.swift; sourceTree = "<group>"; };
 		0BA55A0323E1D5FA00EEC650 /* ReusableCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCardController.swift; sourceTree = "<group>"; };
 		0BA55A0523E1D73800EEC650 /* FollowerInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerInfoController.swift; sourceTree = "<group>"; };
-		0BA55A0823E1EE6900EEC650 /* FirstCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstCard.swift; sourceTree = "<group>"; };
-		0BA55A0A23E1FC2800EEC650 /* SecondCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCard.swift; sourceTree = "<group>"; };
+		0BA55A0823E1EE6900EEC650 /* RepoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoCard.swift; sourceTree = "<group>"; };
+		0BA55A0A23E1FC2800EEC650 /* FollowersCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersCard.swift; sourceTree = "<group>"; };
 		0BC091E723BA15E700E3548B /* Github-Followers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Github-Followers.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BC091EA23BA15E700E3548B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BC091EC23BA15E800E3548B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,13 +87,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B01926A23E81DB300A7DE0A /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		0B16555823D6159600ED5979 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				0B16555923D615D100ED5979 /* EmptyState.swift */,
-				0B85B0EC23C5F69700449C82 /* AlertViewController.swift */,
-				0B0B226F23DC7F9C000C0785 /* HeaderVC.swift */,
-				0BA55A0123E1881C00EEC650 /* ReusableView.swift */,
+				0BA55A0123E1881C00EEC650 /* ReusableCardView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -166,6 +171,7 @@
 		0B85B0F323C63A9300449C82 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0B85B0EC23C5F69700449C82 /* AlertViewController.swift */,
 				0B2899F423BE3B8C002D84F8 /* SearchController.swift */,
 				0B7AB60523C4E451007BF49D /* UsersListController.swift */,
 				0B2899F623BE3BD0002D84F8 /* FavoritesController.swift */,
@@ -218,8 +224,9 @@
 		0BA55A0723E1EDF300EEC650 /* subClasses */ = {
 			isa = PBXGroup;
 			children = (
-				0BA55A0823E1EE6900EEC650 /* FirstCard.swift */,
-				0BA55A0A23E1FC2800EEC650 /* SecondCard.swift */,
+				0B0B226F23DC7F9C000C0785 /* HeaderCard.swift */,
+				0BA55A0823E1EE6900EEC650 /* RepoCard.swift */,
+				0BA55A0A23E1FC2800EEC650 /* FollowersCard.swift */,
 			);
 			name = subClasses;
 			sourceTree = "<group>";
@@ -249,6 +256,7 @@
 				0B85B0F523C63FB400449C82 /* Models */,
 				0B85B0F323C63A9300449C82 /* Controllers */,
 				0B85B0F223C63A7800449C82 /* Custom Views */,
+				0B01926A23E81DB300A7DE0A /* Protocols */,
 				0B85B0F023C63A5C00449C82 /* Extensions */,
 			);
 			path = "Github-Followers";
@@ -324,15 +332,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0BA55A0B23E1FC2800EEC650 /* SecondCard.swift in Sources */,
+				0BA55A0B23E1FC2800EEC650 /* FollowersCard.swift in Sources */,
 				0B85B0F923C6555200449C82 /* User.swift in Sources */,
-				0B0B227023DC7F9C000C0785 /* HeaderVC.swift in Sources */,
+				0B0B227023DC7F9C000C0785 /* HeaderCard.swift in Sources */,
 				0B04A26423DEE0AF00BCD9C5 /* SFSymbos.swift in Sources */,
 				0BC091EB23BA15E700E3548B /* AppDelegate.swift in Sources */,
 				0B85B0EF23C6104B00449C82 /* UIViewController+Ext.swift in Sources */,
 				0B2899F923BFA383002D84F8 /* CustomButton.swift in Sources */,
 				0B2899F523BE3B8C002D84F8 /* SearchController.swift in Sources */,
-				0BA55A0223E1881C00EEC650 /* ReusableView.swift in Sources */,
+				0BA55A0223E1881C00EEC650 /* ReusableCardView.swift in Sources */,
 				0B8A74C123C7C4E700179F89 /* AvatarImageView.swift in Sources */,
 				0B0B227423DC8E0C000C0785 /* UIView+constraints.swift in Sources */,
 				0B2899F723BE3BD0002D84F8 /* FavoritesController.swift in Sources */,
@@ -345,7 +353,7 @@
 				0B85B0F723C6549E00449C82 /* Follower.swift in Sources */,
 				0BA55A0423E1D5FA00EEC650 /* ReusableCardController.swift in Sources */,
 				0B8A74BC23C7870E00179F89 /* ErrorManager.swift in Sources */,
-				0BA55A0923E1EE6900EEC650 /* FirstCard.swift in Sources */,
+				0BA55A0923E1EE6900EEC650 /* RepoCard.swift in Sources */,
 				0B60B2EA23D105C9003042C0 /* CacheManager.swift in Sources */,
 				0B85B0ED23C5F69700449C82 /* AlertViewController.swift in Sources */,
 				0B16555A23D615D100ED5979 /* EmptyState.swift in Sources */,

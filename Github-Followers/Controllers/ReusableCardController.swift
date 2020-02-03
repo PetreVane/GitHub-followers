@@ -11,8 +11,8 @@ import UIKit
 class ReusableCardController: UIViewController {
     
     let stackView = UIStackView()
-    let firstView = ReusableView()
-    let secondView = ReusableView()
+    let firstView = ReusableCardView()
+    let secondView = ReusableCardView()
     let actionButton = CustomButton()
     
     var user: User!

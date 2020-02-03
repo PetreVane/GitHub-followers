@@ -1,5 +1,5 @@
 //
-//  ReusableView.swift
+//  ReusableCardView.swift
 //  Github-Followers
 //
 //  Created by Petre Vane on 29/01/2020.
@@ -15,7 +15,7 @@ enum ContentType {
     case following
 }
 
-class ReusableView: UIView {
+class ReusableCardView: UIView {
     
     let symbolImage = UIImageView()
     let titleLabel = TitleLabel(textAlignment: .left, fontSize: 14)
@@ -31,9 +31,9 @@ class ReusableView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    /// Determines how customViews are arranged inside the ReusableView
+    /// Determines how customViews are arranged inside the ReusableCardView
     ///
-    /// Sets constraints and other visual properties of all customViews included by ReusableView container
+    /// Sets constraints and other visual properties of all customViews included by ReusableCardView container
     private func configure() {
         
         symbolImage.contentMode = .scaleAspectFill
@@ -67,7 +67,7 @@ class ReusableView: UIView {
     }
     
     
-    /// Sets ReusableView content type
+    /// Sets ReusableCardView content type
     /// - Parameter contentType: enumeration of content type
     ///
     /// This method sets the content type for each of the containers presented by FollowerInfoController

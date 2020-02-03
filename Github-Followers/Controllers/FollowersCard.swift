@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SecondCard: ReusableCardController {
+class FollowersCard: ReusableCardController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,10 +19,10 @@ class SecondCard: ReusableCardController {
     
     /// Calls a method on a superClass property, to set its content type
     ///
-    /// Sets the content type for (superClass) firstView property, by calling the set() method of ReusableView() class
+    /// Sets the content type for (superClass) firstView property, by calling the set() method of ReusableCardView() class
     private func configureViews() {
         firstView.set(contentType: .followers, withCount: user.followers)
         secondView.set(contentType: .following, withCount: user.following)
-        actionButton.setButton(color: .systemGreen, title: "Get Followerss")
+        actionButton.setButton(color: .systemGreen, title: "Get Followers")
     }
 }
