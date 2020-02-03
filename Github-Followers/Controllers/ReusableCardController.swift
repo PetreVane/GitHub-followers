@@ -11,9 +11,10 @@ import UIKit
 class ReusableCardController: UIViewController {
     
     let stackView = UIStackView()
-    let firstView = ReusableCardView()
-    let secondView = ReusableCardView()
+    let leftView = ReusableCardView()
+    let rightView = ReusableCardView()
     let actionButton = CustomButton()
+    
     
     var user: User!
     
@@ -44,18 +45,21 @@ class ReusableCardController: UIViewController {
     }
     
     /// Determines what stackView contains and how is presented
+    ///
+    /// Adds left & right views to stackView
     private func configureStackView() {
         
+        // stackView arrangement
         stackView.axis = .horizontal
         stackView.distribution = .equalSpacing
         
-        stackView.addArrangedSubview(firstView)
-        stackView.addArrangedSubview(secondView)
+        // stackView content
+        stackView.addArrangedSubview(leftView)
+        stackView.addArrangedSubview(rightView)
     }
     
     /// Sets constraints and visual properties of custom Views
     ///
-    /// Adds views to stackView and determines how views are presented
     private func layoutCustomViews() {
         
         let padding: CGFloat = 20

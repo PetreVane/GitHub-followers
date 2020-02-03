@@ -10,10 +10,13 @@ import UIKit
 
 class RepoCard: ReusableCardController {
     
+    weak var delegate: RepoCardDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureViews()
+        addButtonAction()
     }
     
     
@@ -21,8 +24,16 @@ class RepoCard: ReusableCardController {
     ///
     /// Sets the content type for (superClass) firstView property, by calling the set() method of ReusableCardView() class
     private func configureViews() {
-        firstView.set(contentType: .repos, withCount: user.publicRepos)
-        secondView.set(contentType: .gist, withCount: user.publicGists)
+        leftView.set(contentType: .repos, withCount: user.publicRepos)
+        rightView.set(contentType: .gist, withCount: user.publicGists)
         actionButton.setButton(color: .systemPurple, title: "GitHub Profile")
+    }
+    
+    private func addButtonAction() {
+        actionButton.addTarget(self, action: #selector(profileButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc private func profileButtonTapped() {
+        delegate?.didTapProfileButton(forUser: user)
     }
 }

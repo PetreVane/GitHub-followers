@@ -35,19 +35,21 @@ class FollowerInfoController: UIViewController {
         fetchDetails(for: githubUser)
     }
     
+    
     /// Adds visual properties to Navigation Bar
     ///
     ///Adds a button to Navigation Bar and setts the background color
-    func configureNavigationBar() {
+    private func configureNavigationBar() {
         view.backgroundColor = .systemBackground
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissView))
         navigationItem.rightBarButtonItem = doneButton
     }
     
+    
     /// Dismisses the current view
     ///
     /// Returns the user back to original screen
-   @objc func dismissView() {
+   @objc private func dismissView() {
         dismiss(animated: true, completion: nil)
     }
 
@@ -69,22 +71,29 @@ class FollowerInfoController: UIViewController {
             case .success(let user):
                 DispatchQueue.main.async {
                     self.add(childVC: HeaderCard(user: user), to: self.headerViewContainer)
-                    self.add(childVC: RepoCard(user: user), to: self.repoCardViewContainer)
-                    self.add(childVC: FollowersCard(user: user), to: self.followersCardViewContainer)
+                    self.prepareRepoCard(for: user)
+                    self.prepareFollowersCard(for: user)
                     self.setDateLabelText(withDate: user.createdAt)
                 }
             }
         }
     }
     
-    /// Sets constraints for custom UIViews objects
+    
+    /// Sets constraints for containers (UIView objects)
     ///
-    /// Each of the custom UIView object contains a child View Controller
-    func configureCustomViews() {
+    /// Each of the container object contains a child View Controller, except the dateLabel
+    private func configureCustomViews() {
+        
+        // label configuration
         dateLabel.textAlignment = .center
         dateLabel.backgroundColor = .systemBackground
+        
+        // constrain properties
         let padding: CGFloat = 20
         let height: CGFloat = 140
+        
+        // custom views list
         let listOfViews = [headerViewContainer, repoCardViewContainer, followersCardViewContainer, dateLabel]
 
         listOfViews.forEach { customView in
@@ -112,6 +121,29 @@ class FollowerInfoController: UIViewController {
         ])
     }
     
+    
+    /// Creates an instance of RepoCard and adds it to container
+    /// - Parameter user: User instance, returned by network request
+    ///
+    ///Adds an instance of RepoCard to its corresponding container and sets the FollowerInfoVC as delegate for RepoCard
+    private func prepareRepoCard(for user: User) {
+        let repoCard = RepoCard(user: user)
+        repoCard.delegate = self
+        add(childVC: repoCard, to: repoCardViewContainer)
+    }
+    
+    
+    /// Creates an instance of FollowerCard and adds it to container
+    /// - Parameter user: User instance, returned by network request
+    ///
+    ///Adds an instance of FollowerCard to its corresponding container and sets the FollowerInfoVC as delegate for FollowerCard
+    private func prepareFollowersCard(for user: User) {
+        let followerCard = FollowersCard(user: user)
+        followerCard.delegate = self
+        add(childVC: followerCard, to: followersCardViewContainer)
+    }
+    
+    
     /// Adds a child ViewController to a container
     /// - Parameters:
     ///   - childVC: viewController presenting different information
@@ -123,6 +155,7 @@ class FollowerInfoController: UIViewController {
         childVC.view.frame = container.bounds
         childVC.didMove(toParent: self)
     }
+    
     
     /// Adds Date to DateLabel
     /// - Parameter date: date at which the GitHub account has been created
@@ -136,3 +169,25 @@ class FollowerInfoController: UIViewController {
     }
 }
 
+
+extension FollowerInfoController: RepoCardDelegate {
+    
+    /// Protocol implementation
+    /// - Parameter user: User instance, returned by network request
+    ///
+    /// Triggers a chain of actions when GitHub Profile button is tapped
+    func didTapProfileButton(forUser user: User) {
+        print("Profile Button for user \(user.login) has been tapped")
+    }
+}
+
+extension FollowerInfoController: FollowersCardDelegate {
+    
+    /// Protocol implementation
+    /// - Parameter user: User instance, returned by network request
+    ///
+    /// Triggers a chain of actions when Get Followers button is tapped
+    func didTapFollowersButton(forUser user: User) {
+        print("Followers button has been tapped for user \(user.login)")
+    }
+}

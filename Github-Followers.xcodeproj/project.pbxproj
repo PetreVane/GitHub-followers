@@ -16,6 +16,8 @@
 		0B2899F723BE3BD0002D84F8 /* FavoritesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2899F623BE3BD0002D84F8 /* FavoritesController.swift */; };
 		0B2899F923BFA383002D84F8 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2899F823BFA383002D84F8 /* CustomButton.swift */; };
 		0B2899FB23BFAA3B002D84F8 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2899FA23BFAA3B002D84F8 /* TextField.swift */; };
+		0B58E33E23E831850038FD34 /* RepoCardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B58E33D23E831850038FD34 /* RepoCardDelegate.swift */; };
+		0B58E34023E831E60038FD34 /* FollowersCardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B58E33F23E831E60038FD34 /* FollowersCardDelegate.swift */; };
 		0B60B2E823D07958003042C0 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B60B2E723D07958003042C0 /* Helper.swift */; };
 		0B60B2EA23D105C9003042C0 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B60B2E923D105C9003042C0 /* CacheManager.swift */; };
 		0B7AB60623C4E451007BF49D /* UsersListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7AB60523C4E451007BF49D /* UsersListController.swift */; };
@@ -50,6 +52,8 @@
 		0B2899F623BE3BD0002D84F8 /* FavoritesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesController.swift; sourceTree = "<group>"; };
 		0B2899F823BFA383002D84F8 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		0B2899FA23BFAA3B002D84F8 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		0B58E33D23E831850038FD34 /* RepoCardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoCardDelegate.swift; sourceTree = "<group>"; };
+		0B58E33F23E831E60038FD34 /* FollowersCardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersCardDelegate.swift; sourceTree = "<group>"; };
 		0B60B2E723D07958003042C0 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		0B60B2E923D105C9003042C0 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		0B7AB60523C4E451007BF49D /* UsersListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListController.swift; sourceTree = "<group>"; };
@@ -90,6 +94,8 @@
 		0B01926A23E81DB300A7DE0A /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				0B58E33D23E831850038FD34 /* RepoCardDelegate.swift */,
+				0B58E33F23E831E60038FD34 /* FollowersCardDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -345,6 +351,7 @@
 				0B0B227423DC8E0C000C0785 /* UIView+constraints.swift in Sources */,
 				0B2899F723BE3BD0002D84F8 /* FavoritesController.swift in Sources */,
 				0B0B227223DC8100000C0785 /* SecondaryTitleLabel.swift in Sources */,
+				0B58E34023E831E60038FD34 /* FollowersCardDelegate.swift in Sources */,
 				0B60B2E823D07958003042C0 /* Helper.swift in Sources */,
 				0B7AB60623C4E451007BF49D /* UsersListController.swift in Sources */,
 				0B8A74BF23C7BEF200179F89 /* FollowerCell.swift in Sources */,
@@ -356,6 +363,7 @@
 				0BA55A0923E1EE6900EEC650 /* RepoCard.swift in Sources */,
 				0B60B2EA23D105C9003042C0 /* CacheManager.swift in Sources */,
 				0B85B0ED23C5F69700449C82 /* AlertViewController.swift in Sources */,
+				0B58E33E23E831850038FD34 /* RepoCardDelegate.swift in Sources */,
 				0B16555A23D615D100ED5979 /* EmptyState.swift in Sources */,
 				0B8A74BA23C7803D00179F89 /* NetworkManager.swift in Sources */,
 				0BC091ED23BA15E800E3548B /* SceneDelegate.swift in Sources */,

@@ -10,19 +10,30 @@ import UIKit
 
 class FollowersCard: ReusableCardController {
     
+    weak var delegate: FollowersCardDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureViews()
+        addButtonAction()
     }
     
     
     /// Calls a method on a superClass property, to set its content type
     ///
-    /// Sets the content type for (superClass) firstView property, by calling the set() method of ReusableCardView() class
+    /// Sets the content type for (superClass) leftView property, by calling the set() method of ReusableCardView() class
     private func configureViews() {
-        firstView.set(contentType: .followers, withCount: user.followers)
-        secondView.set(contentType: .following, withCount: user.following)
+        leftView.set(contentType: .followers, withCount: user.followers)
+        rightView.set(contentType: .following, withCount: user.following)
         actionButton.setButton(color: .systemGreen, title: "Get Followers")
+    }
+    
+    private func addButtonAction() {
+        actionButton.addTarget(self, action: #selector(didTapFollowersButton), for: .touchUpInside)
+    }
+    
+    @objc private func didTapFollowersButton() {
+        delegate?.didTapFollowersButton(forUser: user)
     }
 }
