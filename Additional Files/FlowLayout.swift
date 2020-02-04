@@ -1,5 +1,5 @@
 //
-//  Helper.swift
+//  FlowLayout.swift
 //  Github-Followers
 //
 //  Created by Petre Vane on 16/01/2020.
@@ -9,7 +9,7 @@
 import UIKit
 
 
-struct Helper {
+struct FlowLayout {
     
    static func configureCollectionViewFlowLayout(for view: UIView) -> UICollectionViewFlowLayout {
         
