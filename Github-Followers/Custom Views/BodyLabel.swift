@@ -35,10 +35,9 @@ class BodyLabel: UILabel {
         
         // text attributes
         textColor = .secondaryLabel
-        font = UIFont.preferredFont(forTextStyle: .body)
+        font = UIFont.systemFont(ofSize: 15)
         adjustsFontSizeToFitWidth = true
         minimumScaleFactor = 0.75
         lineBreakMode = .byWordWrapping
     }
-
 }

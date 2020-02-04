@@ -84,7 +84,7 @@ class HeaderCard: UIViewController {
             bioLabel.topAnchor.constraint(equalTo: followerImageView.bottomAnchor, constant: smallPadding),
             bioLabel.leadingAnchor.constraint(equalTo: followerImageView.leadingAnchor),
             bioLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            bioLabel.heightAnchor.constraint(equalToConstant: 60)
+            bioLabel.heightAnchor.constraint(equalToConstant: 80)
         
         ])
 
@@ -106,6 +106,7 @@ class HeaderCard: UIViewController {
         locationNameLabel.backgroundColor = .systemBackground
         bioLabel.text = user.bio ?? "User has no bio"
         bioLabel.numberOfLines = 3
+//        bioLabel
     }
 
 }

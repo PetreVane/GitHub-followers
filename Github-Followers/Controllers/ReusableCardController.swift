@@ -15,7 +15,6 @@ class ReusableCardController: UIViewController {
     let rightView = ReusableCardView()
     let actionButton = CustomButton()
     
-    
     var user: User!
     
     init(user: User) {
@@ -34,7 +33,9 @@ class ReusableCardController: UIViewController {
         configureCardView()
         layoutCustomViews()
         configureStackView()
+        addButtonAction()
     }
+    
     
     /// Sets ReusableCardController object visual properties
     ///
@@ -43,6 +44,7 @@ class ReusableCardController: UIViewController {
         view.backgroundColor = .secondarySystemBackground
         view.layer.cornerRadius = 12.5
     }
+    
     
     /// Determines what stackView contains and how is presented
     ///
@@ -58,8 +60,10 @@ class ReusableCardController: UIViewController {
         stackView.addArrangedSubview(rightView)
     }
     
-    /// Sets constraints and visual properties of custom Views
+    
+    /// Sets constraints
     ///
+    /// Sets stackView & button constraintspo.
     private func layoutCustomViews() {
         
         let padding: CGFloat = 20
@@ -82,4 +86,10 @@ class ReusableCardController: UIViewController {
             actionButton.heightAnchor.constraint(equalToConstant: 44)
         ])
     }
+    
+    func addButtonAction() {
+        actionButton.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc func actionButtonTapped() { }
 }

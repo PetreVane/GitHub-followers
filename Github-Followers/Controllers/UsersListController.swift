@@ -55,16 +55,17 @@ class UsersListController: UIViewController {
     
     /// Initializes and configures the CollectionView
     func configureCollectionView() {
+        
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: Helper.configureCollectionViewFlowLayout(for: view))
         view.addSubview(collectionView)
         collectionView.delegate = self
         collectionView.backgroundColor = .systemBackground
         collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: FollowerCell.reuseIdentifier)
-
     }
     
     /// Initializes and configures SearchBar
     func configureSearchController() {
+        
         let searchController = UISearchController()
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
@@ -160,7 +161,7 @@ extension UsersListController: UICollectionViewDelegate {
         let tappedFollower = listOfFollowers[indexPath.item]
         
         let destinationVC = FollowerInfoController()
-        destinationVC.githubUser = tappedFollower
+        destinationVC.gitHubFollower = tappedFollower
         let navigationController = UINavigationController(rootViewController: destinationVC)
         present(navigationController, animated: true)
     }
@@ -186,6 +187,5 @@ extension UsersListController: UISearchResultsUpdating, UISearchBarDelegate {
         isFilteringActive = false
         updateData(with: unfilteredFollowers)
         //        filteredFollowers.removeAll()
-
     }
 }

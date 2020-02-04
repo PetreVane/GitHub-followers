@@ -14,9 +14,7 @@ class RepoCard: ReusableCardController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureViews()
-        addButtonAction()
     }
     
     
@@ -29,11 +27,7 @@ class RepoCard: ReusableCardController {
         actionButton.setButton(color: .systemPurple, title: "GitHub Profile")
     }
     
-    private func addButtonAction() {
-        actionButton.addTarget(self, action: #selector(profileButtonTapped), for: .touchUpInside)
-    }
-    
-    @objc private func profileButtonTapped() {
+    override func actionButtonTapped() {
         delegate?.didTapProfileButton(forUser: user)
     }
 }

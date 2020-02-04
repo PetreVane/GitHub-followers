@@ -8,10 +8,11 @@
 
 
 import UIKit
+import SafariServices
 
 class FollowerInfoController: UIViewController {
     
-    var githubUser: Follower!
+    var gitHubFollower: Follower!
     let networkManager = NetworkManager.sharedInstance
     let headerViewContainer = UIView()
     let repoCardViewContainer = UIView()
@@ -32,7 +33,7 @@ class FollowerInfoController: UIViewController {
 
         configureNavigationBar()
         configureCustomViews()
-        fetchDetails(for: githubUser)
+        fetchDetails(for: gitHubFollower)
     }
     
     
@@ -71,8 +72,8 @@ class FollowerInfoController: UIViewController {
             case .success(let user):
                 DispatchQueue.main.async {
                     self.add(childVC: HeaderCard(user: user), to: self.headerViewContainer)
-                    self.prepareRepoCard(for: user)
-                    self.prepareFollowersCard(for: user)
+                    self.initRepoCard(for: user)
+                    self.initFollowersCard(for: user)
                     self.setDateLabelText(withDate: user.createdAt)
                 }
             }
@@ -126,7 +127,7 @@ class FollowerInfoController: UIViewController {
     /// - Parameter user: User instance, returned by network request
     ///
     ///Adds an instance of RepoCard to its corresponding container and sets the FollowerInfoVC as delegate for RepoCard
-    private func prepareRepoCard(for user: User) {
+    private func initRepoCard(for user: User) {
         let repoCard = RepoCard(user: user)
         repoCard.delegate = self
         add(childVC: repoCard, to: repoCardViewContainer)
@@ -137,7 +138,7 @@ class FollowerInfoController: UIViewController {
     /// - Parameter user: User instance, returned by network request
     ///
     ///Adds an instance of FollowerCard to its corresponding container and sets the FollowerInfoVC as delegate for FollowerCard
-    private func prepareFollowersCard(for user: User) {
+    private func initFollowersCard(for user: User) {
         let followerCard = FollowersCard(user: user)
         followerCard.delegate = self
         add(childVC: followerCard, to: followersCardViewContainer)
@@ -177,7 +178,19 @@ extension FollowerInfoController: RepoCardDelegate {
     ///
     /// Triggers a chain of actions when GitHub Profile button is tapped
     func didTapProfileButton(forUser user: User) {
-        print("Profile Button for user \(user.login) has been tapped")
+        let url = user.htmlURL
+        openSafari(withURL: url)
+    }
+    
+    /// Opens an URL into Safari
+    /// - Parameter stringURL: URL (as String) that should be opened
+    func openSafari(withURL stringURL: String) {
+        
+        guard let url = URL(string: stringURL) else { presentAlert(withTitle: "Ops, an error", message: "The url you're trying to open is invalid", buttonTitle: "Ok"); return }
+        
+        let safariVC = SFSafariViewController(url: url)
+        safariVC.preferredControlTintColor = .systemGreen
+        present(safariVC, animated: true)
     }
 }
 
@@ -186,8 +199,9 @@ extension FollowerInfoController: FollowersCardDelegate {
     /// Protocol implementation
     /// - Parameter user: User instance, returned by network request
     ///
-    /// Triggers a chain of actions when Get Followers button is tapped
+    /// Triggers a chain of actions when Get Followers Profile button is tapped
     func didTapFollowersButton(forUser user: User) {
         print("Followers button has been tapped for user \(user.login)")
+        dismissView()
     }
 }

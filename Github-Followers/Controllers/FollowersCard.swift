@@ -16,7 +16,6 @@ class FollowersCard: ReusableCardController {
         super.viewDidLoad()
         
         configureViews()
-        addButtonAction()
     }
     
     
@@ -29,11 +28,8 @@ class FollowersCard: ReusableCardController {
         actionButton.setButton(color: .systemGreen, title: "Get Followers")
     }
     
-    private func addButtonAction() {
-        actionButton.addTarget(self, action: #selector(didTapFollowersButton), for: .touchUpInside)
-    }
-    
-    @objc private func didTapFollowersButton() {
+    override func actionButtonTapped() {
         delegate?.didTapFollowersButton(forUser: user)
     }
+
 }
