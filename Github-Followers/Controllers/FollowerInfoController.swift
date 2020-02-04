@@ -188,6 +188,7 @@ extension FollowerInfoController: FollowersCardDelegate {
     /// Triggers a chain of actions within UserListController when 'Get Followers' button is tapped within FollowersCard
     func didTapFollowersButton(forUser user: User) {
         dismissView()
-        delegate?.didTapGetFollowers(for: user)
+        guard user.followers > 0 else { presentAlert(withTitle: "No followers", message: "This user has no followers yet.", buttonTitle: "Ok, move on"); return }
+        delegate?.didRequestFollowers(for: user)
     }
 }
