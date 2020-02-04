@@ -33,7 +33,7 @@ class UsersListController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        configureView()
+        configureNavigationBar()
         configureSearchController()
         configureCollectionView()
         fetchFollowers(for: currentUser, at: pageNumber)
@@ -46,10 +46,18 @@ class UsersListController: UIViewController {
     }
     
     
-    /// Configures properties of UsersListController
-    func configureView() {
+    /// Configure NavigationBar
+    ///
+    /// Configures Navigation Bar and viewController's title & background color
+    func configureNavigationBar() {
+        // viewCotroller
         view.backgroundColor = .systemBackground
+        title = currentUser
+        
+        // navigationBar
         navigationController?.navigationBar.prefersLargeTitles = true
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(barButtonPressed))
+        navigationItem.rightBarButtonItem = addButton
     }
     
     /// Initializes and configures the CollectionView
@@ -119,6 +127,11 @@ class UsersListController: UIViewController {
         snapshot.appendItems(followers)
         DispatchQueue.main.async { self.diffDataSource.apply(snapshot, animatingDifferences: true) }
     }
+    
+    @objc func barButtonPressed() {
+        print("Bar button pressed")
+    }
+    
 }
 
 extension UsersListController: UICollectionViewDelegate {
