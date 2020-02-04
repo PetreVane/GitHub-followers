@@ -18,7 +18,8 @@
 		0B2899FB23BFAA3B002D84F8 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2899FA23BFAA3B002D84F8 /* TextField.swift */; };
 		0B58E33E23E831850038FD34 /* RepoCardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B58E33D23E831850038FD34 /* RepoCardDelegate.swift */; };
 		0B58E34023E831E60038FD34 /* FollowersCardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B58E33F23E831E60038FD34 /* FollowersCardDelegate.swift */; };
-		0B60B2E823D07958003042C0 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B60B2E723D07958003042C0 /* Helper.swift */; };
+		0B58E34223E9A1C60038FD34 /* FollowerInfoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B58E34123E9A1C50038FD34 /* FollowerInfoDelegate.swift */; };
+		0B60B2E823D07958003042C0 /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B60B2E723D07958003042C0 /* FlowLayout.swift */; };
 		0B60B2EA23D105C9003042C0 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B60B2E923D105C9003042C0 /* CacheManager.swift */; };
 		0B7AB60623C4E451007BF49D /* UsersListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7AB60523C4E451007BF49D /* UsersListController.swift */; };
 		0B7AB62C23C5E58D007BF49D /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7AB62B23C5E58D007BF49D /* TitleLabel.swift */; };
@@ -54,7 +55,8 @@
 		0B2899FA23BFAA3B002D84F8 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		0B58E33D23E831850038FD34 /* RepoCardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoCardDelegate.swift; sourceTree = "<group>"; };
 		0B58E33F23E831E60038FD34 /* FollowersCardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersCardDelegate.swift; sourceTree = "<group>"; };
-		0B60B2E723D07958003042C0 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		0B58E34123E9A1C50038FD34 /* FollowerInfoDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerInfoDelegate.swift; sourceTree = "<group>"; };
+		0B60B2E723D07958003042C0 /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
 		0B60B2E923D105C9003042C0 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		0B7AB60523C4E451007BF49D /* UsersListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListController.swift; sourceTree = "<group>"; };
 		0B7AB62B23C5E58D007BF49D /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 			children = (
 				0B58E33D23E831850038FD34 /* RepoCardDelegate.swift */,
 				0B58E33F23E831E60038FD34 /* FollowersCardDelegate.swift */,
+				0B58E34123E9A1C50038FD34 /* FollowerInfoDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -112,7 +115,7 @@
 		0B60B2E423CFAE86003042C0 /* Additional Files */ = {
 			isa = PBXGroup;
 			children = (
-				0B60B2E723D07958003042C0 /* Helper.swift */,
+				0B60B2E723D07958003042C0 /* FlowLayout.swift */,
 				0B04A26323DEE0AF00BCD9C5 /* SFSymbos.swift */,
 			);
 			path = "Additional Files";
@@ -344,6 +347,7 @@
 				0B04A26423DEE0AF00BCD9C5 /* SFSymbos.swift in Sources */,
 				0BC091EB23BA15E700E3548B /* AppDelegate.swift in Sources */,
 				0B85B0EF23C6104B00449C82 /* UIViewController+Ext.swift in Sources */,
+				0B58E34223E9A1C60038FD34 /* FollowerInfoDelegate.swift in Sources */,
 				0B2899F923BFA383002D84F8 /* CustomButton.swift in Sources */,
 				0B2899F523BE3B8C002D84F8 /* SearchController.swift in Sources */,
 				0BA55A0223E1881C00EEC650 /* ReusableCardView.swift in Sources */,
@@ -352,7 +356,7 @@
 				0B2899F723BE3BD0002D84F8 /* FavoritesController.swift in Sources */,
 				0B0B227223DC8100000C0785 /* SecondaryTitleLabel.swift in Sources */,
 				0B58E34023E831E60038FD34 /* FollowersCardDelegate.swift in Sources */,
-				0B60B2E823D07958003042C0 /* Helper.swift in Sources */,
+				0B60B2E823D07958003042C0 /* FlowLayout.swift in Sources */,
 				0B7AB60623C4E451007BF49D /* UsersListController.swift in Sources */,
 				0B8A74BF23C7BEF200179F89 /* FollowerCell.swift in Sources */,
 				0BA55A0623E1D73800EEC650 /* FollowerInfoController.swift in Sources */,

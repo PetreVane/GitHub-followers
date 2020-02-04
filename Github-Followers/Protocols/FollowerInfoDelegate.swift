@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+
+protocol FollowerInfoDelegate: class {
+    
+    func didTapGetFollowers(for user: User)
+}

@@ -32,7 +32,8 @@ class NetworkManager {
             
             guard error == nil else { completion(.failure(.failedNetworkRequest)); return }
             guard let serverResponse = response as? HTTPURLResponse,
-                serverResponse.statusCode == 200 else {completion(.failure(.unexpectedStatusCode)); return }
+                serverResponse.statusCode == 200 else { print("Status code: \(response.debugDescription)")
+                    completion(.failure(.unexpectedStatusCode)); return }
             
             guard let receivedData = data else { completion(.failure(.invalidData)); return }
             let decoder = JSONDecoder()

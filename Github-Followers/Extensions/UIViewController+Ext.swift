@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 
 fileprivate var containerView: UIView!
@@ -27,6 +28,7 @@ extension UIViewController {
             self.present(alert, animated: true, completion: nil)
         }
     }
+    
     
     /// Adds a view which contains an Activity Indicator
     func presentLoadingView() {
@@ -59,7 +61,6 @@ extension UIViewController {
     }
     
     
-    
     /// Dismisses the view containing an Activity Indicator
     func dismissLoadingView() {
         
@@ -83,4 +84,15 @@ extension UIViewController {
         view.addSubview(emptyState)
     }
     
+    
+    /// Opens an URL into Safari
+    /// - Parameter stringURL: URL (as String) that should be opened
+    func openSafari(withURL stringURL: String) {
+        
+        guard let url = URL(string: stringURL) else { presentAlert(withTitle: "Ops, an error", message: "The url you're trying to open is invalid", buttonTitle: "Ok"); return }
+        
+        let safariVC = SFSafariViewController(url: url)
+        safariVC.preferredControlTintColor = .systemGreen
+        present(safariVC, animated: true)
+    }
 }

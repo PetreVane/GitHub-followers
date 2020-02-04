@@ -38,7 +38,6 @@ class UsersListController: UIViewController {
         configureCollectionView()
         fetchFollowers(for: currentUser, at: pageNumber)
         configureDataSource()
-                
     }
     
     override func viewWillAppear( _ animated: Bool) {
@@ -56,7 +55,7 @@ class UsersListController: UIViewController {
     /// Initializes and configures the CollectionView
     func configureCollectionView() {
         
-        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: Helper.configureCollectionViewFlowLayout(for: view))
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: FlowLayout.configureCollectionViewFlowLayout(for: view))
         view.addSubview(collectionView)
         collectionView.delegate = self
         collectionView.backgroundColor = .systemBackground
@@ -110,7 +109,6 @@ class UsersListController: UIViewController {
             cell.show(follower)
             return cell
         })
-        
     }
     
     /// Updates CollectionView with data
@@ -120,7 +118,6 @@ class UsersListController: UIViewController {
         snapshot.appendSections([.main])
         snapshot.appendItems(followers)
         DispatchQueue.main.async { self.diffDataSource.apply(snapshot, animatingDifferences: true) }
-//        print("Your list contains \(followers.count) cells")
     }
 }
 
@@ -130,25 +127,17 @@ extension UsersListController: UICollectionViewDelegate {
         
         // the (vertical) dimension of content that is scrolled out of screen
         let offsetY = scrollView.contentOffset.y
-//        print("OffsetY is: \(offsetY)")
         // gets the total height of the content
         let contentHeight = scrollView.contentSize.height
-//        print("Content height is: \(contentHeight)")
         // gets the height of the (device)screen
         let frameHeight = scrollView.frame.size.height
-//        print("Frame height is: \(frameHeight)")
+        
         // difference between content shown and existing content that should be shown
-//        let remainingContent = contentHeight - offsetY
+        let remainingContent = contentHeight - offsetY
         
-//        if remainingContent < frameHeight {
-//        guard userHasMoreFollowers else { return }
-//        // reached the end of the content
-//            pageNumber += 1
-//            fetchFollowers(for: currentUser, at: pageNumber)
-//        }
-        
-        if offsetY > contentHeight - frameHeight {
-            guard userHasMoreFollowers else { return }
+        if remainingContent < frameHeight {
+        guard userHasMoreFollowers else { return }
+        // reached the end of the content
             pageNumber += 1
             fetchFollowers(for: currentUser, at: pageNumber)
         }
@@ -156,23 +145,19 @@ extension UsersListController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-//        print("You selected cell number: \(indexPath.item)")
         let listOfFollowers = isFilteringActive ? filteredFollowers : unfilteredFollowers
         let tappedFollower = listOfFollowers[indexPath.item]
         
         let destinationVC = FollowerInfoController()
+        destinationVC.delegate = self
         destinationVC.gitHubFollower = tappedFollower
         let navigationController = UINavigationController(rootViewController: destinationVC)
         present(navigationController, animated: true)
     }
 }
 
-
 extension UsersListController: UISearchResultsUpdating, UISearchBarDelegate {
 
-
-    /// Updates search Result
-    /// - Parameter searchController: searchController object containing the searchBar
     func updateSearchResults(for searchController: UISearchController) {
 
         guard let filter = searchController.searchBar.text?.lowercased() else { return }
@@ -186,6 +171,27 @@ extension UsersListController: UISearchResultsUpdating, UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         isFilteringActive = false
         updateData(with: unfilteredFollowers)
-        //        filteredFollowers.removeAll()
+        filteredFollowers.removeAll()
+    }
+}
+
+extension UsersListController: FollowerInfoDelegate {
+    
+    /// Tells the delegate that the 'Get Followers' button was tapped.
+    /// - Parameter user: user instance passed from FollowerInfoController
+    func didTapGetFollowers(for user: User) {
+        updateFollowersListWithData(for: user)
+    }
+    
+    /// Reloads UserListController with followers for the given user
+    /// - Parameter user: instance of User, for which the followers should be displayed
+    ///
+    /// This method triggers of chain of actions, which ends up with reloading the entire collectionView with data for a given user
+    private func updateFollowersListWithData(for user: User) {
+        unfilteredFollowers.removeAll()
+        pageNumber = 1
+        updateData(with: unfilteredFollowers)
+        fetchFollowers(for: user.login, at: pageNumber)
+        self.title = user.login
     }
 }

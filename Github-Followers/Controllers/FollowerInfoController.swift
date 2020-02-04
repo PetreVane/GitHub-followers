@@ -6,9 +6,7 @@
 //  Copyright © 2020 Petre Vane. All rights reserved.
 //
 
-
 import UIKit
-import SafariServices
 
 class FollowerInfoController: UIViewController {
     
@@ -18,8 +16,8 @@ class FollowerInfoController: UIViewController {
     let repoCardViewContainer = UIView()
     let followersCardViewContainer = UIView()
     let dateLabel = SecondaryTitleLabel(fontSize: 14)
-   
-    
+    weak var delegate: FollowerInfoDelegate?
+       
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
@@ -149,7 +147,6 @@ class FollowerInfoController: UIViewController {
     /// - Parameters:
     ///   - childVC: viewController presenting different information
     ///   - container: custom UIView containing a specific ViewController
-    ///
     func add(childVC: UIViewController, to container: UIView) {
         addChild(childVC)
         container.addSubview(childVC.view)
@@ -173,35 +170,24 @@ class FollowerInfoController: UIViewController {
 
 extension FollowerInfoController: RepoCardDelegate {
     
-    /// Protocol implementation
-    /// - Parameter user: User instance, returned by network request
+    /// Protocol implementation: tells the delegate that the 'GitHub profile' button was tapped.
+    /// - Parameter user: User instance, passed from RepoCard child viewController
     ///
     /// Triggers a chain of actions when GitHub Profile button is tapped
     func didTapProfileButton(forUser user: User) {
         let url = user.htmlURL
         openSafari(withURL: url)
     }
-    
-    /// Opens an URL into Safari
-    /// - Parameter stringURL: URL (as String) that should be opened
-    func openSafari(withURL stringURL: String) {
-        
-        guard let url = URL(string: stringURL) else { presentAlert(withTitle: "Ops, an error", message: "The url you're trying to open is invalid", buttonTitle: "Ok"); return }
-        
-        let safariVC = SFSafariViewController(url: url)
-        safariVC.preferredControlTintColor = .systemGreen
-        present(safariVC, animated: true)
-    }
 }
 
 extension FollowerInfoController: FollowersCardDelegate {
     
-    /// Protocol implementation
-    /// - Parameter user: User instance, returned by network request
+    ///Tells the delegate that the 'Get Followers' button was tapped.
+    /// - Parameter user: User instance, passed from FollwersCard
     ///
-    /// Triggers a chain of actions when Get Followers Profile button is tapped
+    /// Triggers a chain of actions within UserListController when 'Get Followers' button is tapped within FollowersCard
     func didTapFollowersButton(forUser user: User) {
-        print("Followers button has been tapped for user \(user.login)")
         dismissView()
+        delegate?.didTapGetFollowers(for: user)
     }
 }

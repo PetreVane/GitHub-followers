@@ -28,6 +28,7 @@ class FollowersCard: ReusableCardController {
         actionButton.setButton(color: .systemGreen, title: "Get Followers")
     }
     
+    /// Tells the delegate that the 'Get Followers' button was tapped.
     override func actionButtonTapped() {
         delegate?.didTapFollowersButton(forUser: user)
     }

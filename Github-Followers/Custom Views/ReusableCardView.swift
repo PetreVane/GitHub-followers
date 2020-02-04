@@ -92,7 +92,4 @@ class ReusableCardView: UIView {
         // not sure about this
         countLabel.text = String(count)
     }
-    
-    
-    
 }
