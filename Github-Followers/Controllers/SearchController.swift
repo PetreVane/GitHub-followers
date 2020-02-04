@@ -111,6 +111,7 @@ class SearchController: UIViewController {
         
         // dismisses the keyboard before transition
         self.view.endEditing(true)
+        userNameTextField.text = nil
     }
 }
 

@@ -179,7 +179,7 @@ extension UsersListController: FollowerInfoDelegate {
     
     /// Tells the delegate that the 'Get Followers' button was tapped.
     /// - Parameter user: user instance passed from FollowerInfoController
-    func didTapGetFollowers(for user: User) {
+    func didRequestFollowers(for user: User) {
         updateFollowersListWithData(for: user)
     }
     
