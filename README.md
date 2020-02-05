@@ -1,7 +1,11 @@
 # GitHub-followers
-Simple (storyBoard free) iOS app which lists your Github followers.
+Simple (storyBoard free) iOS app which lists your Github followers. 
+This app is based on Sean Allen's take-home project: https://seanallen.teachable.com/
 
 
 Under Development: 
-this is a simple iOS app, which makes use of Github API. Getting acquinted with GitHub API is one of the goals of this project.
-In addition, the project visual interface is developed entirely in code, without using Storyboards.
+this is just an iOS app, which makes use of Github API. 
+
+The goal of this projects is: 
+- to develop the visual interface of the app in code only, without using Interface Builder.
+
