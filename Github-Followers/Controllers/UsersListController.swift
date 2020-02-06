@@ -17,7 +17,8 @@ class UsersListController: UIViewController {
         case main
     }
     
-    var currentUser: String!
+    var typedUserName: String!
+    var user: User?
     var unfilteredFollowers: [Follower] = []
     var filteredFollowers: [Follower] = []
     var pageNumber = 1
@@ -36,7 +37,7 @@ class UsersListController: UIViewController {
         configureNavigationBar()
         configureSearchController()
         configureCollectionView()
-        fetchFollowers(for: currentUser, at: pageNumber)
+        fetchFollowers(for: typedUserName, at: pageNumber)
         configureDataSource()
     }
     
@@ -52,7 +53,7 @@ class UsersListController: UIViewController {
     func configureNavigationBar() {
         // viewCotroller
         view.backgroundColor = .systemBackground
-        title = currentUser
+        title = typedUserName
         
         // navigationBar
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -130,8 +131,26 @@ class UsersListController: UIViewController {
     
     @objc func barButtonPressed() {
         print("Bar button pressed")
+        if let currentFollower = self.title {
+            print("Current Follower is: \(currentFollower)")
+            fetchDetails(for: currentFollower)
+        }
     }
     
+    private func fetchDetails(for follower: String) {
+        
+        networkManager.fetchDetails(for: follower) { [weak self] result in 
+            
+            guard let self = self else { return }
+            
+            switch result {
+            case .failure(let error):
+                print("FetchDetails completed with errors: \(error.localizedDescription)")
+            case .success(let user):
+                let follower = Follower(login: user.login, avatarURL: user.avatarURL)
+            }
+        }
+    }
 }
 
 extension UsersListController: UICollectionViewDelegate {
@@ -152,7 +171,7 @@ extension UsersListController: UICollectionViewDelegate {
         guard userHasMoreFollowers else { return }
         // reached the end of the content
             pageNumber += 1
-            fetchFollowers(for: currentUser, at: pageNumber)
+            fetchFollowers(for: typedUserName, at: pageNumber)
         }
     }
     

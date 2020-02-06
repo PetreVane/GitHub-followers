@@ -17,6 +17,7 @@ enum ErrorManager: Error {
     case unexpectedStatusCode
     case invalidData
     case failedJSONParsing
+    case failedWritingDataToFile
     
     
     var localizedDescription: String {
@@ -33,6 +34,8 @@ enum ErrorManager: Error {
             return "Invalid data returned by the server."
         case .failedJSONParsing:
             return "Failed parsing JSON returned by your network request."
+        case .failedWritingDataToFile:
+            return "Failed saving UserFavorites to user's documents directory"
         }
     }
 }
