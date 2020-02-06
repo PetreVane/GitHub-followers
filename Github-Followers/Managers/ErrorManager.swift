@@ -17,7 +17,9 @@ enum ErrorManager: Error {
     case unexpectedStatusCode
     case invalidData
     case failedJSONParsing
-    case failedWritingDataToFile
+    case missingData
+    case failedSavingData
+    case alreadyInFavorites
     
     
     var localizedDescription: String {
@@ -33,9 +35,13 @@ enum ErrorManager: Error {
         case .invalidData:
             return "Invalid data returned by the server."
         case .failedJSONParsing:
-            return "Failed parsing JSON returned by your network request."
-        case .failedWritingDataToFile:
-            return "Failed saving UserFavorites to user's documents directory"
+            return "There were some problems transforming your data."
+        case .failedSavingData:
+            return "Failed saving Follower to your favorites list 🥺"
+        case .missingData:
+            return "Failed fetching data from User Defaults"
+        case .alreadyInFavorites:
+            return "This user is already in your favorites list 🥳"
         }
     }
 }
