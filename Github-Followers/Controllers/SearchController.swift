@@ -31,6 +31,7 @@ class SearchController: UIViewController {
         
         //delegates
         userNameTextField.delegate = self
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -106,7 +107,7 @@ class SearchController: UIViewController {
        
         guard isUserNameEntered else { presentAlert(withTitle: "Empty username", message: "Please enter someone's unsername. We need to know who to look for 🧐", buttonTitle: "Dismiss"); return }
         let followersVC = UsersListController()
-        followersVC.currentUser = userNameTextField.text!
+        followersVC.typedUserName = userNameTextField.text!
         navigationController?.pushViewController(followersVC, animated: true)
         
         // dismisses the keyboard before transition
