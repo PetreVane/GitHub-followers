@@ -9,51 +9,59 @@
 import Foundation
 
 
-enum PersistenceActionType {
+enum PersistenceUpdateType {
     case add
     case remove
 }
 
-enum PersistenceManager {
+struct PersistenceManager {
     
-    static let defaults = UserDefaults.standard
     enum Keys {
         static let favorites = "favorites"
     }
+    
+    private let storage = UserDefaults.standard
+    static let sharedInstance = PersistenceManager()
+    
 
-    typealias result = ((Result<[Follower], ErrorManager>) -> Void)
-    /// Fetches data from User Defaults
-    /// - Parameter completion: Result type
+    /// Gets data from User Defaults
     ///
-    /// The completion handler contains a Result type, which holds an array of Followers, in case of success and ErrorManager message in case of failure
-    static func retrieveFavorites(completion: @escaping result) {
-        
+    /// The return value contains a Result type, which holds an array of Followers, in case of success and ErrorManager message in case of failure
+    func retrieveFavorites() -> [Follower] {
+        var followers: [Follower] = []
+    
         // returns an empty array, in case there is no data saved in User Defaults
-        guard let retrievedData = defaults.object(forKey: Keys.favorites) as? Data else { completion(.success([])); return }
+        guard let retrievedData = storage.object(forKey: Keys.favorites) as? Data else { return followers }
         let decoder = JSONDecoder()
         
         do {
-            let decodedData = try decoder.decode([Follower].self, from: retrievedData)
-            completion(.success(decodedData))
-            
-        } catch {
-            completion(.failure(.failedJSONParsing))
+            let decodedFollowers = try decoder.decode([Follower].self, from: retrievedData)
+            followers = decodedFollowers
+            return followers
         }
+        catch {
+            print(ErrorManager.failedJSONParsing)
+        }
+        
+        return followers
     }
     
     
     /// Adds data to User Defaults
     /// - Parameter followers: array of Follower instances
-    static func saveFavorite(_ followers: [Follower]) -> ErrorManager? {
+    /// - return ErrorManager: optional ErrorManager message, in case saving has not completed successfully
+    func saveFavorite(_ followers: [Follower]) -> ErrorManager? {
         
+        var existingFavorites = retrieveFavorites()
+        existingFavorites.append(contentsOf: followers)
         let encoder = JSONEncoder()
         
         do {
-            let encodedData = try encoder.encode(followers)
-            defaults.set(encodedData, forKey: Keys.favorites)
+            let encodedData = try encoder.encode(existingFavorites)
+            storage.set(encodedData, forKey: Keys.favorites)
             return nil
-    
-            } catch {
+        }
+        catch {
             return .failedSavingData
         }
     }
@@ -64,31 +72,21 @@ enum PersistenceManager {
     /// - Parameters:
     ///   - follower: Follower instance, which is either going to be removed or added to User Defaults
     ///   - updateType: enum containing 2 types of action: adding & removing from User Defaults
-    ///   - completion: completion holding an  optional ErrorManager message
+    ///   - completion: completion holding an optional ErrorManager message
     ///
     /// This method accepts a Follower instance, and based on the selected updateType option, will either add a new Follower to User Defaults or remove an existing Follower from User Defaults. Therefore, this method calls retrieveFavorites(_) method, and based on the result, proceeds with adding / removing the passed in Follower.
-    static func updateFavoritesList(with follower: Follower, updateType: PersistenceActionType, completion: @escaping error) {
+    func updateFavoritesList(with follower: Follower, updateType: PersistenceUpdateType, completion: @escaping error) {
         
-        retrieveFavorites { result in
+        var followers = retrieveFavorites()
+        
+        switch updateType {
+        case .add:
+            guard !followers.contains(follower) else { completion(.alreadyInFavorites); return }
+            followers.append(follower)
             
-            switch result {
-            case .success(let favorites):
-                var followers = favorites
-           
-                switch updateType {
-                case .add:
-                    guard !followers.contains(follower) else { completion(.alreadyInFavorites); return }
-                    followers.append(follower)
-                    
-                case .remove:
-                    followers.removeAll { $0.login == follower.login }
-                }
-                
-                completion(saveFavorite(followers))
-                
-            case .failure(let error):
-                completion(error)
-            }
+        case .remove:
+            followers.removeAll { $0.login == follower.login }
         }
+        completion(saveFavorite(followers))
     }
 }
