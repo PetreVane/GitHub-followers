@@ -186,12 +186,9 @@
 			isa = PBXGroup;
 			children = (
 				0B85B0EC23C5F69700449C82 /* AlertViewController.swift */,
-				0B2899F423BE3B8C002D84F8 /* SearchController.swift */,
-				0B7AB60523C4E451007BF49D /* UsersListController.swift */,
-				0B2899F623BE3BD0002D84F8 /* FavoritesController.swift */,
-				0BA55A0523E1D73800EEC650 /* FollowerInfoController.swift */,
 				0BA55A0323E1D5FA00EEC650 /* ReusableCardController.swift */,
-				0BA55A0723E1EDF300EEC650 /* subClasses */,
+				0B9CF29D23ED915C0062A90C /* Screens */,
+				0BA55A0723E1EDF300EEC650 /* containers */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -236,14 +233,25 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		0BA55A0723E1EDF300EEC650 /* subClasses */ = {
+		0B9CF29D23ED915C0062A90C /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				0B2899F423BE3B8C002D84F8 /* SearchController.swift */,
+				0B7AB60523C4E451007BF49D /* UsersListController.swift */,
+				0B2899F623BE3BD0002D84F8 /* FavoritesController.swift */,
+				0BA55A0523E1D73800EEC650 /* FollowerInfoController.swift */,
+			);
+			name = Screens;
+			sourceTree = "<group>";
+		};
+		0BA55A0723E1EDF300EEC650 /* containers */ = {
 			isa = PBXGroup;
 			children = (
 				0B0B226F23DC7F9C000C0785 /* HeaderCard.swift */,
 				0BA55A0823E1EE6900EEC650 /* RepoCard.swift */,
 				0BA55A0A23E1FC2800EEC650 /* FollowersCard.swift */,
 			);
-			name = subClasses;
+			name = containers;
 			sourceTree = "<group>";
 		};
 		0BC091DE23BA15E700E3548B = {
