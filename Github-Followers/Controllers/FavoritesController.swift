@@ -12,13 +12,18 @@ class FavoritesController: UIViewController {
 
      //MARK: - Initialization
     
+    private let storage = PersistenceManager.sharedInstance
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         view.backgroundColor = .systemTeal
+        fetchFavorites()
     }
     
 
-
+    func fetchFavorites() {
+       let favorites = storage.retrieveFavorites()
+        print(favorites)
+    }
 }

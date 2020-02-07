@@ -24,7 +24,8 @@ class UsersListController: UIViewController {
     var pageNumber = 1
     var userHasMoreFollowers = true
     var isFilteringActive = false
-    let networkManager = NetworkManager.sharedInstance
+    private let networkManager = NetworkManager.sharedInstance
+    private let storage = PersistenceManager.sharedInstance
     
     // collectionView
     var collectionView: UICollectionView!
@@ -130,24 +131,35 @@ class UsersListController: UIViewController {
     }
     
     @objc func barButtonPressed() {
-        print("Bar button pressed")
         if let currentFollower = self.title {
-            print("Current Follower is: \(currentFollower)")
             fetchDetails(for: currentFollower)
         }
     }
     
+    /// Network request for Follower details
+    /// - Parameter follower: name of the follower
+    ///
+    /// Makes a network request aimed at getting the avatar URL for the given follower
     private func fetchDetails(for follower: String) {
+        
+        presentLoadingView()
         
         networkManager.fetchDetails(for: follower) { [weak self] result in 
             
             guard let self = self else { return }
+            self.dismissLoadingView()
             
             switch result {
-            case .failure(let error):
-                print("FetchDetails completed with errors: \(error.localizedDescription)")
+            case .failure(_):
+                self.presentAlert(withTitle: "Error", message: "Something is not right yet...", buttonTitle: "I'll try later")
             case .success(let user):
                 let follower = Follower(login: user.login, avatarURL: user.avatarURL)
+                self.storage.updateFavoritesList(with: follower, updateType: .add) { [weak self] error in
+                    guard let self = self else { return }
+                    guard let error = error else { self.presentAlert(withTitle: "Success 🥳", message: "\(user.login.capitalized) successfully added to favorites!", buttonTitle: "Cool"); return }
+                    
+                    self.presentAlert(withTitle: "What? An error?!", message: error.localizedDescription, buttonTitle: "Ok")
+                }
             }
         }
     }
