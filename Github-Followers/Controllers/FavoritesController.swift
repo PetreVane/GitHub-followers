@@ -10,7 +10,10 @@ import UIKit
 
 class FavoritesController: UIViewController {
 
-     //MARK: - Initialization
+     //MARK: - Initialization -
+    
+    
+    let tableView = UITableView()
     
     private let storage = PersistenceManager.sharedInstance
     override func viewDidLoad() {

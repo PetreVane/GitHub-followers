@@ -25,7 +25,7 @@ class UsersListController: UIViewController {
     var userHasMoreFollowers = true
     var isFilteringActive = false
     private let networkManager = NetworkManager.sharedInstance
-    private let storage = PersistenceManager.sharedInstance
+    private let userDefaults = PersistenceManager.sharedInstance
     
     // collectionView
     var collectionView: UICollectionView!
@@ -154,11 +154,11 @@ class UsersListController: UIViewController {
                 self.presentAlert(withTitle: "Error", message: "Something is not right yet...", buttonTitle: "I'll try later")
             case .success(let user):
                 let follower = Follower(login: user.login, avatarURL: user.avatarURL)
-                self.storage.updateFavoritesList(with: follower, updateType: .add) { [weak self] error in
+                self.userDefaults.updateFavoritesList(with: follower, updateType: .add) { [weak self] error in
                     guard let self = self else { return }
-                    guard let error = error else { self.presentAlert(withTitle: "Success 🥳", message: "\(user.login.capitalized) successfully added to favorites!", buttonTitle: "Cool"); return }
+                    guard error == nil else { self.presentAlert(withTitle: "What? An error?!", message: error!.localizedDescription, buttonTitle: "Ok"); return }
                     
-                    self.presentAlert(withTitle: "What? An error?!", message: error.localizedDescription, buttonTitle: "Ok")
+                     self.presentAlert(withTitle: "Success 🥳", message: "\(user.login.capitalized) successfully added to favorites!", buttonTitle: "Cool")
                 }
             }
         }

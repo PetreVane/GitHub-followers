@@ -54,6 +54,8 @@ class NetworkManager {
     /// - Parameters:
     ///   - StringUrl: URL of the avatar, casted as String
     ///   - completion: escaping completion containing the avatar
+    ///
+    /// This method accepts a stringURL (follower.avatarURL) and proceeds with network request for fetching the avatar
     func fetchAvatars(from StringUrl: String, completion: @escaping (UIImage) -> Void) {
         
         guard let imageURL = URL(string: StringUrl) else { return }
