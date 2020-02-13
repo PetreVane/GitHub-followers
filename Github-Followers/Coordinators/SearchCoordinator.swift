@@ -8,6 +8,9 @@
 
 import UIKit
 
+/// Coordinates SearchController
+///
+/// Creates an object of SearchController and assigns it to a NavigationController object
 class SearchCoordinator: Coordinator {
     
     weak var parentCoordinator: MainCoordinator?
@@ -18,5 +21,18 @@ class SearchCoordinator: Coordinator {
         self.navigationController = navigationController
     }
     
+    
+    /// Creates an object of SearchController
+    ///
+    /// This method creates an object of SearchController and assigns self as childCoordinator. Then, embeds SearchController into navigationController passed at class initialization.
+    func startSearchController() -> UINavigationController {
+        
+        let seachVC = SearchController()
+        seachVC.parentCoordinator = self
+        seachVC.title = "Search"
+        seachVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
+        navigationController.viewControllers = [seachVC]
+        return navigationController
+    }
     
 }

@@ -16,29 +16,25 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        viewControllers = [createSearchNavController(), createFavoritesNavController()]
+        viewControllers = [startSearchCoordinator(), createFavoritesNavController()]
     }
     
 
-    /// Adds a Navigation controller for FavoritesController()
+    /// Starts FavoritesController() and adds it to a NavigationController object
     private func createFavoritesNavController() -> UINavigationController {
+                
+        let favoritesCoordinator = FavoritesCoordinator(navigationController: UINavigationController())
+        let favoritesNavController = favoritesCoordinator.startFavoritesController()
         
-        let favoritesVC = FavoritesController()
-        favoritesVC.title = "Favorites"
-        favoritesVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
-        let favNavController = UINavigationController(rootViewController: favoritesVC)
-        
-        return favNavController
+        return favoritesNavController
         
     }
     
-    /// Adds a Navigation controller for SearchViewController()
-    private func createSearchNavController() -> UINavigationController {
-        
-        let seachVC = SearchController()
-        seachVC.title = "Search"
-        seachVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
-        let searchNavController = UINavigationController(rootViewController: seachVC)
+    /// Starts SearchController() and adds it to a NavigationController object
+    private func startSearchCoordinator() -> UINavigationController {
+                
+        let searchCoordinator = SearchCoordinator(navigationController: UINavigationController())
+        let searchNavController = searchCoordinator.startSearchController()
         return searchNavController
     }
 

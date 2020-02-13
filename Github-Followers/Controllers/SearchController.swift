@@ -12,6 +12,7 @@ class SearchController: UIViewController {
     
      //MARK: - Initialization
     
+    weak var parentCoordinator: SearchCoordinator?
     let logoImageView = UIImageView()
     let userNameTextField = TextField()
     let followButton = CustomButton(backgroundColor: .systemGreen, title: "Show followers")

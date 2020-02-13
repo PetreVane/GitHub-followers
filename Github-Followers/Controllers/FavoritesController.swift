@@ -12,7 +12,7 @@ class FavoritesController: UIViewController {
 
      //MARK: - Initialization -
     
-    
+    weak var childCoordinator: FavoritesCoordinator?
     let tableView = UITableView()
     
     private let storage = PersistenceManager.sharedInstance
