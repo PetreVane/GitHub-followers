@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		0B04A26423DEE0AF00BCD9C5 /* SFSymbos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B04A26323DEE0AF00BCD9C5 /* SFSymbos.swift */; };
 		0B04D0A623F5A7570055A6E8 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B04D0A523F5A7570055A6E8 /* TabBarController.swift */; };
+		0B04D0A923F5AA7D0055A6E8 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B04D0A823F5AA7D0055A6E8 /* SearchCoordinator.swift */; };
+		0B04D0AB23F5AA980055A6E8 /* FavoritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B04D0AA23F5AA980055A6E8 /* FavoritesCoordinator.swift */; };
+		0B04D0AD23F5AB0D0055A6E8 /* UserListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B04D0AC23F5AB0D0055A6E8 /* UserListCoordinator.swift */; };
+		0B04D0AF23F5AB430055A6E8 /* FollowerInfoCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B04D0AE23F5AB430055A6E8 /* FollowerInfoCoordinator.swift */; };
 		0B0B227023DC7F9C000C0785 /* HeaderCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0B226F23DC7F9C000C0785 /* HeaderCard.swift */; };
 		0B0B227223DC8100000C0785 /* SecondaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0B227123DC8100000C0785 /* SecondaryTitleLabel.swift */; };
 		0B0B227423DC8E0C000C0785 /* UIView+constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0B227323DC8E0C000C0785 /* UIView+constraints.swift */; };
@@ -51,6 +55,10 @@
 /* Begin PBXFileReference section */
 		0B04A26323DEE0AF00BCD9C5 /* SFSymbos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbos.swift; sourceTree = "<group>"; };
 		0B04D0A523F5A7570055A6E8 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		0B04D0A823F5AA7D0055A6E8 /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
+		0B04D0AA23F5AA980055A6E8 /* FavoritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinator.swift; sourceTree = "<group>"; };
+		0B04D0AC23F5AB0D0055A6E8 /* UserListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListCoordinator.swift; sourceTree = "<group>"; };
+		0B04D0AE23F5AB430055A6E8 /* FollowerInfoCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerInfoCoordinator.swift; sourceTree = "<group>"; };
 		0B0B226F23DC7F9C000C0785 /* HeaderCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HeaderCard.swift; path = "../Custom Views/HeaderCard.swift"; sourceTree = "<group>"; };
 		0B0B227123DC8100000C0785 /* SecondaryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryTitleLabel.swift; sourceTree = "<group>"; };
 		0B0B227323DC8E0C000C0785 /* UIView+constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+constraints.swift"; sourceTree = "<group>"; };
@@ -112,6 +120,25 @@
 				0BDD052A23F29FB500C5496F /* Coordinator.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		0B04D0A723F5AA390055A6E8 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				0B04D0A523F5A7570055A6E8 /* TabBarController.swift */,
+			);
+			name = Navigation;
+			sourceTree = "<group>";
+		};
+		0B04D0B023F5AB6A0055A6E8 /* ChildCoordinators */ = {
+			isa = PBXGroup;
+			children = (
+				0B04D0A823F5AA7D0055A6E8 /* SearchCoordinator.swift */,
+				0B04D0AA23F5AA980055A6E8 /* FavoritesCoordinator.swift */,
+				0B04D0AC23F5AB0D0055A6E8 /* UserListCoordinator.swift */,
+				0B04D0AE23F5AB430055A6E8 /* FollowerInfoCoordinator.swift */,
+			);
+			name = ChildCoordinators;
 			sourceTree = "<group>";
 		};
 		0B16555823D6159600ED5979 /* Views */ = {
@@ -296,8 +323,9 @@
 		0BDD052C23F2A02A00C5496F /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
+				0B04D0A723F5AA390055A6E8 /* Navigation */,
 				0BDD052D23F2A05000C5496F /* MainCoordinator.swift */,
-				0B04D0A523F5A7570055A6E8 /* TabBarController.swift */,
+				0B04D0B023F5AB6A0055A6E8 /* ChildCoordinators */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -399,6 +427,7 @@
 				0B8A74BC23C7870E00179F89 /* ErrorManager.swift in Sources */,
 				0BDD052E23F2A05000C5496F /* MainCoordinator.swift in Sources */,
 				0BA55A0923E1EE6900EEC650 /* RepoCard.swift in Sources */,
+				0B04D0AD23F5AB0D0055A6E8 /* UserListCoordinator.swift in Sources */,
 				0B60B2EA23D105C9003042C0 /* CacheManager.swift in Sources */,
 				0BDD052B23F29FB500C5496F /* Coordinator.swift in Sources */,
 				0B85B0ED23C5F69700449C82 /* AlertViewController.swift in Sources */,
@@ -406,9 +435,12 @@
 				0B16555A23D615D100ED5979 /* EmptyState.swift in Sources */,
 				0B04D0A623F5A7570055A6E8 /* TabBarController.swift in Sources */,
 				0B8A74BA23C7803D00179F89 /* NetworkManager.swift in Sources */,
+				0B04D0AB23F5AA980055A6E8 /* FavoritesCoordinator.swift in Sources */,
 				0BC091ED23BA15E800E3548B /* SceneDelegate.swift in Sources */,
+				0B04D0AF23F5AB430055A6E8 /* FollowerInfoCoordinator.swift in Sources */,
 				0B2899FB23BFAA3B002D84F8 /* TextField.swift in Sources */,
 				0B7AB62E23C5EB09007BF49D /* BodyLabel.swift in Sources */,
+				0B04D0A923F5AA7D0055A6E8 /* SearchCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

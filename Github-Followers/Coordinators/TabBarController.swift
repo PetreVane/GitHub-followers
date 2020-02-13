@@ -8,6 +8,9 @@
 
 import UIKit
 
+/// Creates a tabBar holding two objects
+///
+/// Creates a new TabBar object, which contains a reference to SearchVC and one to FavoritesVC
 class TabBarController: UITabBarController {
 
     override func viewDidLoad() {
