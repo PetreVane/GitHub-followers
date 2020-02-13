@@ -13,7 +13,7 @@ import UIKit
 /// Creates an object of FavoritesController and assigns it to a NavigationController object
 class FavoritesCoordinator: Coordinator {
     
-    weak var parentCoordinator: MainCoordinator?
+    weak var coordinator: MainCoordinator?
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
     

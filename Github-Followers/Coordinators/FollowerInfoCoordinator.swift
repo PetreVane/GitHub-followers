@@ -10,7 +10,7 @@ import UIKit
 
 class FollowerInfoCoordinator: Coordinator {
     
-    weak var parentCoordinator: MainCoordinator?
+    weak var coordinator: MainCoordinator?
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
     

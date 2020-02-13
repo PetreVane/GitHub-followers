@@ -10,7 +10,7 @@ import UIKit
 
 class UserListCoordinator: Coordinator {
     
-    weak var parentCoordinator: MainCoordinator?
+    weak var coordinator: MainCoordinator?
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
     
@@ -18,5 +18,9 @@ class UserListCoordinator: Coordinator {
         self.navigationController = navigationController
     }
     
+    func initUserListController(forFollower follower: String) {
+        
+        
+    }
     
 }

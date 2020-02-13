@@ -13,7 +13,7 @@ import UIKit
 /// Creates an object of SearchController and assigns it to a NavigationController object
 class SearchCoordinator: Coordinator {
     
-    weak var parentCoordinator: MainCoordinator?
+    weak var coordinator: MainCoordinator?
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
     
@@ -33,6 +33,14 @@ class SearchCoordinator: Coordinator {
         seachVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
         navigationController.viewControllers = [seachVC]
         return navigationController
+    }
+    
+    func showFollowers(for user: String) {
+        
+    }
+    
+    func searchButtonPressed(withText: String) {
+        
     }
     
 }
