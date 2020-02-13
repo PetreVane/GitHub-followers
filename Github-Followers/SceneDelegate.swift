@@ -36,7 +36,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     /// Adds a TabBar controller & assigns the Navigation controllers to it
     func createTabBar() -> UITabBarController {
-        let tabBar = TabBarController()
+        let tabBar = MainTabBar()
         
         // adds tint color for TabBar
         UITabBar.appearance().tintColor = .systemGreen
