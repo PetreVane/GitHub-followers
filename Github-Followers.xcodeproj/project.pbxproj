@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0B04A26423DEE0AF00BCD9C5 /* SFSymbos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B04A26323DEE0AF00BCD9C5 /* SFSymbos.swift */; };
-		0B04D0A623F5A7570055A6E8 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B04D0A523F5A7570055A6E8 /* TabBarController.swift */; };
 		0B04D0A923F5AA7D0055A6E8 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B04D0A823F5AA7D0055A6E8 /* SearchCoordinator.swift */; };
 		0B04D0AB23F5AA980055A6E8 /* FavoritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B04D0AA23F5AA980055A6E8 /* FavoritesCoordinator.swift */; };
 		0B04D0AD23F5AB0D0055A6E8 /* UserListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B04D0AC23F5AB0D0055A6E8 /* UserListCoordinator.swift */; };
@@ -26,6 +25,7 @@
 		0B58E34223E9A1C60038FD34 /* FollowerInfoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B58E34123E9A1C50038FD34 /* FollowerInfoDelegate.swift */; };
 		0B60B2E823D07958003042C0 /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B60B2E723D07958003042C0 /* FlowLayout.swift */; };
 		0B60B2EA23D105C9003042C0 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B60B2E923D105C9003042C0 /* CacheManager.swift */; };
+		0B7466EA23F5D084000C0A94 /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7466E923F5D084000C0A94 /* MainTabBar.swift */; };
 		0B7AB60623C4E451007BF49D /* UsersListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7AB60523C4E451007BF49D /* UsersListController.swift */; };
 		0B7AB62C23C5E58D007BF49D /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7AB62B23C5E58D007BF49D /* TitleLabel.swift */; };
 		0B7AB62E23C5EB09007BF49D /* BodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7AB62D23C5EB09007BF49D /* BodyLabel.swift */; };
@@ -54,7 +54,6 @@
 
 /* Begin PBXFileReference section */
 		0B04A26323DEE0AF00BCD9C5 /* SFSymbos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbos.swift; sourceTree = "<group>"; };
-		0B04D0A523F5A7570055A6E8 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		0B04D0A823F5AA7D0055A6E8 /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
 		0B04D0AA23F5AA980055A6E8 /* FavoritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinator.swift; sourceTree = "<group>"; };
 		0B04D0AC23F5AB0D0055A6E8 /* UserListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListCoordinator.swift; sourceTree = "<group>"; };
@@ -72,6 +71,7 @@
 		0B58E34123E9A1C50038FD34 /* FollowerInfoDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerInfoDelegate.swift; sourceTree = "<group>"; };
 		0B60B2E723D07958003042C0 /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
 		0B60B2E923D105C9003042C0 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
+		0B7466E923F5D084000C0A94 /* MainTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
 		0B7AB60523C4E451007BF49D /* UsersListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		0B7AB62B23C5E58D007BF49D /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
 		0B7AB62D23C5EB09007BF49D /* BodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyLabel.swift; sourceTree = "<group>"; };
@@ -125,7 +125,7 @@
 		0B04D0A723F5AA390055A6E8 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				0B04D0A523F5A7570055A6E8 /* TabBarController.swift */,
+				0B7466E923F5D084000C0A94 /* MainTabBar.swift */,
 			);
 			name = Navigation;
 			sourceTree = "<group>";
@@ -430,10 +430,10 @@
 				0B04D0AD23F5AB0D0055A6E8 /* UserListCoordinator.swift in Sources */,
 				0B60B2EA23D105C9003042C0 /* CacheManager.swift in Sources */,
 				0BDD052B23F29FB500C5496F /* Coordinator.swift in Sources */,
+				0B7466EA23F5D084000C0A94 /* MainTabBar.swift in Sources */,
 				0B85B0ED23C5F69700449C82 /* AlertViewController.swift in Sources */,
 				0B58E33E23E831850038FD34 /* RepoCardDelegate.swift in Sources */,
 				0B16555A23D615D100ED5979 /* EmptyState.swift in Sources */,
-				0B04D0A623F5A7570055A6E8 /* TabBarController.swift in Sources */,
 				0B8A74BA23C7803D00179F89 /* NetworkManager.swift in Sources */,
 				0B04D0AB23F5AA980055A6E8 /* FavoritesCoordinator.swift in Sources */,
 				0BC091ED23BA15E800E3548B /* SceneDelegate.swift in Sources */,
