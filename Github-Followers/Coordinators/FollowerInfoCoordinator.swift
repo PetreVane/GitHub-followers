@@ -6,4 +6,17 @@
 //  Copyright © 2020 Petre Vane. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class FollowerInfoCoordinator: Coordinator {
+    
+    weak var parentCoordinator: MainCoordinator?
+    var childCoordinators = [Coordinator]()
+    var navigationController: UINavigationController
+    
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
+    }
+    
+    
+}
