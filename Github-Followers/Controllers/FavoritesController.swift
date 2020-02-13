@@ -21,7 +21,7 @@ class FavoritesController: UIViewController {
 
         // Do any additional setup after loading the view.
         view.backgroundColor = .systemTeal
-        fetchFavorites()
+//        fetchFavorites()
     }
     
 
