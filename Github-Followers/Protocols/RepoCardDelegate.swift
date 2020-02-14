@@ -8,7 +8,7 @@
 
 import Foundation
 
+// Adopted by FollowerInfoController (extension)
 protocol RepoCardDelegate: class {
-    
     func didTapProfileButton(forUser user: User)
 }
