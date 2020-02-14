@@ -14,21 +14,12 @@ import UIKit
 /// Creates a new TabBar object, which contains a reference to MainCoordinator.
 /// The MainCoordinator start() method returns an array of navigationControllers, each of them containing a screen
 class MainTabBar: UITabBarController {
+    
+    let mainCoordinator = MainCoordinator(navigationController: UINavigationController())
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        viewControllers = startMainCoordinator()
+        
+        viewControllers = [mainCoordinator.startSearchController(), mainCoordinator.startFavoritesController()]
     }
-    
-    
-    private func startMainCoordinator()  -> [UINavigationController] {
-        
-        let mainCoordinator = MainCoordinator()
-        let navigationControllers = mainCoordinator.start()
-        
-        return navigationControllers
-        
-    }
-
 }

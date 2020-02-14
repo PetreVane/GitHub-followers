@@ -12,7 +12,7 @@ class SearchController: UIViewController {
     
      //MARK: - Initialization
     
-    weak var parentCoordinator: SearchCoordinator?
+    weak var parentCoordinator: MainCoordinator?
     let logoImageView = UIImageView()
     let userNameTextField = TextField()
     let followButton = CustomButton(backgroundColor: .systemGreen, title: "Show followers")
@@ -20,6 +20,15 @@ class SearchController: UIViewController {
         return userNameTextField.text!.isEmpty ? false : true
     }
 
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        print("SearchController has been init")
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -107,13 +116,20 @@ class SearchController: UIViewController {
     @objc func pushUserListVC() {
        
         guard isUserNameEntered else { presentAlert(withTitle: "Empty username", message: "Please enter someone's unsername. We need to know who to look for 🧐", buttonTitle: "Dismiss"); return }
-        let followersVC = UsersListController()
-        followersVC.typedUserName = userNameTextField.text!
-        navigationController?.pushViewController(followersVC, animated: true)
+        print("Buttone pressed")
+
+        // test
+        if let userTypedText = userNameTextField.text {
+            parentCoordinator?.printSomething(userTypedText)
+        }
+                
+//        let followersVC = UsersListController()
+//        followersVC.typedUserName = userNameTextField.text!
+//        navigationController?.pushViewController(followersVC, animated: true)
         
         // dismisses the keyboard before transition
         self.view.endEditing(true)
-        userNameTextField.text = nil
+//        userNameTextField.text = nil
     }
 }
 

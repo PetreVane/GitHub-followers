@@ -17,6 +17,7 @@ class UsersListController: UIViewController {
         case main
     }
     
+    weak var parentCoordinator: MainCoordinator?
     var typedUserName: String!
     var user: User?
     var unfilteredFollowers: [Follower] = []
