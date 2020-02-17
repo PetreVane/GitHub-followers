@@ -12,7 +12,7 @@ class SearchController: UIViewController {
     
      //MARK: - Initialization
     
-    weak var parentCoordinator: MainCoordinator?
+    weak var parentCoordinator: SearchCoordinator?
     let logoImageView = UIImageView()
     let userNameTextField = TextField()
     let followButton = CustomButton(backgroundColor: .systemGreen, title: "Show followers")
@@ -32,6 +32,7 @@ class SearchController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         // Do any additional setup after loading the view.
         view.backgroundColor = .systemBackground
         configureLogoView()
@@ -48,7 +49,6 @@ class SearchController: UIViewController {
         super.viewWillAppear(animated)
         
         navigationController?.setNavigationBarHidden(true, animated: true)
-
     }
     
      //MARK: - Logo View
@@ -125,7 +125,6 @@ class SearchController: UIViewController {
                 
 //        let followersVC = UsersListController()
 //        followersVC.typedUserName = userNameTextField.text!
-//        navigationController?.pushViewController(followersVC, animated: true)
         
         // dismisses the keyboard before transition
         self.view.endEditing(true)

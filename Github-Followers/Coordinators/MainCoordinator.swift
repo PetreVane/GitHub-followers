@@ -20,26 +20,58 @@ class MainCoordinator: NSObject, Coordinator {
     }
     
     
-    func startSearchController() -> UIViewController {
-        let searchVC = SearchController()
-        searchVC.parentCoordinator = self
-        searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
-        _ = UINavigationController(rootViewController: searchVC)
-        return searchVC
+    func start() {
+//        startSVC()
+//        startFavC()
+        
     }
     
     
-    func startFavoritesController() -> UIViewController {
-        let favController = FavoritesController()
-        favController.parentCoordinator = self
-        favController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
-        _ =  UINavigationController(rootViewController: favController)
-        return favController
-    }
+//    func startSearchController() -> UIViewController {
+//        
+//        let searchVC = SearchController()
+//        searchVC.parentCoordinator = self
+//        searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
+//        _ = UINavigationController(rootViewController: searchVC)
+//        return searchVC
+//    }
+    
+    
+//    func startFavoritesController() -> UIViewController {
+//        let favController = FavoritesController()
+//        favController.parentCoordinator = self
+//        favController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
+//        _ = UINavigationController(rootViewController: favController)
+//        return favController
+//    }
     
     func printSomething(_ text: String) {
         print("MainCoordinator called with text: \(text)")
+//        let navController = UINavigationController()
+//        let userList = UsersListController()
+//        userList.parentCoordinator = self
+//        userList.typedUserName = text
+//
+//        let navController = UINavigationController(rootViewController: userList)
+//        navController.setViewControllers([userList], animated: true)
+////        navController.pushViewController(userList, animated: true)
+
     }
+    
+//    func startSVC() {
+//        let searchVC = SearchController()
+//        searchVC.parentCoordinator = self
+//        searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
+//        navigationController.pushViewController(searchVC, animated: true)
+//    }
+    
+//    func startFavC() {
+//        
+//        let favController = FavoritesController()
+//        favController.parentCoordinator = self
+//        favController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
+//        navigationController.pushViewController(favController, animated: true)
+//    }
     
     
 }

@@ -17,7 +17,7 @@ class UsersListController: UIViewController {
         case main
     }
     
-    weak var parentCoordinator: MainCoordinator?
+    weak var parentCoordinator: SearchCoordinator?
     var typedUserName: String!
     var user: User?
     var unfilteredFollowers: [Follower] = []
@@ -36,6 +36,7 @@ class UsersListController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        print("USerList Called with text: \(typedUserName)")
         configureNavigationBar()
         configureSearchController()
         configureCollectionView()
