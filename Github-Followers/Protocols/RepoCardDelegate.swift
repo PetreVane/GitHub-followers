@@ -8,7 +8,4 @@
 
 import Foundation
 
-protocol RepoCardDelegate: class {
-    
-    func didTapProfileButton(forUser user: User)
-}
+

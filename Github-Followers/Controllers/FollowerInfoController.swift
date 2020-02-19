@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol FollowerInfoDelegate: class {
+    func didRequestFollowers(for user: User)
+}
+
 class FollowerInfoController: UIViewController {
     
     var gitHubFollower: Follower!

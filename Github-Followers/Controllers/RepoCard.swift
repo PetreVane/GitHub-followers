@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol RepoCardDelegate: class {
+    func didTapProfileButton(forUser user: User)
+}
+
 class RepoCard: ReusableCardController {
     
     weak var delegate: RepoCardDelegate?

@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol FollowersCardDelegate: class {
+    func didTapFollowersButton(forUser user: User)
+}
+
 class FollowersCard: ReusableCardController {
     
     weak var delegate: FollowersCardDelegate?

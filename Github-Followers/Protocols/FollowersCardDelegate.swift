@@ -7,8 +7,3 @@
 //
 
 import Foundation
-
-protocol FollowersCardDelegate: class {
-    
-    func didTapFollowersButton(forUser user: User)
-}

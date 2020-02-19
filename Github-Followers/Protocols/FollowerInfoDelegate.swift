@@ -8,8 +8,3 @@
 
 import Foundation
 
-
-protocol FollowerInfoDelegate: class {
-    
-    func didRequestFollowers(for user: User)
-}
