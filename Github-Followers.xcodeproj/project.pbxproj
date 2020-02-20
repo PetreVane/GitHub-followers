@@ -37,6 +37,8 @@
 		0B975F0523EAFA92005B3588 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B975F0423EAFA92005B3588 /* PersistenceManager.swift */; };
 		0B975F0723EAFB70005B3588 /* FileManager+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B975F0623EAFB70005B3588 /* FileManager+Ext.swift */; };
 		0BA35A1C23FEB83200B97706 /* AppDelegateRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA35A1B23FEB83200B97706 /* AppDelegateRouter.swift */; };
+		0BA35A1F23FEC23500B97706 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA35A1E23FEC23500B97706 /* Router.swift */; };
+		0BA35A2123FEC24500B97706 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA35A2023FEC24500B97706 /* NavigationRouter.swift */; };
 		0BA55A0223E1881C00EEC650 /* ReusableCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA55A0123E1881C00EEC650 /* ReusableCardView.swift */; };
 		0BA55A0423E1D5FA00EEC650 /* ReusableCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA55A0323E1D5FA00EEC650 /* ReusableCardController.swift */; };
 		0BA55A0623E1D73800EEC650 /* FollowerInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA55A0523E1D73800EEC650 /* FollowerInfoController.swift */; };
@@ -81,6 +83,8 @@
 		0B975F0423EAFA92005B3588 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		0B975F0623EAFB70005B3588 /* FileManager+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Ext.swift"; sourceTree = "<group>"; };
 		0BA35A1B23FEB83200B97706 /* AppDelegateRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateRouter.swift; sourceTree = "<group>"; };
+		0BA35A1E23FEC23500B97706 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		0BA35A2023FEC24500B97706 /* NavigationRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
 		0BA55A0123E1881C00EEC650 /* ReusableCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCardView.swift; sourceTree = "<group>"; };
 		0BA55A0323E1D5FA00EEC650 /* ReusableCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCardController.swift; sourceTree = "<group>"; };
 		0BA55A0523E1D73800EEC650 /* FollowerInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerInfoController.swift; sourceTree = "<group>"; };
@@ -115,12 +119,12 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		0B04D0A723F5AA390055A6E8 /* Navigation */ = {
+		0B04D0A723F5AA390055A6E8 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
 				0B7466E923F5D084000C0A94 /* MainTabBar.swift */,
 			);
-			name = Navigation;
+			name = TabBar;
 			sourceTree = "<group>";
 		};
 		0B04D0B023F5AB6A0055A6E8 /* ChildCoordinators */ = {
@@ -272,6 +276,15 @@
 			name = Screens;
 			sourceTree = "<group>";
 		};
+		0BA35A1D23FEC1FC00B97706 /* Routers */ = {
+			isa = PBXGroup;
+			children = (
+				0BA35A1E23FEC23500B97706 /* Router.swift */,
+				0BA35A2023FEC24500B97706 /* NavigationRouter.swift */,
+			);
+			path = Routers;
+			sourceTree = "<group>";
+		};
 		0BA55A0723E1EDF300EEC650 /* containers */ = {
 			isa = PBXGroup;
 			children = (
@@ -305,6 +318,7 @@
 				0B85B0FA23C66EF900449C82 /* Support */,
 				0B8A74B723C7800600179F89 /* Managers */,
 				0B85B0F523C63FB400449C82 /* Models */,
+				0BA35A1D23FEC1FC00B97706 /* Routers */,
 				0B85B0F323C63A9300449C82 /* Controllers */,
 				0BDD052C23F2A02A00C5496F /* Coordinators */,
 				0B85B0F223C63A7800449C82 /* Custom Views */,
@@ -317,7 +331,7 @@
 		0BDD052C23F2A02A00C5496F /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
-				0B04D0A723F5AA390055A6E8 /* Navigation */,
+				0B04D0A723F5AA390055A6E8 /* TabBar */,
 				0BDD052D23F2A05000C5496F /* MainCoordinator.swift */,
 				0B04D0B023F5AB6A0055A6E8 /* ChildCoordinators */,
 			);
@@ -408,6 +422,7 @@
 				0B8A74C123C7C4E700179F89 /* AvatarImageView.swift in Sources */,
 				0B0B227423DC8E0C000C0785 /* UIView+constraints.swift in Sources */,
 				0B2899F723BE3BD0002D84F8 /* FavoritesController.swift in Sources */,
+				0BA35A2123FEC24500B97706 /* NavigationRouter.swift in Sources */,
 				0B0B227223DC8100000C0785 /* SecondaryTitleLabel.swift in Sources */,
 				0B60B2E823D07958003042C0 /* FlowLayout.swift in Sources */,
 				0B7AB60623C4E451007BF49D /* UsersListController.swift in Sources */,
@@ -426,6 +441,7 @@
 				0B85B0ED23C5F69700449C82 /* AlertViewController.swift in Sources */,
 				0B16555A23D615D100ED5979 /* EmptyState.swift in Sources */,
 				0B8A74BA23C7803D00179F89 /* NetworkManager.swift in Sources */,
+				0BA35A1F23FEC23500B97706 /* Router.swift in Sources */,
 				0BA35A1C23FEB83200B97706 /* AppDelegateRouter.swift in Sources */,
 				0B04D0AB23F5AA980055A6E8 /* FavoritesCoordinator.swift in Sources */,
 				0BC091ED23BA15E800E3548B /* SceneDelegate.swift in Sources */,
