@@ -36,6 +36,7 @@
 		0B8A74C123C7C4E700179F89 /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8A74C023C7C4E700179F89 /* AvatarImageView.swift */; };
 		0B975F0523EAFA92005B3588 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B975F0423EAFA92005B3588 /* PersistenceManager.swift */; };
 		0B975F0723EAFB70005B3588 /* FileManager+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B975F0623EAFB70005B3588 /* FileManager+Ext.swift */; };
+		0BA35A1C23FEB83200B97706 /* AppDelegateRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA35A1B23FEB83200B97706 /* AppDelegateRouter.swift */; };
 		0BA55A0223E1881C00EEC650 /* ReusableCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA55A0123E1881C00EEC650 /* ReusableCardView.swift */; };
 		0BA55A0423E1D5FA00EEC650 /* ReusableCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA55A0323E1D5FA00EEC650 /* ReusableCardController.swift */; };
 		0BA55A0623E1D73800EEC650 /* FollowerInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA55A0523E1D73800EEC650 /* FollowerInfoController.swift */; };
@@ -79,6 +80,7 @@
 		0B8A74C023C7C4E700179F89 /* AvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
 		0B975F0423EAFA92005B3588 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		0B975F0623EAFB70005B3588 /* FileManager+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Ext.swift"; sourceTree = "<group>"; };
+		0BA35A1B23FEB83200B97706 /* AppDelegateRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateRouter.swift; sourceTree = "<group>"; };
 		0BA55A0123E1881C00EEC650 /* ReusableCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCardView.swift; sourceTree = "<group>"; };
 		0BA55A0323E1D5FA00EEC650 /* ReusableCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCardController.swift; sourceTree = "<group>"; };
 		0BA55A0523E1D73800EEC650 /* FollowerInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerInfoController.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				0BC091F823BA15ED00E3548B /* Info.plist */,
 				0BC091EA23BA15E700E3548B /* AppDelegate.swift */,
 				0BC091EC23BA15E800E3548B /* SceneDelegate.swift */,
+				0BA35A1B23FEB83200B97706 /* AppDelegateRouter.swift */,
 				0BC091F323BA15ED00E3548B /* Assets.xcassets */,
 				0BC091F523BA15ED00E3548B /* LaunchScreen.storyboard */,
 			);
@@ -423,6 +426,7 @@
 				0B85B0ED23C5F69700449C82 /* AlertViewController.swift in Sources */,
 				0B16555A23D615D100ED5979 /* EmptyState.swift in Sources */,
 				0B8A74BA23C7803D00179F89 /* NetworkManager.swift in Sources */,
+				0BA35A1C23FEB83200B97706 /* AppDelegateRouter.swift in Sources */,
 				0B04D0AB23F5AA980055A6E8 /* FavoritesCoordinator.swift in Sources */,
 				0BC091ED23BA15E800E3548B /* SceneDelegate.swift in Sources */,
 				0B04D0AF23F5AB430055A6E8 /* FollowerInfoCoordinator.swift in Sources */,
