@@ -8,10 +8,14 @@
 
 import UIKit
 
+protocol SearchControllerDelegate: class {
+    func searchControllerDidPressSearchButton(_ viewController: SearchController, withText text: String)
+}
+
 class SearchController: UIViewController {
     
      //MARK: - Initialization
-    
+    weak var delegate: SearchControllerDelegate?
     weak var parentCoordinator: SearchCoordinator?
     let logoImageView = UIImageView()
     let userNameTextField = TextField()
@@ -120,7 +124,7 @@ class SearchController: UIViewController {
 
         // test
         if let userTypedText = userNameTextField.text {
-            parentCoordinator?.printSomething(userTypedText)
+            delegate?.searchControllerDidPressSearchButton(self, withText: userTypedText)
         }
                 
 //        let followersVC = UsersListController()
@@ -141,5 +145,14 @@ extension SearchController: UITextFieldDelegate {
         pushUserListVC()
         return true
     }
+}
 
+
+extension SearchController {
+    class func instantiate(delegate: SearchControllerDelegate) -> SearchController {
+        let viewController = SearchController()
+        viewController.delegate = delegate
+        return viewController
+    }
+    
 }
