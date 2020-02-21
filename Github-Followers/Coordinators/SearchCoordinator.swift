@@ -19,7 +19,11 @@ class SearchCoordinator: NSObject, Coordinator {
     func start() {
         let viewController = SearchController.instantiate(delegate: self)
         viewController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
-        router.present(viewController, animated: true, onDismiss: nil)
+        router.present(viewController, animated: true, onDismiss: onDismissAction)
+    }
+    
+    func onDismissAction() {
+        parent?.remove(self)
     }
 }
 

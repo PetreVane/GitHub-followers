@@ -10,4 +10,5 @@ import UIKit
 
 protocol Coordinator: AnyObject {
     var router: NavigationRouter { get set }
+    func onDismissAction()
 }

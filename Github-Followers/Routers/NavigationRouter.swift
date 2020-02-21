@@ -18,7 +18,7 @@ class NavigationRouter: NSObject {
     override init() {
         super.init()
         // sets this class as delegate for UINavigationControllerDelegate; see Extensions
-        //navigationController.delegate = self
+        navigationController.delegate = self
     }
 }
 
@@ -75,5 +75,26 @@ extension NavigationRouter: Router {
         guard let onDismissAction = onDismissForViewController[viewController] else { return }
         onDismissAction()
         onDismissForViewController.removeValue(forKey: viewController)
+    }
+}
+
+
+extension NavigationRouter: UINavigationControllerDelegate {
+    
+    
+    /// Dismisses a viewController when the NavigationController back button is pressed
+    /// - Parameters:
+    ///   - navigationController: navigationController containing the ViewController that is being presented
+    ///   - viewController: ViewController that is about to be dimissed
+    ///   - animated: true if animations are desired
+    /// - establishes which ViewController is being dismissed
+    /// - makes sure the navigationController list of ViewControlled no longer contains the dismissed viewController
+    /// - calls any closures for the dismissed viewController, if any
+    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+        
+        guard let dismissedViewController = navigationController.transitionCoordinator?.viewController(forKey: .from) else { return }
+        guard !navigationController.viewControllers.contains(dismissedViewController) else { return }
+        performOnDismissAction(for: dismissedViewController)
+        print("\(dismissedViewController) has been dismissed")
     }
 }

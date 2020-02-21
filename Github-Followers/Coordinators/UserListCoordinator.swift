@@ -19,7 +19,11 @@ class UserListCoordinator: Coordinator {
     func startUserList(withText text: String) {
         let viewController = UsersListController.instantiate(delegate: self)
         viewController.typedUserName = text
-        router.present(viewController, animated: true, onDismiss: nil)
+        router.present(viewController, animated: true, onDismiss: onDismissAction)
+    }
+    
+    func onDismissAction() {
+        parent?.remove(self)
     }
 }
 

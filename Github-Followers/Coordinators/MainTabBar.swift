@@ -22,8 +22,6 @@ class MainTabBar: UITabBarController {
         super.viewDidLoad()
         mainCoordinator.startSearchCoordinator()
         mainCoordinator.startFavoritesCoordinator()
-//        searchCoordinator.start()
-//        favoritesCoordinator.start()
         
         viewControllers = presentControllers()
     }

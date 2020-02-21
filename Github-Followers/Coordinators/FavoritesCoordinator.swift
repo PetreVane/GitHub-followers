@@ -9,7 +9,7 @@
 import UIKit
 
 class FavoritesCoordinator: NSObject, Coordinator {
-    
+
     var router: NavigationRouter
     var parent: MainCoordinator?
     init(navigationRouter: NavigationRouter) {
@@ -23,7 +23,11 @@ class FavoritesCoordinator: NSObject, Coordinator {
     func start() {
         let viewController = FavoritesController.instantiate(delegate: self)
         viewController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
-        router.present(viewController, animated: true)
+        router.present(viewController, animated: true, onDismiss: onDismissAction)
+    }
+    
+    func onDismissAction() {
+        parent?.remove(self)
     }
 }
 
