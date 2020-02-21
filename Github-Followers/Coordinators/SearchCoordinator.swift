@@ -11,8 +11,7 @@ import UIKit
 class SearchCoordinator: NSObject, Coordinator {
     
     var router: NavigationRouter
-    var childCoordinators = [Coordinator]()
-    
+    var parent: MainCoordinator?
     init(navigationRouter: NavigationRouter) {
         self.router = navigationRouter
     }
@@ -27,6 +26,6 @@ class SearchCoordinator: NSObject, Coordinator {
 extension SearchCoordinator: SearchControllerDelegate {
     
     func searchControllerDidPressSearchButton(_ viewController: SearchController, withText text: String) {
-        print("SearchController delegate called with text: \(text)")
+        parent?.startUserListCoordinator(withText : text)
     }
 }

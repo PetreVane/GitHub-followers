@@ -11,11 +11,9 @@ import UIKit
 class FavoritesCoordinator: NSObject, Coordinator {
     
     var router: NavigationRouter
-    var children = [Coordinator]()
-    
+    var parent: MainCoordinator?
     init(navigationRouter: NavigationRouter) {
         self.router = navigationRouter
-        print("Favorites Coordinator has been initialized")
     }
     
     func printSomething(_ text: String) {
@@ -23,9 +21,9 @@ class FavoritesCoordinator: NSObject, Coordinator {
     }
     
     func start() {
-        let favoritesController = FavoritesController.instantiate(delegate: self)
-        favoritesController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
-        router.present(favoritesController, animated: true)
+        let viewController = FavoritesController.instantiate(delegate: self)
+        viewController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
+        router.present(viewController, animated: true)
     }
 }
 

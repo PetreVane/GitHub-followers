@@ -25,7 +25,6 @@ class SearchController: UIViewController {
 
     init() {
         super.init(nibName: nil, bundle: nil)
-        print("SearchController has been init")
     }
     
     required init?(coder: NSCoder) {
@@ -105,7 +104,7 @@ class SearchController: UIViewController {
         ])
 
         //add target
-        followButton.addTarget(self, action: #selector(pushUserListVC), for: .touchUpInside)
+        followButton.addTarget(self, action: #selector(didPressSearchButton), for: .touchUpInside)
     }
     
     /// Keyboard dissmis
@@ -116,22 +115,18 @@ class SearchController: UIViewController {
         view.addGestureRecognizer(tapGesture)
     }
     
-    @objc func pushUserListVC() {
-       
-        guard isUserNameEntered else { presentAlert(withTitle: "Empty username", message: "Please enter someone's unsername. We need to know who to look for 🧐", buttonTitle: "Dismiss"); return }
-        print("Button pressed")
+    // didPressSearchButton informs its delegate
+    @objc func didPressSearchButton() {
 
-        // test
+        guard isUserNameEntered else { presentAlert(withTitle: "Empty username", message: "Please enter someone's unsername. We need to know who to look for 🧐", buttonTitle: "Dismiss"); return }
+
         if let userTypedText = userNameTextField.text {
             delegate?.searchControllerDidPressSearchButton(self, withText: userTypedText)
         }
-                
-//        let followersVC = UsersListController()
-//        followersVC.typedUserName = userNameTextField.text!
-        
+                        
         // dismisses the keyboard before transition
         self.view.endEditing(true)
-//        userNameTextField.text = nil
+        userNameTextField.text = nil
     }
 }
 
@@ -140,8 +135,7 @@ class SearchController: UIViewController {
 extension SearchController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        pushUserListVC()
+        didPressSearchButton()
         return true
     }
 }
