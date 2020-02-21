@@ -119,7 +119,7 @@ class SearchController: UIViewController {
     @objc func pushUserListVC() {
        
         guard isUserNameEntered else { presentAlert(withTitle: "Empty username", message: "Please enter someone's unsername. We need to know who to look for 🧐", buttonTitle: "Dismiss"); return }
-        print("Buttone pressed")
+        print("Button pressed")
 
         // test
         if let userTypedText = userNameTextField.text {

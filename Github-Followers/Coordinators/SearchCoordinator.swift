@@ -10,24 +10,17 @@ import UIKit
 
 class SearchCoordinator: NSObject, Coordinator {
     
+    var router: NavigationRouter
     var childCoordinators = [Coordinator]()
-    var navigationRouter: NavigationRouter?
     
-    
-//    func printSomething(_ text: String) {
-//        print("SearchCoordinator called with text: \(text)")
-//        let userList = UsersListController()
-//        userList.parentCoordinator = self
-//        userList.typedUserName = text
-//        navigationController.pushViewController(userList, animated: true)
-//    }
-        
+    init(navigationRouter: NavigationRouter) {
+        self.router = navigationRouter
+    }
+            
     func start() {
         let viewController = SearchController.instantiate(delegate: self)
-        viewController.parentCoordinator = self
         viewController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
-        navigationRouter = NavigationRouter(viewController: viewController)
-        navigationRouter?.present(viewController, animated: true, onDismiss: nil)
+        router.present(viewController, animated: true, onDismiss: nil)
     }
 }
 

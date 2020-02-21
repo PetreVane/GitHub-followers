@@ -11,11 +11,11 @@ import UIKit
 
 class MainCoordinator: NSObject, Coordinator {
     
+    var router: NavigationRouter
     var childCoordinators = [Coordinator]()
-    var navigationController: UINavigationController
     
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
+    init(navigationRouter: NavigationRouter) {
+        self.router = navigationRouter
         print("MainCoordinator has been initialized")
     }
     
