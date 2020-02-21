@@ -15,14 +15,26 @@ import UIKit
 /// The MainCoordinator start() method returns an array of navigationControllers, each of them containing a screen
 class MainTabBar: UITabBarController {
     
-    let searchCoordinator = SearchCoordinator(navigationRouter: NavigationRouter())
-    let favoritesCoordinator = FavoritesCoordinator(navigationRouter: NavigationRouter())
+    let mainCoordinator = MainCoordinator(navigationRouter: NavigationRouter())
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchCoordinator.start()
-        favoritesCoordinator.start()
+        mainCoordinator.startSearchCoordinator()
+        mainCoordinator.startFavoritesCoordinator()
+//        searchCoordinator.start()
+//        favoritesCoordinator.start()
         
-        viewControllers = [searchCoordinator.router.navigationController, favoritesCoordinator.router.navigationController]
+        viewControllers = presentControllers()
+    }
+    
+    func presentControllers() -> [UIViewController]? {
+        
+        var viewControllers: [UIViewController]? = []
+        let coordinators = mainCoordinator.childCoordinators
+        for coordinator in coordinators {
+            viewControllers?.append(coordinator.router.navigationController)
+        }
+      return viewControllers
     }
 }
