@@ -16,7 +16,6 @@ class SearchController: UIViewController {
     
      //MARK: - Initialization
     weak var delegate: SearchControllerDelegate?
-    weak var parentCoordinator: SearchCoordinator?
     let logoImageView = UIImageView()
     let userNameTextField = TextField()
     let followButton = CustomButton(backgroundColor: .systemGreen, title: "Show followers")
@@ -154,5 +153,4 @@ extension SearchController {
         viewController.delegate = delegate
         return viewController
     }
-    
 }

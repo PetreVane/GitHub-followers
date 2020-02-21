@@ -11,12 +11,11 @@ import UIKit
 class NavigationRouter: NSObject {
     
     // parent ViewController that will instantiate this class
-    unowned let parentViewController: UIViewController
+    unowned var baseViewController: UIViewController?
     let navigationController = UINavigationController()
     private var onDismissForViewController: [UIViewController: (() -> Void)] = [:]
     
-    init(parentViewController: UIViewController) {
-        self.parentViewController = parentViewController
+    override init() {
         super.init()
         // sets this class as delegate for UINavigationControllerDelegate; see Extensions
         navigationController.delegate = self
@@ -29,19 +28,13 @@ extension NavigationRouter: Router {
         
         // associate the passed in closure with the passed in ViewController
         onDismissForViewController[viewController] = onDismiss
-        
-        if navigationController.viewControllers.count == 0 {
-            
-            presentModally(viewController, animated: animated)
-        } else {
-            // push the viewContolle onto the navigationController stack
-            navigationController.pushViewController(viewController, animated: animated)
-        }
+        // push the viewContolle onto the navigationController stack
+        navigationController.pushViewController(viewController, animated: animated)
     }
     
     func dismiss(animated: Bool) {
         performOnDismissAction(for: navigationController.viewControllers.first!)
-        parentViewController.dismiss(animated: animated, completion: nil)
+        baseViewController?.dismiss(animated: animated, completion: nil)
     }
     
     // MARK: - Private methods
@@ -57,7 +50,7 @@ extension NavigationRouter: Router {
         
         addCancelButton(to: viewController)
         navigationController.setViewControllers([viewController], animated: animated)
-        parentViewController.present(navigationController, animated: animated, completion: nil)
+        baseViewController?.present(navigationController, animated: animated, completion: nil)
     }
     
     /// Adds a navigation bar button item
@@ -69,7 +62,7 @@ extension NavigationRouter: Router {
     /// Triggers an action when a button is pressed
     @objc private func cancelButtonPressed() {
         performOnDismissAction(for: navigationController.viewControllers.first!)
-        parentViewController.dismiss(animated: true, completion: nil)
+        baseViewController?.dismiss(animated: true, completion: nil)
     }
     
     /// Executes a closure when ViewController is dismissed
