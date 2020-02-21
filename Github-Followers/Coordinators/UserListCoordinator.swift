@@ -8,4 +8,25 @@
 
 import UIKit
 
+class UserListCoordinator: Coordinator {
+    
+    var router: NavigationRouter
+    var parent: MainCoordinator?
+    init( navigationRouter: NavigationRouter) {
+        self.router = navigationRouter
+    }
+    
+    func startUserList(withText text: String) {
+        let viewController = UsersListController.instantiate(delegate: self)
+        viewController.typedUserName = text
+        router.present(viewController, animated: true, onDismiss: nil)
+    }
+}
 
+extension UserListCoordinator: UserListControllerDelegate {
+    
+    func userListControllerDidSelectFollower(_ viewController: UsersListController, follower: Follower) {
+        print("UserListCoordinator called for follwer: \(follower.login)")
+    }
+
+}

@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol UserListControllerDelegate: class {
+    func userListControllerDidSelectFollower(_ viewController: UsersListController, follower: Follower)
+}
+
 class UsersListController: UIViewController {
     
  //MARK: - Initialization
@@ -17,6 +21,7 @@ class UsersListController: UIViewController {
         case main
     }
     
+    weak var delegate: UserListControllerDelegate?
     weak var parentCoordinator: SearchCoordinator?
     var typedUserName: String!
     var user: User?
@@ -36,7 +41,6 @@ class UsersListController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        print("USerList Called with text: \(typedUserName)")
         configureNavigationBar()
         configureSearchController()
         configureCollectionView()
@@ -143,9 +147,7 @@ class UsersListController: UIViewController {
     ///
     /// Makes a network request aimed at getting the avatar URL for the given follower
     private func fetchDetails(for follower: String) {
-        
         presentLoadingView()
-        
         networkManager.fetchDetails(for: follower) { [weak self] result in 
             
             guard let self = self else { return }
@@ -194,11 +196,13 @@ extension UsersListController: UICollectionViewDelegate {
         let listOfFollowers = isFilteringActive ? filteredFollowers : unfilteredFollowers
         let tappedFollower = listOfFollowers[indexPath.item]
         
-        let destinationVC = FollowerInfoController()
-        destinationVC.delegate = self
-        destinationVC.gitHubFollower = tappedFollower
-        let navigationController = UINavigationController(rootViewController: destinationVC)
-        present(navigationController, animated: true)
+        delegate?.userListControllerDidSelectFollower(self, follower: tappedFollower)
+        
+//        let destinationVC = FollowerInfoController()
+//        destinationVC.delegate = self
+//        destinationVC.gitHubFollower = tappedFollower
+//        let navigationController = UINavigationController(rootViewController: destinationVC)
+//        present(navigationController, animated: true)
     }
 }
 
@@ -211,7 +215,6 @@ extension UsersListController: UISearchResultsUpdating, UISearchBarDelegate {
         isFilteringActive = true
         filteredFollowers = unfilteredFollowers.filter { $0.login.lowercased().contains(filter) }
         updateData(with: filteredFollowers)
-
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -239,5 +242,13 @@ extension UsersListController: FollowerInfoDelegate {
         updateData(with: unfilteredFollowers)
         fetchFollowers(for: user.login, at: pageNumber)
         self.title = user.login
+    }
+}
+
+extension UsersListController {
+    class func instantiate(delegate: UserListControllerDelegate) -> UsersListController {
+        let viewController = UsersListController()
+        viewController.delegate = delegate
+        return viewController
     }
 }
