@@ -17,7 +17,7 @@ class UserListCoordinator: Coordinator {
     }
     
     func startUserList(withText text: String) {
-        let viewController = UsersListController.instantiate(delegate: self)
+        let viewController = UsersListController.instantiate(parentCoordinator: self)
         viewController.typedUserName = text
         router.present(viewController, animated: true, onDismiss: onDismissAction)
     }
@@ -27,7 +27,7 @@ class UserListCoordinator: Coordinator {
     }
 }
 
-extension UserListCoordinator: UserListControllerDelegate {
+extension UserListCoordinator: UserListCoordinatorDelegate {
     
     func userListControllerDidSelectFollower(_ viewController: UsersListController, follower: Follower) {
         print("UserListCoordinator called for follwer: \(follower.login)")

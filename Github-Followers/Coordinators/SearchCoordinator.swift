@@ -17,7 +17,7 @@ class SearchCoordinator: NSObject, Coordinator {
     }
             
     func start() {
-        let viewController = SearchController.instantiate(delegate: self)
+        let viewController = SearchController.instantiate(parentCoordinator: self)
         viewController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
         router.present(viewController, animated: true, onDismiss: onDismissAction)
     }
@@ -27,7 +27,7 @@ class SearchCoordinator: NSObject, Coordinator {
     }
 }
 
-extension SearchCoordinator: SearchControllerDelegate {
+extension SearchCoordinator: SearchControllerCoordinatorDelegate {
     
     func searchControllerDidPressSearchButton(_ viewController: SearchController, withText text: String) {
         parent?.startUserListCoordinator(withText : text)

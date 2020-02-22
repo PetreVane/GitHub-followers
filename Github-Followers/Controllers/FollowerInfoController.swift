@@ -8,19 +8,25 @@
 
 import UIKit
 
-protocol FollowerInfoDelegate: class {
+protocol FollowerInfoControllerDelegate: class {
     func didRequestFollowers(for user: User)
+}
+
+protocol FollowerInfoCoordinatorDelegate: class {
+    
 }
 
 class FollowerInfoController: UIViewController {
     
+    private weak var coordinator: FollowerInfoCoordinatorDelegate?
+    weak var delegate: FollowerInfoControllerDelegate?
     var gitHubFollower: Follower!
     let networkManager = NetworkManager.sharedInstance
     let headerViewContainer = UIView()
     let repoCardViewContainer = UIView()
     let followersCardViewContainer = UIView()
     let dateLabel = SecondaryTitleLabel(fontSize: 14)
-    weak var delegate: FollowerInfoDelegate?
+    
        
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -38,7 +44,6 @@ class FollowerInfoController: UIViewController {
         fetchDetails(for: gitHubFollower)
     }
     
-    
     /// Adds visual properties to Navigation Bar
     ///
     ///Adds a button to Navigation Bar and setts the background color
@@ -48,7 +53,6 @@ class FollowerInfoController: UIViewController {
         navigationItem.rightBarButtonItem = doneButton
     }
     
-    
     /// Dismisses the current view
     ///
     /// Returns the user back to original screen
@@ -56,7 +60,6 @@ class FollowerInfoController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
-    
     /// Fetches information about a given user
     /// - Parameter follower: GitHub follwer name
     ///
@@ -81,7 +84,6 @@ class FollowerInfoController: UIViewController {
             }
         }
     }
-    
     
     /// Sets constraints for containers (UIView objects)
     ///
@@ -196,3 +198,5 @@ extension FollowerInfoController: FollowersCardDelegate {
         delegate?.didRequestFollowers(for: user)
     }
 }
+
+

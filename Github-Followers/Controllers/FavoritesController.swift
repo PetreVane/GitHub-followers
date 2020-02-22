@@ -16,7 +16,7 @@ class FavoritesController: UIViewController {
 
      //MARK: - Initialization -
     
-    weak var delegate: FavoritesControllerDelegate?
+    private weak var coordinator: FavoritesControllerDelegate?
     let tableView = UITableView()
     
     private let storage = PersistenceManager.sharedInstance
@@ -38,9 +38,9 @@ class FavoritesController: UIViewController {
 
 extension FavoritesController {
     
-    static func instantiate(delegate: FavoritesControllerDelegate) -> FavoritesController {
+    static func instantiate(parentCoordinator: FavoritesControllerDelegate) -> FavoritesController {
         let viewController = FavoritesController()
-        viewController.delegate = delegate
+        viewController.coordinator = parentCoordinator
         return viewController
     }
 }

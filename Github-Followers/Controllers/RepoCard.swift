@@ -8,6 +8,7 @@
 
 import UIKit
 
+// adopted by FollowerInfoController
 protocol RepoCardDelegate: class {
     func didTapProfileButton(forUser user: User)
 }

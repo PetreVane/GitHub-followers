@@ -20,8 +20,9 @@ class FavoritesCoordinator: NSObject, Coordinator {
         print("Called FavoritesCoordinator with text: \(text)")
     }
     
+    // navigationRouter is not passed to controller yet, but it should.
     func start() {
-        let viewController = FavoritesController.instantiate(delegate: self)
+        let viewController = FavoritesController.instantiate(parentCoordinator: self)
         viewController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
         router.present(viewController, animated: true, onDismiss: onDismissAction)
     }

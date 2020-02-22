@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol UserListControllerDelegate: class {
+protocol UserListCoordinatorDelegate: class {
     func userListControllerDidSelectFollower(_ viewController: UsersListController, follower: Follower)
 }
 
@@ -21,8 +21,7 @@ class UsersListController: UIViewController {
         case main
     }
     
-    weak var delegate: UserListControllerDelegate?
-    weak var parentCoordinator: SearchCoordinator?
+    private weak var coordinator: UserListCoordinatorDelegate?
     var typedUserName: String!
     var user: User?
     var unfilteredFollowers: [Follower] = []
@@ -196,8 +195,7 @@ extension UsersListController: UICollectionViewDelegate {
         let listOfFollowers = isFilteringActive ? filteredFollowers : unfilteredFollowers
         let tappedFollower = listOfFollowers[indexPath.item]
         
-        delegate?.userListControllerDidSelectFollower(self, follower: tappedFollower)
-        
+        coordinator?.userListControllerDidSelectFollower(self, follower: tappedFollower)
 //        let destinationVC = FollowerInfoController()
 //        destinationVC.delegate = self
 //        destinationVC.gitHubFollower = tappedFollower
@@ -224,7 +222,7 @@ extension UsersListController: UISearchResultsUpdating, UISearchBarDelegate {
     }
 }
 
-extension UsersListController: FollowerInfoDelegate {
+extension UsersListController: FollowerInfoControllerDelegate {
     
     /// Tells the delegate that the 'Get Followers' button was tapped.
     /// - Parameter user: user instance passed from FollowerInfoController
@@ -246,9 +244,9 @@ extension UsersListController: FollowerInfoDelegate {
 }
 
 extension UsersListController {
-    class func instantiate(delegate: UserListControllerDelegate) -> UsersListController {
+    class func instantiate(parentCoordinator: UserListCoordinatorDelegate) -> UsersListController {
         let viewController = UsersListController()
-        viewController.delegate = delegate
+        viewController.coordinator = parentCoordinator
         return viewController
     }
 }

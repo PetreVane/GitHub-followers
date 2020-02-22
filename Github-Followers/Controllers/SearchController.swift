@@ -8,17 +8,17 @@
 
 import UIKit
 
-protocol SearchControllerDelegate: class {
+protocol SearchControllerCoordinatorDelegate: class {
     func searchControllerDidPressSearchButton(_ viewController: SearchController, withText text: String)
 }
 
 class SearchController: UIViewController {
     
      //MARK: - Initialization
-    weak var delegate: SearchControllerDelegate?
+    private weak var coordinator: SearchControllerCoordinatorDelegate?
     let logoImageView = UIImageView()
     let userNameTextField = TextField()
-    let followButton = CustomButton(backgroundColor: .systemGreen, title: "Show followers")
+    let followButton = CustomButton(backgroundColor: .systemIndigo, title: "Show followers")
     var isUserNameEntered: Bool {
         return userNameTextField.text!.isEmpty ? false : true
     }
@@ -121,7 +121,7 @@ class SearchController: UIViewController {
         guard isUserNameEntered else { presentAlert(withTitle: "Empty username", message: "Please enter someone's unsername. We need to know who to look for 🧐", buttonTitle: "Dismiss"); return }
 
         if let userTypedText = userNameTextField.text {
-            delegate?.searchControllerDidPressSearchButton(self, withText: userTypedText)
+            coordinator?.searchControllerDidPressSearchButton(self, withText: userTypedText)
         }
                         
         // dismisses the keyboard before transition
@@ -142,9 +142,9 @@ extension SearchController: UITextFieldDelegate {
 
 
 extension SearchController {
-    class func instantiate(delegate: SearchControllerDelegate) -> SearchController {
+    class func instantiate(parentCoordinator: SearchControllerCoordinatorDelegate) -> SearchController {
         let viewController = SearchController()
-        viewController.delegate = delegate
+        viewController.coordinator = parentCoordinator
         return viewController
     }
 }
