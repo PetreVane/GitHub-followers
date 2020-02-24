@@ -25,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         
         // init AppDelegateRouter
-        guard let window = window else { print("Window failed"); return }
+        guard let window = window else { return }
         appDelegateRouter = AppDelegateRouter(window: window)
     }
 

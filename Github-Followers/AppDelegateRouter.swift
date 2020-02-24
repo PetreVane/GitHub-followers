@@ -8,6 +8,9 @@
 
 import UIKit
 
+/// Keeps SceneDelegate free from unnecessary responsabilities.
+///
+/// Knows about MainTabBar and how it should be configured.
 class AppDelegateRouter {
     
     let window: UIWindow
