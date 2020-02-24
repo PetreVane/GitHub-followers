@@ -49,16 +49,16 @@ class FollowerInfoController: UIViewController {
     ///Adds a button to Navigation Bar and setts the background color
     private func configureNavigationBar() {
         view.backgroundColor = .systemBackground
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissView))
-        navigationItem.rightBarButtonItem = doneButton
+//        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissView))
+//        navigationItem.leftBarButtonItem = doneButton
     }
-    
+
     /// Dismisses the current view
     ///
     /// Returns the user back to original screen
-   @objc private func dismissView() {
-        dismiss(animated: true, completion: nil)
-    }
+//   @objc private func dismissView() {
+//        dismiss(animated: true, completion: nil)
+//    }
 
     /// Fetches information about a given user
     /// - Parameter follower: GitHub follwer name
@@ -193,10 +193,19 @@ extension FollowerInfoController: FollowersCardDelegate {
     ///
     /// Triggers a chain of actions within UserListController when 'Get Followers' button is tapped within FollowersCard
     func didTapFollowersButton(forUser user: User) {
-        dismissView()
+//        dismissView()
         guard user.followers > 0 else { presentAlert(withTitle: "No followers", message: "This user has no followers yet.", buttonTitle: "Ok, move on"); return }
         delegate?.didRequestFollowers(for: user)
     }
 }
 
+
+extension FollowerInfoController {
+    
+    class func instantiate(parentCoordinator: FollowerInfoCoordinatorDelegate) -> FollowerInfoController {
+        let viewController = FollowerInfoController()
+        viewController.coordinator = parentCoordinator
+        return viewController
+    }
+}
 
