@@ -194,13 +194,7 @@ extension UsersListController: UICollectionViewDelegate {
         
         let listOfFollowers = isFilteringActive ? filteredFollowers : unfilteredFollowers
         let tappedFollower = listOfFollowers[indexPath.item]
-        
         coordinator?.userListControllerDidSelectFollower(self, follower: tappedFollower)
-//        let destinationVC = FollowerInfoController()
-//        destinationVC.delegate = self
-//        destinationVC.gitHubFollower = tappedFollower
-//        let navigationController = UINavigationController(rootViewController: destinationVC)
-//        present(navigationController, animated: true)
     }
 }
 
