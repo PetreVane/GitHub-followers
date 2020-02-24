@@ -101,6 +101,5 @@ extension NavigationRouter: UINavigationControllerDelegate {
         guard let dismissedViewController = navigationController.transitionCoordinator?.viewController(forKey: .from) else { return }
         guard !navigationController.viewControllers.contains(dismissedViewController) else { return }
         performOnDismissAction(for: dismissedViewController)
-        print("\(dismissedViewController) has been dismissed")
     }
 }
