@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol UserListCoordinatorDelegate: class {
+    func userListControllerDidSelectFollower(_ viewController: UsersListController, follower: Follower)
+}
+
 class UsersListController: UIViewController {
     
  //MARK: - Initialization
@@ -17,6 +21,7 @@ class UsersListController: UIViewController {
         case main
     }
     
+    private weak var coordinator: UserListCoordinatorDelegate?
     var typedUserName: String!
     var user: User?
     var unfilteredFollowers: [Follower] = []
@@ -141,9 +146,7 @@ class UsersListController: UIViewController {
     ///
     /// Makes a network request aimed at getting the avatar URL for the given follower
     private func fetchDetails(for follower: String) {
-        
         presentLoadingView()
-        
         networkManager.fetchDetails(for: follower) { [weak self] result in 
             
             guard let self = self else { return }
@@ -191,12 +194,7 @@ extension UsersListController: UICollectionViewDelegate {
         
         let listOfFollowers = isFilteringActive ? filteredFollowers : unfilteredFollowers
         let tappedFollower = listOfFollowers[indexPath.item]
-        
-        let destinationVC = FollowerInfoController()
-        destinationVC.delegate = self
-        destinationVC.gitHubFollower = tappedFollower
-        let navigationController = UINavigationController(rootViewController: destinationVC)
-        present(navigationController, animated: true)
+        coordinator?.userListControllerDidSelectFollower(self, follower: tappedFollower)
     }
 }
 
@@ -209,7 +207,6 @@ extension UsersListController: UISearchResultsUpdating, UISearchBarDelegate {
         isFilteringActive = true
         filteredFollowers = unfilteredFollowers.filter { $0.login.lowercased().contains(filter) }
         updateData(with: filteredFollowers)
-
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -219,7 +216,7 @@ extension UsersListController: UISearchResultsUpdating, UISearchBarDelegate {
     }
 }
 
-extension UsersListController: FollowerInfoDelegate {
+extension UsersListController: FollowerInfoControllerDelegate {
     
     /// Tells the delegate that the 'Get Followers' button was tapped.
     /// - Parameter user: user instance passed from FollowerInfoController
@@ -237,5 +234,13 @@ extension UsersListController: FollowerInfoDelegate {
         updateData(with: unfilteredFollowers)
         fetchFollowers(for: user.login, at: pageNumber)
         self.title = user.login
+    }
+}
+
+extension UsersListController {
+    class func instantiate(parentCoordinator: UserListCoordinatorDelegate) -> UsersListController {
+        let viewController = UsersListController()
+        viewController.coordinator = parentCoordinator
+        return viewController
     }
 }

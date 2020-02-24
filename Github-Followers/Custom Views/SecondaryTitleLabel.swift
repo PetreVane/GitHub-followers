@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Custom UILabel subclass
 class SecondaryTitleLabel: UILabel {
 
     override init(frame: CGRect) {

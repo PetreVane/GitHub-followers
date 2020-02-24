@@ -8,20 +8,33 @@
 
 import UIKit
 
+protocol SearchControllerCoordinatorDelegate: class {
+    func searchControllerDidPressSearchButton(_ viewController: SearchController, withText text: String)
+}
+
 class SearchController: UIViewController {
     
      //MARK: - Initialization
-    
+    private weak var coordinator: SearchControllerCoordinatorDelegate?
     let logoImageView = UIImageView()
     let userNameTextField = TextField()
-    let followButton = CustomButton(backgroundColor: .systemGreen, title: "Show followers")
+    let followButton = CustomButton(backgroundColor: .systemIndigo, title: "Show followers")
     var isUserNameEntered: Bool {
         return userNameTextField.text!.isEmpty ? false : true
     }
 
+    init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         // Do any additional setup after loading the view.
         view.backgroundColor = .systemBackground
         configureLogoView()
@@ -38,7 +51,6 @@ class SearchController: UIViewController {
         super.viewWillAppear(animated)
         
         navigationController?.setNavigationBarHidden(true, animated: true)
-
     }
     
      //MARK: - Logo View
@@ -92,7 +104,7 @@ class SearchController: UIViewController {
         ])
 
         //add target
-        followButton.addTarget(self, action: #selector(pushUserListVC), for: .touchUpInside)
+        followButton.addTarget(self, action: #selector(didPressSearchButton), for: .touchUpInside)
     }
     
     /// Keyboard dissmis
@@ -103,13 +115,15 @@ class SearchController: UIViewController {
         view.addGestureRecognizer(tapGesture)
     }
     
-    @objc func pushUserListVC() {
-       
+    // didPressSearchButton informs its delegate
+    @objc func didPressSearchButton() {
+
         guard isUserNameEntered else { presentAlert(withTitle: "Empty username", message: "Please enter someone's unsername. We need to know who to look for 🧐", buttonTitle: "Dismiss"); return }
-        let followersVC = UsersListController()
-        followersVC.typedUserName = userNameTextField.text!
-        navigationController?.pushViewController(followersVC, animated: true)
-        
+
+        if let userTypedText = userNameTextField.text {
+            coordinator?.searchControllerDidPressSearchButton(self, withText: userTypedText)
+        }
+                        
         // dismisses the keyboard before transition
         self.view.endEditing(true)
         userNameTextField.text = nil
@@ -121,9 +135,16 @@ class SearchController: UIViewController {
 extension SearchController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        pushUserListVC()
+        didPressSearchButton()
         return true
     }
+}
 
+
+extension SearchController {
+    class func instantiate(parentCoordinator: SearchControllerCoordinatorDelegate) -> SearchController {
+        let viewController = SearchController()
+        viewController.coordinator = parentCoordinator
+        return viewController
+    }
 }

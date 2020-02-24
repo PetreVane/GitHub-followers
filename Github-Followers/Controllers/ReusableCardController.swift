@@ -8,6 +8,10 @@
 
 import UIKit
 
+/// Card like ViewController presented by FollowerInfoController
+///
+/// This card like viewController is presented by FollowerInfoController, when user taps a follower cell.
+/// It contains two views, positioned on top left & top right of the view, plus a button, positioned at the bottom of the ViewController.
 class ReusableCardController: UIViewController {
     
     let stackView = UIStackView()

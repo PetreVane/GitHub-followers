@@ -8,11 +8,15 @@
 
 import UIKit
 
+protocol FavoritesControllerDelegate: class {
+    
+}
+
 class FavoritesController: UIViewController {
 
      //MARK: - Initialization -
     
-    
+    private weak var coordinator: FavoritesControllerDelegate?
     let tableView = UITableView()
     
     private let storage = PersistenceManager.sharedInstance
@@ -21,12 +25,22 @@ class FavoritesController: UIViewController {
 
         // Do any additional setup after loading the view.
         view.backgroundColor = .systemTeal
-        fetchFavorites()
+//        fetchFavorites()
     }
     
 
     func fetchFavorites() {
        let favorites = storage.retrieveFavorites()
         print(favorites)
+    }
+}
+
+
+extension FavoritesController {
+    
+    static func instantiate(parentCoordinator: FavoritesControllerDelegate) -> FavoritesController {
+        let viewController = FavoritesController()
+        viewController.coordinator = parentCoordinator
+        return viewController
     }
 }

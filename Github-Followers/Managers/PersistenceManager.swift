@@ -16,6 +16,7 @@ enum PersistenceUpdateType {
 
 struct PersistenceManager {
     
+    /// Simple key, to avoid typos
     enum Keys {
         static let favorites = "favorites"
     }

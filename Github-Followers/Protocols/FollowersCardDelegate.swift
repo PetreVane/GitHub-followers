@@ -7,8 +7,11 @@
 //
 
 import Foundation
+<<<<<<< HEAD
 
 // Adopted by FollowerInfoController (extension)
 protocol FollowersCardDelegate: class {
     func didTapFollowersButton(forUser user: User)
 }
+=======
+>>>>>>> implementCoordinators

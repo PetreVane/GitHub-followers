@@ -15,6 +15,9 @@ enum ContentType {
     case following
 }
 
+/// UIView containing 2 labels and 1 symbol
+///
+/// Instances of this view are owned by ReusableCardController subclasses, such as the RepoCard.
 class ReusableCardView: UIView {
     
     let symbolImage = UIImageView()

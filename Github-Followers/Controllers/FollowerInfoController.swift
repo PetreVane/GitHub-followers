@@ -8,15 +8,26 @@
 
 import UIKit
 
+// adopted by UserListController (extension)
+protocol FollowerInfoControllerDelegate: class {
+    func didRequestFollowers(for user: User)
+}
+
+protocol FollowerInfoCoordinatorDelegate: class {
+    func dismissView()
+}
+
 class FollowerInfoController: UIViewController {
     
+    private weak var coordinator: FollowerInfoCoordinatorDelegate?
+    weak var delegate: FollowerInfoControllerDelegate?
     var gitHubFollower: Follower!
     let networkManager = NetworkManager.sharedInstance
     let headerViewContainer = UIView()
     let repoCardViewContainer = UIView()
     let followersCardViewContainer = UIView()
     let dateLabel = SecondaryTitleLabel(fontSize: 14)
-    weak var delegate: FollowerInfoDelegate?
+    
        
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -28,31 +39,13 @@ class FollowerInfoController: UIViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .systemBackground
 
-        configureNavigationBar()
         configureCustomViews()
         fetchDetails(for: gitHubFollower)
     }
     
-    
-    /// Adds visual properties to Navigation Bar
-    ///
-    ///Adds a button to Navigation Bar and setts the background color
-    private func configureNavigationBar() {
-        view.backgroundColor = .systemBackground
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissView))
-        navigationItem.rightBarButtonItem = doneButton
-    }
-    
-    
-    /// Dismisses the current view
-    ///
-    /// Returns the user back to original screen
-   @objc private func dismissView() {
-        dismiss(animated: true, completion: nil)
-    }
 
-    
     /// Fetches information about a given user
     /// - Parameter follower: GitHub follwer name
     ///
@@ -77,7 +70,6 @@ class FollowerInfoController: UIViewController {
             }
         }
     }
-    
     
     /// Sets constraints for containers (UIView objects)
     ///
@@ -187,8 +179,19 @@ extension FollowerInfoController: FollowersCardDelegate {
     ///
     /// Triggers a chain of actions within UserListController when 'Get Followers' button is tapped within FollowersCard
     func didTapFollowersButton(forUser user: User) {
-        dismissView()
+        coordinator?.dismissView()
         guard user.followers > 0 else { presentAlert(withTitle: "No followers", message: "This user has no followers yet.", buttonTitle: "Ok, move on"); return }
         delegate?.didRequestFollowers(for: user)
     }
 }
+
+
+extension FollowerInfoController {
+    
+    class func instantiate(parentCoordinator: FollowerInfoCoordinatorDelegate) -> FollowerInfoController {
+        let viewController = FollowerInfoController()
+        viewController.coordinator = parentCoordinator
+        return viewController
+    }
+}
+

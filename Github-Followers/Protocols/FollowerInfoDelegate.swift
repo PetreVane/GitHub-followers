@@ -8,7 +8,10 @@
 
 import Foundation
 
+<<<<<<< HEAD
 // Adopted by UsersListController() (extension)
 protocol FollowerInfoDelegate: class {
     func didRequestFollowers(for user: User)
 }
+=======
+>>>>>>> implementCoordinators

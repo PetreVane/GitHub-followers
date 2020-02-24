@@ -8,6 +8,12 @@
 
 import UIKit
 
+// adopted by FollowerInfoController
+protocol FollowersCardDelegate: class {
+    func didTapFollowersButton(forUser user: User)
+}
+
+/// Concrete implementation / configuration of views inherited from ReusableCardController
 class FollowersCard: ReusableCardController {
     
     weak var delegate: FollowersCardDelegate?

@@ -92,7 +92,7 @@ extension UIViewController {
         guard let url = URL(string: stringURL) else { presentAlert(withTitle: "Ops, an error", message: "The url you're trying to open is invalid", buttonTitle: "Ok"); return }
         
         let safariVC = SFSafariViewController(url: url)
-        safariVC.preferredControlTintColor = .systemGreen
+        safariVC.preferredControlTintColor = .systemIndigo
         present(safariVC, animated: true)
     }
 }
