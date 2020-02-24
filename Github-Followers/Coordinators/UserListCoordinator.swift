@@ -20,6 +20,10 @@ class UserListCoordinator: Coordinator {
         self.router = navigationRouter
     }
     
+    /// Starts UserList view controller and sets itself as coordinator / delegate
+    /// - Parameter text: text passed in from SearchController textField
+    ///
+    /// Also, sets itself as coordinator / delegate of UserList view controller. See extension.
     func startUserList(withText text: String) {
         let viewController = UsersListController.instantiate(parentCoordinator: self)
         viewController.typedUserName = text
@@ -33,6 +37,7 @@ class UserListCoordinator: Coordinator {
         router.present(viewController, animated: true, onDismiss: onDismissAction)
     }
     
+    /// Asks MainCoordinator (parent coordinator) to remove self from childCoordinator list.
     func onDismissAction() {
         parent?.remove(self)
     }
@@ -40,6 +45,10 @@ class UserListCoordinator: Coordinator {
 
 extension UserListCoordinator: UserListCoordinatorDelegate {
     
+    /// Sets itself as delegate for UserList view controller
+    /// - Parameters:
+    ///   - viewController: view controller informing its delegate that a cell has been pressed
+    ///   - follower: follower cell presed by user
     func userListControllerDidSelectFollower(_ viewController: UsersListController, follower: Follower) {
         parent?.startFollowerInfoCoordinator(forFollower: follower)
     }

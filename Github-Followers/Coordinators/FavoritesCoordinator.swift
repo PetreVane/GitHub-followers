@@ -19,9 +19,6 @@ class FavoritesCoordinator: NSObject, Coordinator {
         self.router = navigationRouter
     }
     
-    func printSomething(_ text: String) {
-        print("Called FavoritesCoordinator with text: \(text)")
-    }
     
     // navigationRouter is not passed to controller yet, but it should.
     func start() {

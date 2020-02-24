@@ -19,6 +19,7 @@ class MainCoordinator: NSObject, Coordinator {
     var childCoordinators = [Coordinator]()
     
     
+    /// Starts Search view controller coordinator
     func startSearchCoordinator() {
         
         let searchCoordinator = SearchCoordinator(navigationRouter: router as! NavigationRouter)
@@ -27,6 +28,7 @@ class MainCoordinator: NSObject, Coordinator {
         childCoordinators.append(searchCoordinator)
     }
     
+    /// Starts Favorites view controller coordinator
     func startFavoritesCoordinator() {
         let favoritesRouter = NavigationRouter()
         let favoritesCoordinator = FavoritesCoordinator(navigationRouter: favoritesRouter)
@@ -35,6 +37,8 @@ class MainCoordinator: NSObject, Coordinator {
         childCoordinators.append(favoritesCoordinator)
     }
     
+    /// Starts UserList view controller coordinator
+    /// - Parameter text: user typed text, contained by Search Controller textField
     func startUserListCoordinator(withText text: String) {
         
         let userListCoordinator = UserListCoordinator(navigationRouter: router as! NavigationRouter)
@@ -43,6 +47,8 @@ class MainCoordinator: NSObject, Coordinator {
         userListCoordinator.startUserList(withText: text)
     }
     
+    /// Starts FollowerInfo view controller coordinator
+    /// - Parameter follower: user selected follower cell
     func startFollowerInfoCoordinator(forFollower follower: Follower) {
         
         let followerInfoCoordinator = FollowerInfoCoordinator(navigationRouter: presenter)
@@ -51,6 +57,8 @@ class MainCoordinator: NSObject, Coordinator {
         followerInfoCoordinator.presentController(forFollower: follower)
     }
     
+    /// Removes child coordinator from childCoordinator array
+    /// - Parameter coordinator: child coordinator that should be removed
     func remove(_ coordinator: Coordinator) {
         for (index, child) in childCoordinators.enumerated() {
             if coordinator === child {
@@ -63,6 +71,8 @@ class MainCoordinator: NSObject, Coordinator {
         // does nothing; tabBar owns the MainCoordinator
     }
     
+    /// Sets the UserList view controller as delegate for FollowerInfo view controller
+    /// - Parameter viewController: FollowerInfo view controller reference
     func setFollowerInfoDelegate(_ viewController: FollowerInfoController) {
         viewController.delegate = router.navigationController.viewControllers.last as? FollowerInfoControllerDelegate
     }
