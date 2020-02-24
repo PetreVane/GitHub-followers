@@ -28,8 +28,14 @@ extension NavigationRouter: Router {
         
         // associate the passed in closure with the passed in ViewController
         onDismissForViewController[viewController] = onDismiss
-        // push the viewContolle onto the navigationController stack
-        navigationController.pushViewController(viewController, animated: animated)
+        
+        // calls presentModally, if there is a new instance of NavigationRouter, which has the 'baseViewController' set.
+        if baseViewController != nil {
+            presentModally(viewController, animated: true)
+        } else {
+             // else push the viewContolle onto the navigationController stack
+            navigationController.pushViewController(viewController, animated: true)
+        }               
     }
     
     func dismiss(animated: Bool) {
@@ -46,7 +52,7 @@ extension NavigationRouter: Router {
     /// - adds a button (calls a method to add a button)
     /// - sets the viewController into navigationController's list of viewControllers
     /// - calls the present method of the parentVC and passes in the navigationController containg the ViewController
-    private func presentModally( _ viewController: UIViewController, animated: Bool) {
+    func presentModally( _ viewController: UIViewController, animated: Bool) {
         
         addCancelButton(to: viewController)
         navigationController.setViewControllers([viewController], animated: animated)
@@ -56,7 +62,7 @@ extension NavigationRouter: Router {
     /// Adds a navigation bar button item
     /// - Parameter viewController: viewController that contains the button
     private func addCancelButton(to viewController: UIViewController) {
-        viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonPressed))
+        viewController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonPressed))
     }
     
     /// Triggers an action when a button is pressed

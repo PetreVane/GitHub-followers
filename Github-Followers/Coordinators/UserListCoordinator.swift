@@ -19,6 +19,12 @@ class UserListCoordinator: Coordinator {
     func startUserList(withText text: String) {
         let viewController = UsersListController.instantiate(parentCoordinator: self)
         viewController.typedUserName = text
+        /*
+            Sets UsersListController as the starting / presenter ViewController in a new NavigationRouter object, belonging to MainCoordinator.
+            This happens because the router which presents the UserListController, cannot present another ViewController modally.
+            And the FollowerInfoViewController should be presented modally.
+         */
+        parent?.presenter.baseViewController = viewController
         router.present(viewController, animated: true, onDismiss: onDismissAction)
     }
     
@@ -30,7 +36,6 @@ class UserListCoordinator: Coordinator {
 extension UserListCoordinator: UserListCoordinatorDelegate {
     
     func userListControllerDidSelectFollower(_ viewController: UsersListController, follower: Follower) {
-        print("UserListCoordinator called for follwer: \(follower.login)")
+        parent?.startFollowerInfoCoordinator(forFollower: follower)
     }
-
 }
