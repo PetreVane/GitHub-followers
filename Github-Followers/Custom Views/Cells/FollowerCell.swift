@@ -34,9 +34,7 @@ class FollowerCell: UICollectionViewCell {
         // checks if the image already exists in cache
         if let cachedImage = cacheManager.retrieveImage(withIdentifier: follower.avatarURL) {
 
-            DispatchQueue.main.async { self.cellImage.image = cachedImage }
-//            print("Avatar fetched from cache")
-            return
+            DispatchQueue.main.async { self.cellImage.image = cachedImage }; return
         }
         
         // if there is no image in cache, proceeds with fetching the image from the network
@@ -47,10 +45,10 @@ class FollowerCell: UICollectionViewCell {
             
             // saves image to cache
             self.cacheManager.saveImage(withIdentifier: follower.avatarURL, image: image)
-//            print("Avatar saved to cache")
         }
     }
     
+    /// Sets cellImage & userNameLabel constraints
     private func configure() {
         
         self.addSubview(cellImage)
