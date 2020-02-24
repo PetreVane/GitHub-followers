@@ -13,15 +13,15 @@ import UIKit
 ///
 ///  It knows how to create concrete child coordinators and the order in which view controllers should be displayed.
 class MainCoordinator: NSObject, Coordinator {
-
-    var router = NavigationRouter()
+   
+    var router: Router = NavigationRouter()
     var presenter = NavigationRouter()
     var childCoordinators = [Coordinator]()
     
     
     func startSearchCoordinator() {
         
-        let searchCoordinator = SearchCoordinator(navigationRouter: router)
+        let searchCoordinator = SearchCoordinator(navigationRouter: router as! NavigationRouter)
         searchCoordinator.parent = self
         searchCoordinator.start()
         childCoordinators.append(searchCoordinator)
@@ -37,7 +37,7 @@ class MainCoordinator: NSObject, Coordinator {
     
     func startUserListCoordinator(withText text: String) {
         
-        let userListCoordinator = UserListCoordinator(navigationRouter: router)
+        let userListCoordinator = UserListCoordinator(navigationRouter: router as! NavigationRouter)
         userListCoordinator.parent = self
         childCoordinators.append(userListCoordinator)
         userListCoordinator.startUserList(withText: text)

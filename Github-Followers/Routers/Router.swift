@@ -12,6 +12,8 @@ import UIKit
 /// Defines methods all concrete routers must implement
 protocol Router: class {
     
+    var navigationController: UINavigationController { get set }
+    
     /// Presents a viewController
      /// - Parameters:
      ///   - viewController: ViewController that should be presented

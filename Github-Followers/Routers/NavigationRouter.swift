@@ -12,7 +12,7 @@ class NavigationRouter: NSObject {
     
     // base ViewController used by presetModally()
     unowned var baseViewController: UIViewController?
-    let navigationController = UINavigationController()
+    var navigationController = UINavigationController()
     private var onDismissForViewController: [UIViewController: (() -> Void)] = [:]
     
     override init() {

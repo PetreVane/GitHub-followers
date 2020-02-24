@@ -14,7 +14,7 @@ import UIKit
 /// It knows how to create concrete view controllers and sets itself as delegate for its viewController.
 class FollowerInfoCoordinator: Coordinator {
     
-    var router: NavigationRouter
+    var router: Router
     weak var parent: MainCoordinator?
     
     init(navigationRouter: NavigationRouter) {
