@@ -16,31 +16,39 @@ class FavoritesController: UIViewController {
 
      //MARK: - Initialization -
     
-    private weak var coordinator: FavoritesControllerDelegate?
+    private weak var delegate: FavoritesControllerDelegate?
+    weak var coordinator: FavoritesCoordinator?
     let tableView = UITableView()
+    private let userDefaults = PersistenceManager.sharedInstance
     
-    private let storage = PersistenceManager.sharedInstance
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        view.backgroundColor = .systemTeal
-//        fetchFavorites()
+        
+        
     }
     
+    private func configureView() {
+        view.backgroundColor = .systemBackground
+        title = "Favorites"
+        coordinator?.setNavigationBarLargeTitle()
+        
+    }
 
     func fetchFavorites() {
-       let favorites = storage.retrieveFavorites()
-        print(favorites)
+        let favorites = userDefaults.retrieveFavorites()
+        
     }
 }
 
 
 extension FavoritesController {
     
-    static func instantiate(parentCoordinator: FavoritesControllerDelegate) -> FavoritesController {
+    static func instantiate(delegate: FavoritesControllerDelegate) -> FavoritesController {
         let viewController = FavoritesController()
-        viewController.coordinator = parentCoordinator
+        viewController.delegate = delegate
         return viewController
     }
 }

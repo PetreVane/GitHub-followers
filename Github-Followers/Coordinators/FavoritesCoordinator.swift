@@ -22,13 +22,18 @@ class FavoritesCoordinator: NSObject, Coordinator {
     
     // navigationRouter is not passed to controller yet, but it should.
     func start() {
-        let viewController = FavoritesController.instantiate(parentCoordinator: self)
+        let viewController = FavoritesController.instantiate(delegate: self)
+        viewController.coordinator = self
         viewController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
         router.present(viewController, animated: true, onDismiss: onDismissAction)
     }
     
     func onDismissAction() {
         parent?.remove(self)
+    }
+    
+    func setNavigationBarLargeTitle() {
+        router.navigationController.navigationBar.prefersLargeTitles = true
     }
 }
 
