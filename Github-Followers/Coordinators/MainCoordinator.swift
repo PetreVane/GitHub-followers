@@ -59,5 +59,10 @@ class MainCoordinator: NSObject, Coordinator {
     func onDismissAction() {
         // does nothing; tabBar owns the MainCoordinator
     }
+    
+    func setFollowerInfoDelegate(_ viewController: FollowerInfoController) {
+        viewController.delegate = router.navigationController.viewControllers.last as? FollowerInfoControllerDelegate
+    }
+    
 }
 

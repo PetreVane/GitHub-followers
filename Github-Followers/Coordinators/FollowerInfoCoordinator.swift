@@ -19,17 +19,23 @@ class FollowerInfoCoordinator: Coordinator {
     }
     
     func presentController(forFollower follower: Follower) {
-        print("FollowerInfoCoordinator called for follwer: \(follower.login)")
         let followerInfoController = FollowerInfoController.instantiate(parentCoordinator: self)
         followerInfoController.gitHubFollower = follower
         router.present(followerInfoController, animated: true, onDismiss: onDismissAction)
+        didStartController(followerInfoController)
     }
-    
+        
     func onDismissAction() {
         parent?.remove(self)
+    }
+    
+    func didStartController(_ viewController: FollowerInfoController) {
+        parent?.setFollowerInfoDelegate(viewController)
     }
 }
 
 extension FollowerInfoCoordinator: FollowerInfoCoordinatorDelegate {
-    
+    func dismissView() {
+         router.dismiss(animated: true)
+    }
 }
