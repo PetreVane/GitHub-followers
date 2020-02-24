@@ -11,14 +11,10 @@ import UIKit
 
 class MainCoordinator: NSObject, Coordinator {
 
-    var router: NavigationRouter
+    var router = NavigationRouter()
     var presenter = NavigationRouter()
     var childCoordinators = [Coordinator]()
     
-    init(navigationRouter: NavigationRouter) {
-        self.router = navigationRouter
-        super.init()
-    }
     
     func startSearchCoordinator() {
         
@@ -29,14 +25,15 @@ class MainCoordinator: NSObject, Coordinator {
     }
     
     func startFavoritesCoordinator() {
-        
-        let favoritesCoordinator = FavoritesCoordinator(navigationRouter: NavigationRouter())
+        let favoritesRouter = NavigationRouter()
+        let favoritesCoordinator = FavoritesCoordinator(navigationRouter: favoritesRouter)
         favoritesCoordinator.parent = self
         favoritesCoordinator.start()
         childCoordinators.append(favoritesCoordinator)
     }
     
     func startUserListCoordinator(withText text: String) {
+        
         let userListCoordinator = UserListCoordinator(navigationRouter: router)
         userListCoordinator.parent = self
         childCoordinators.append(userListCoordinator)
