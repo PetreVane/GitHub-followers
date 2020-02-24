@@ -8,12 +8,13 @@
 
 import UIKit
 
+// adopted by UserListController (extension)
 protocol FollowerInfoControllerDelegate: class {
     func didRequestFollowers(for user: User)
 }
 
 protocol FollowerInfoCoordinatorDelegate: class {
-    
+    func dismissView()
 }
 
 class FollowerInfoController: UIViewController {
@@ -38,27 +39,12 @@ class FollowerInfoController: UIViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .systemBackground
 
-        configureNavigationBar()
         configureCustomViews()
         fetchDetails(for: gitHubFollower)
     }
     
-    /// Adds visual properties to Navigation Bar
-    ///
-    ///Adds a button to Navigation Bar and setts the background color
-    private func configureNavigationBar() {
-        view.backgroundColor = .systemBackground
-//        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissView))
-//        navigationItem.leftBarButtonItem = doneButton
-    }
-
-    /// Dismisses the current view
-    ///
-    /// Returns the user back to original screen
-//   @objc private func dismissView() {
-//        dismiss(animated: true, completion: nil)
-//    }
 
     /// Fetches information about a given user
     /// - Parameter follower: GitHub follwer name
@@ -193,7 +179,7 @@ extension FollowerInfoController: FollowersCardDelegate {
     ///
     /// Triggers a chain of actions within UserListController when 'Get Followers' button is tapped within FollowersCard
     func didTapFollowersButton(forUser user: User) {
-//        dismissView()
+        coordinator?.dismissView()
         guard user.followers > 0 else { presentAlert(withTitle: "No followers", message: "This user has no followers yet.", buttonTitle: "Ok, move on"); return }
         delegate?.didRequestFollowers(for: user)
     }
