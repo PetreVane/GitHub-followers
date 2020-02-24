@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// GitHub user decoding model. More detailed than "Follower"
 struct User: Codable {
     
     let login: String

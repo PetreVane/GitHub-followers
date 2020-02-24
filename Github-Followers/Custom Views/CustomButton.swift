@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Custom UIButton subclass
 class CustomButton: UIButton {
 
      //MARK: - Initialization

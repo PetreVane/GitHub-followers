@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Custom UICollectionViewCell subclass, owned by UserListController collectionView
 class FollowerCell: UICollectionViewCell {
     
     static let reuseIdentifier = "followerCell"

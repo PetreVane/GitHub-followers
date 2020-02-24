@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// GitHub follower decoding model
 struct Follower: Codable, Hashable {
     
     let login: String

@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Custom UILabel subclass
 class TitleLabel: UILabel {
 
      //MARK: - Initialization

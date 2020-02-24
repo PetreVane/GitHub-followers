@@ -8,6 +8,7 @@
 
 import UIKit
 
+///  Defines the methods and properties all concrete coordinators must implement
 protocol Coordinator: AnyObject {
     var router: NavigationRouter { get set }
     func onDismissAction()

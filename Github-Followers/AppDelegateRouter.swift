@@ -28,7 +28,7 @@ class AppDelegateRouter {
         configureNavigationBar()
     }
     
-     /// Init a TabBar controller & sets a general color
+     /// Instantiates a TabBar controller & sets a general color
     func initTabBar() -> UITabBarController {
         
         let tabBar = MainTabBar()

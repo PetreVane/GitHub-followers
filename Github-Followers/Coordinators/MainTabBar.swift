@@ -11,8 +11,9 @@ import UIKit
 
 /// Creates a tabBar object
 ///
-/// Creates a new TabBar object, which contains a reference to MainCoordinator.
-/// The MainCoordinator start() method returns an array of navigationControllers, each of them containing a screen
+/// - Creates a new TabBar object, which contains a reference to MainCoordinator.
+/// - The MainCoordinator starts 2 coordinators, and each of them starts a ViewController, embeded in its own navigation controller.
+/// - The MainTabBar owns those navigationControllers.
 class MainTabBar: UITabBarController {
     
     let mainCoordinator = MainCoordinator()
@@ -26,11 +27,14 @@ class MainTabBar: UITabBarController {
         viewControllers = presentTabbedControllers()
     }
     
+    /// Adds 2 navigationControllers to TabBar 'viewControllers' list.
+    ///
+    /// Each of those navigationControllers contains a ViewController that gets displayed by MainTabBar.
     func presentTabbedControllers() -> [UIViewController]? {
         
         var viewControllers: [UIViewController]? = []
-        let coordinators = mainCoordinator.childCoordinators
-        for coordinator in coordinators {
+        let childCoordinators = mainCoordinator.childCoordinators
+        for coordinator in childCoordinators {
             viewControllers?.append(coordinator.router.navigationController)
         }
       return viewControllers

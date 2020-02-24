@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Custom UITextField subclass
 class TextField: UITextField {
 
      //MARK: - Initialization

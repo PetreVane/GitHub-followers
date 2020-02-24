@@ -8,6 +8,10 @@
 
 import UIKit
 
+/// Card like ViewController presented by FollowerInfoController
+///
+/// This card like ViewController is presented by FollowerInfoController when the user taps a follower cell.
+/// Similarly to ReusableCardView, this header view contains a rounded image and several labels.
 class HeaderCard: UIViewController {
 
     let followerImageView = AvatarImageView(frame: .zero)

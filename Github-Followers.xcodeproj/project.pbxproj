@@ -14,7 +14,6 @@
 		0B04D0AF23F5AB430055A6E8 /* FollowerInfoCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B04D0AE23F5AB430055A6E8 /* FollowerInfoCoordinator.swift */; };
 		0B0B227023DC7F9C000C0785 /* HeaderCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0B226F23DC7F9C000C0785 /* HeaderCard.swift */; };
 		0B0B227223DC8100000C0785 /* SecondaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0B227123DC8100000C0785 /* SecondaryTitleLabel.swift */; };
-		0B0B227423DC8E0C000C0785 /* UIView+constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0B227323DC8E0C000C0785 /* UIView+constraints.swift */; };
 		0B16555A23D615D100ED5979 /* EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B16555923D615D100ED5979 /* EmptyState.swift */; };
 		0B2899F523BE3B8C002D84F8 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2899F423BE3B8C002D84F8 /* SearchController.swift */; };
 		0B2899F723BE3BD0002D84F8 /* FavoritesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2899F623BE3BD0002D84F8 /* FavoritesController.swift */; };
@@ -35,7 +34,6 @@
 		0B8A74BF23C7BEF200179F89 /* FollowerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8A74BE23C7BEF200179F89 /* FollowerCell.swift */; };
 		0B8A74C123C7C4E700179F89 /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8A74C023C7C4E700179F89 /* AvatarImageView.swift */; };
 		0B975F0523EAFA92005B3588 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B975F0423EAFA92005B3588 /* PersistenceManager.swift */; };
-		0B975F0723EAFB70005B3588 /* FileManager+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B975F0623EAFB70005B3588 /* FileManager+Ext.swift */; };
 		0BA35A1C23FEB83200B97706 /* AppDelegateRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA35A1B23FEB83200B97706 /* AppDelegateRouter.swift */; };
 		0BA35A1F23FEC23500B97706 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA35A1E23FEC23500B97706 /* Router.swift */; };
 		0BA35A2123FEC24500B97706 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA35A2023FEC24500B97706 /* NavigationRouter.swift */; };
@@ -60,7 +58,6 @@
 		0B04D0AE23F5AB430055A6E8 /* FollowerInfoCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerInfoCoordinator.swift; sourceTree = "<group>"; };
 		0B0B226F23DC7F9C000C0785 /* HeaderCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HeaderCard.swift; path = "../Custom Views/HeaderCard.swift"; sourceTree = "<group>"; };
 		0B0B227123DC8100000C0785 /* SecondaryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryTitleLabel.swift; sourceTree = "<group>"; };
-		0B0B227323DC8E0C000C0785 /* UIView+constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+constraints.swift"; sourceTree = "<group>"; };
 		0B16555923D615D100ED5979 /* EmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyState.swift; sourceTree = "<group>"; };
 		0B2899F423BE3B8C002D84F8 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		0B2899F623BE3BD0002D84F8 /* FavoritesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesController.swift; sourceTree = "<group>"; };
@@ -81,7 +78,6 @@
 		0B8A74BE23C7BEF200179F89 /* FollowerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerCell.swift; sourceTree = "<group>"; };
 		0B8A74C023C7C4E700179F89 /* AvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
 		0B975F0423EAFA92005B3588 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
-		0B975F0623EAFB70005B3588 /* FileManager+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Ext.swift"; sourceTree = "<group>"; };
 		0BA35A1B23FEB83200B97706 /* AppDelegateRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateRouter.swift; sourceTree = "<group>"; };
 		0BA35A1E23FEC23500B97706 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		0BA35A2023FEC24500B97706 /* NavigationRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
@@ -194,8 +190,6 @@
 			isa = PBXGroup;
 			children = (
 				0B85B0EE23C6104B00449C82 /* UIViewController+Ext.swift */,
-				0B0B227323DC8E0C000C0785 /* UIView+constraints.swift */,
-				0B975F0623EAFB70005B3588 /* FileManager+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -413,14 +407,12 @@
 				0B0B227023DC7F9C000C0785 /* HeaderCard.swift in Sources */,
 				0B04A26423DEE0AF00BCD9C5 /* SFSymbos.swift in Sources */,
 				0BC091EB23BA15E700E3548B /* AppDelegate.swift in Sources */,
-				0B975F0723EAFB70005B3588 /* FileManager+Ext.swift in Sources */,
 				0B85B0EF23C6104B00449C82 /* UIViewController+Ext.swift in Sources */,
 				0B2899F923BFA383002D84F8 /* CustomButton.swift in Sources */,
 				0B2899F523BE3B8C002D84F8 /* SearchController.swift in Sources */,
 				0B975F0523EAFA92005B3588 /* PersistenceManager.swift in Sources */,
 				0BA55A0223E1881C00EEC650 /* ReusableCardView.swift in Sources */,
 				0B8A74C123C7C4E700179F89 /* AvatarImageView.swift in Sources */,
-				0B0B227423DC8E0C000C0785 /* UIView+constraints.swift in Sources */,
 				0B2899F723BE3BD0002D84F8 /* FavoritesController.swift in Sources */,
 				0BA35A2123FEC24500B97706 /* NavigationRouter.swift in Sources */,
 				0B0B227223DC8100000C0785 /* SecondaryTitleLabel.swift in Sources */,

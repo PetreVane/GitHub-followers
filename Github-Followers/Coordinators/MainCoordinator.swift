@@ -9,6 +9,9 @@
 import UIKit
 
 
+///  Concrete coordinator implements the coordinator protocol.
+///
+///  It knows how to create concrete child coordinators and the order in which view controllers should be displayed.
 class MainCoordinator: NSObject, Coordinator {
 
     var router = NavigationRouter()

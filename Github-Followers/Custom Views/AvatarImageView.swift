@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Rounded imageView representing the AvatarImage, owned by HeaderCard.
 class AvatarImageView: UIImageView {
 
     override init(frame: CGRect) {
@@ -25,6 +26,4 @@ class AvatarImageView: UIImageView {
         clipsToBounds = true
         image = UIImage(named: "avatar-placeholder")
     }
-    
-
 }

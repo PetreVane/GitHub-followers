@@ -9,6 +9,9 @@
 import UIKit
 
 
+/// Concrete coordinator which implements the coordinator protocol.
+///
+/// It knows how to create concrete view controllers and sets itself as delegate for its viewController.
 class FollowerInfoCoordinator: Coordinator {
     
     var router: NavigationRouter

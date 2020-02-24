@@ -10,7 +10,7 @@ import UIKit
 
 class NavigationRouter: NSObject {
     
-    // parent ViewController that will instantiate this class
+    // base ViewController used by presetModally()
     unowned var baseViewController: UIViewController?
     let navigationController = UINavigationController()
     private var onDismissForViewController: [UIViewController: (() -> Void)] = [:]
@@ -75,7 +75,7 @@ extension NavigationRouter: Router {
     /// - Parameter viewController: ViewController which is being dismissed
     /// - makes sure there is an associated closure for the passed in argument
     /// - executes the closure
-    /// - removes the closure from dictionary
+    /// - removes the closure from dictionary and cancel the association between ViewController and closure
     func performOnDismissAction(for viewController: UIViewController) {
         
         guard let onDismissAction = onDismissForViewController[viewController] else { return }
@@ -88,11 +88,11 @@ extension NavigationRouter: Router {
 extension NavigationRouter: UINavigationControllerDelegate {
     
     
-    /// Dismisses a viewController when the NavigationController back button is pressed
+    /// Called just after the navigation controller displays a view controller’s view and navigation item properties.
     /// - Parameters:
-    ///   - navigationController: navigationController containing the ViewController that is being presented
-    ///   - viewController: ViewController that is about to be dimissed
-    ///   - animated: true if animations are desired
+    ///   - navigationController: The navigation controller that is showing the view and properties of a view controller.
+    ///   - viewController: The view controller whose view and navigation item properties are being shown.
+    ///   - animated: true to animate the transition; otherwise, false
     /// - establishes which ViewController is being dismissed
     /// - makes sure the navigationController list of ViewControlled no longer contains the dismissed viewController
     /// - calls any closures for the dismissed viewController, if any

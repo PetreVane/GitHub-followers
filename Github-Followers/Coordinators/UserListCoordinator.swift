@@ -8,6 +8,10 @@
 
 import UIKit
 
+
+/// Concrete coordinator which implements the coordinator protocol.
+///
+/// It knows how to create concrete view controllers and sets itself as delegate for its viewController.
 class UserListCoordinator: Coordinator {
     
     var router: NavigationRouter
@@ -19,8 +23,9 @@ class UserListCoordinator: Coordinator {
     func startUserList(withText text: String) {
         let viewController = UsersListController.instantiate(parentCoordinator: self)
         viewController.typedUserName = text
+        
         /*
-            Sets UsersListController as the starting / presenter ViewController in a new NavigationRouter object, belonging to MainCoordinator.
+            Sets UsersListController as the starting / base ViewController in a new NavigationRouter object, belonging to MainCoordinator.
             This happens because the router which presents the UserListController, cannot present another ViewController modally.
             And the FollowerInfoViewController should be presented modally.
          */
