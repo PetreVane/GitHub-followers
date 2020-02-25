@@ -16,19 +16,34 @@ class FavoritesController: UIViewController {
 
      //MARK: - Initialization -
     
+    // delegates
     private weak var delegate: FavoritesControllerDelegate?
     weak var coordinator: FavoritesCoordinator?
-    let tableView = UITableView()
+    
+    //managers
     private let userDefaults = PersistenceManager.sharedInstance
+    private let networkManager = NetworkManager.sharedInstance
+    private let cacheManager = CacheManager.sharedInstance
+    
+    let tableView = UITableView()
+    var tableViewCells: [IndexPath: FavoritesCell] = [:]
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        
+        configureView()
+        configureTableView()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchFavorites()
+    }
+    
+    //MARK: - Configuration -
+
     
     private func configureView() {
         view.backgroundColor = .systemBackground
@@ -37,12 +52,61 @@ class FavoritesController: UIViewController {
         
     }
 
-    func fetchFavorites() {
+    func fetchFavorites() -> [Follower]? {
         let favorites = userDefaults.retrieveFavorites()
+        if favorites.isEmpty {
+            showEmptyState(withMessage: "You've got no favorite users yet.\n Consider adding some favorites", view: view); return nil
+        }
+        print("You've got \(favorites.count)")
+        fetchAvatarsFor(favorites)
+        return favorites
+    }
+    
+    func fetchAvatarsFor(_ favoriteFollowers:[Follower]) {
+        let favorites = favoriteFollowers
         
+        for (index, favorite) in favorites.enumerated() {
+            print("Foavorite \(favorite.login) resides at index \(index)")
+        }
+    }
+    
+    
+    func configureTableView() {
+        view.addSubview(tableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.frame = view.bounds
+        tableView.rowHeight = 80
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        // register cell
+        tableView.register(FavoritesCell.self, forCellReuseIdentifier: FavoritesCell.reuseIdentifier)
     }
 }
 
+//MARK: - Extensions -
+
+extension FavoritesController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tableViewCells.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: FavoritesCell.reuseIdentifier) as? FavoritesCell else { return UITableViewCell() }
+//        let favoriteUser = tableViewCells[indexPath.row]
+//        cell.avatarImageView.image = favoriteUser.avatarImageView.image
+//        cell.userNameLabel.text = favoriteUser.userNameLabel.text
+        
+        return cell
+    }
+}
+
+extension FavoritesController: UITableViewDelegate {
+    
+    
+}
 
 extension FavoritesController {
     
