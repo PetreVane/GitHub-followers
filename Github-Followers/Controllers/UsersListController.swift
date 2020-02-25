@@ -67,6 +67,12 @@ class UsersListController: UIViewController {
         navigationItem.rightBarButtonItem = addButton
     }
     
+    @objc func barButtonPressed() {
+        if let currentFollower = self.title {
+            fetchDetails(for: currentFollower)
+        }
+    }
+    
     /// Initializes and configures the CollectionView
     func configureCollectionView() {
         
@@ -135,11 +141,6 @@ class UsersListController: UIViewController {
         DispatchQueue.main.async { self.diffDataSource.apply(snapshot, animatingDifferences: true) }
     }
     
-    @objc func barButtonPressed() {
-        if let currentFollower = self.title {
-            fetchDetails(for: currentFollower)
-        }
-    }
     
     /// Network request for Follower details
     /// - Parameter follower: name of the follower
@@ -157,12 +158,13 @@ class UsersListController: UIViewController {
                 self.presentAlert(withTitle: "Error", message: "Something is not right yet...", buttonTitle: "I'll try later")
             case .success(let user):
                 let follower = Follower(login: user.login, avatarURL: user.avatarURL)
-                self.userDefaults.updateFavoritesList(with: follower, updateType: .add) { [weak self] error in
-                    guard let self = self else { return }
-                    guard error == nil else { self.presentAlert(withTitle: "What? An error?!", message: error!.localizedDescription, buttonTitle: "Ok"); return }
-                    
-                     self.presentAlert(withTitle: "Success 🥳", message: "\(user.login.capitalized) successfully added to favorites!", buttonTitle: "Cool")
-                }
+                self.userDefaults.saveFollower(follower)
+//                self.userDefaults.updateFavoritesList(with: follower, updateType: .add) { [weak self] error in
+//                    guard let self = self else { return }
+//                    guard error == nil else { self.presentAlert(withTitle: "What? An error?!", message: error!.localizedDescription, buttonTitle: "Ok"); return }
+//
+//                     self.presentAlert(withTitle: "Success 🥳", message: "\(user.login.capitalized) successfully added to favorites!", buttonTitle: "Cool")
+//                }
             }
         }
     }
