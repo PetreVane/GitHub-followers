@@ -11,7 +11,7 @@ import UIKit
 /// View shown when a user has no Followers
 class EmptyState: UIView {
 
-    let messageLabel =  TitleLabel(textAlignment: .center, fontSize: 25)
+    let messageLabel =  TitleLabel(textAlignment: .center, fontSize: 20)
     let logoView = UIImageView()
 
     override init(frame: CGRect) {

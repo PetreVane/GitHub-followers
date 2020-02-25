@@ -49,15 +49,15 @@ class FavoritesController: UIViewController {
         view.backgroundColor = .systemBackground
         title = "Favorites"
         coordinator?.setNavigationBarLargeTitle()
-        
     }
 
     func fetchFavorites() -> [Follower]? {
-        let favorites = userDefaults.retrieveFavorites()
+        let favorites = userDefaults.retrieveSavedFollowers()
+        print("You've got \(favorites.count) favorites")
         if favorites.isEmpty {
-            showEmptyState(withMessage: "You've got no favorite users yet.\n Consider adding some favorites", view: view); return nil
+            tableView.isHidden = true
+            showEmptyState(withMessage: "You've got no favorite users yet.\n Consider adding some favorites. \n 👍🏻", view: view); return nil
         }
-        print("You've got \(favorites.count)")
         fetchAvatarsFor(favorites)
         return favorites
     }
@@ -66,7 +66,7 @@ class FavoritesController: UIViewController {
         let favorites = favoriteFollowers
         
         for (index, favorite) in favorites.enumerated() {
-            print("Foavorite \(favorite.login) resides at index \(index)")
+            print("Favorite \(favorite.login) resides at index \(index)")
         }
     }
     
