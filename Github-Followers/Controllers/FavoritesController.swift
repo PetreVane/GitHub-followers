@@ -21,12 +21,10 @@ class FavoritesController: UIViewController {
     weak var coordinator: FavoritesCoordinator?
     
     //managers
-    private let userDefaults = PersistenceManager.sharedInstance
-    private let networkManager = NetworkManager.sharedInstance
-    private let cacheManager = CacheManager.sharedInstance
+    private let fileManager = PersistenceManager.sharedInstance
     
     let tableView = UITableView()
-    var tableViewCells: [IndexPath: FavoritesCell] = [:]
+    var tableViewCells: [Follower] = []
     
     
     override func viewDidLoad() {
@@ -50,26 +48,6 @@ class FavoritesController: UIViewController {
         title = "Favorites"
         coordinator?.setNavigationBarLargeTitle()
     }
-
-    func fetchFavorites() -> [Follower]? {
-        let favorites = userDefaults.retrieveSavedFollowers()
-        print("You've got \(favorites.count) favorites")
-        if favorites.isEmpty {
-            tableView.isHidden = true
-            showEmptyState(withMessage: "You've got no favorite users yet.\n Consider adding some favorites. \n 👍🏻", view: view); return nil
-        }
-        fetchAvatarsFor(favorites)
-        return favorites
-    }
-    
-    func fetchAvatarsFor(_ favoriteFollowers:[Follower]) {
-        let favorites = favoriteFollowers
-        
-        for (index, favorite) in favorites.enumerated() {
-            print("Favorite \(favorite.login) resides at index \(index)")
-        }
-    }
-    
     
     func configureTableView() {
         view.addSubview(tableView)
@@ -82,6 +60,28 @@ class FavoritesController: UIViewController {
         // register cell
         tableView.register(FavoritesCell.self, forCellReuseIdentifier: FavoritesCell.reuseIdentifier)
     }
+
+    func fetchFavorites() {
+        let favorites = fileManager.retrieveSavedFollowers()
+        print("You've got \(favorites.count) favorites")
+        if favorites.isEmpty {
+            tableView.isHidden = true
+            showEmptyState(withMessage: "You've got no favorite users yet.\n Consider adding some favorites. \n 👍🏻", view: view)
+        } else {
+            tableView.isHidden = false
+            tableViewCells = favorites
+            reloadVisibleCells()
+        }
+    }
+    
+    func reloadVisibleCells() {
+        if let indexOfVisibleCells = tableView.indexPathsForVisibleRows {
+            DispatchQueue.main.async {
+                self.tableView.reloadRows(at: indexOfVisibleCells, with: .fade)
+            }
+        }
+    }
+
 }
 
 //MARK: - Extensions -
@@ -93,18 +93,20 @@ extension FavoritesController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: FavoritesCell.reuseIdentifier) as? FavoritesCell else { return UITableViewCell() }
-//        let favoriteUser = tableViewCells[indexPath.row]
-//        cell.avatarImageView.image = favoriteUser.avatarImageView.image
-//        cell.userNameLabel.text = favoriteUser.userNameLabel.text
-        
+
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: FavoritesCell.reuseIdentifier, for: indexPath) as? FavoritesCell else { return UITableViewCell() }
+        let favoriteUser = tableViewCells[indexPath.row]
+        cell.show(favoriteUser)
+       
         return cell
     }
 }
 
 extension FavoritesController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
     
 }
 
