@@ -70,18 +70,9 @@ class FavoritesController: UIViewController {
         } else {
             tableView.isHidden = false
             tableViewCells = favorites
-            reloadVisibleCells()
+            DispatchQueue.main.async { self.tableView.reloadData() }
         }
     }
-    
-    func reloadVisibleCells() {
-        if let indexOfVisibleCells = tableView.indexPathsForVisibleRows {
-            DispatchQueue.main.async {
-                self.tableView.reloadRows(at: indexOfVisibleCells, with: .fade)
-            }
-        }
-    }
-
 }
 
 //MARK: - Extensions -
