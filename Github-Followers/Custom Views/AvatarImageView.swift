@@ -11,6 +11,8 @@ import UIKit
 /// Rounded imageView representing the AvatarImage, owned by HeaderCard.
 class AvatarImageView: UIImageView {
 
+    static let imagePlaceholder = UIImage(named: "avatar-placeholder")
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -22,8 +24,8 @@ class AvatarImageView: UIImageView {
     
     private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
-        layer.cornerRadius = 10
+        layer.cornerRadius = 15
         clipsToBounds = true
-        image = UIImage(named: "avatar-placeholder")
+        image = AvatarImageView.imagePlaceholder
     }
 }
