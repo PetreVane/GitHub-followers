@@ -63,7 +63,6 @@ class FavoritesController: UIViewController {
 
     func fetchFavorites() {
         let favorites = fileManager.retrieveSavedFollowers()
-        print("You've got \(favorites.count) favorites")
         if favorites.isEmpty {
             tableView.isHidden = true
             showEmptyState(withMessage: "You've got no favorite users yet.\n Consider adding some favorites. \n 👍🏻", view: view)
@@ -97,6 +96,13 @@ extension FavoritesController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let favoriteUser = tableViewCells[indexPath.row]
+        coordinator?.presentFollowersFor(favoriteUser)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard editingStyle == .delete else { return }
+        
     }
     
 }

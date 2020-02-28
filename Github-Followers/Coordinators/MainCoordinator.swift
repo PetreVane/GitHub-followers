@@ -39,9 +39,20 @@ class MainCoordinator: NSObject, Coordinator {
     
     /// Starts UserList view controller coordinator
     /// - Parameter text: user typed text, contained by Search Controller textField
-    func startUserListCoordinator(withText text: String) {
+    func startUserListCoordinator(withText text: String, navRouter: NavigationRouter? = nil) {
         
-        let userListCoordinator = UserListCoordinator(navigationRouter: router as! NavigationRouter)
+        let navigationRouter = navRouter ?? router as! NavigationRouter
+
+        /*
+         Makes sure the passed in navRouter is not nil.
+         If it is, then it uses the MainCoordinator router. This is useful when invoking UserListCoordinator from
+         SearchCoordinator and passing in SearchCoordinator router ( which also owns a navigationControler).
+         
+         But when invoking UserListCoordinator from FavoritesCoordinator, navRouter argument needs to receive a Router object, otherwhise tapping a cell ( tableView.didSelectRowAtIndexPath ) will spawn a UserListController object attached to SearchController navigation bar.
+         */
+        
+        
+        let userListCoordinator = UserListCoordinator(navigationRouter: navigationRouter)
         userListCoordinator.parent = self
         childCoordinators.append(userListCoordinator)
         userListCoordinator.startUserList(withText: text)

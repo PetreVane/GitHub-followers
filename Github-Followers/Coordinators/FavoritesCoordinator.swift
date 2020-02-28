@@ -35,6 +35,10 @@ class FavoritesCoordinator: NSObject, Coordinator {
     func setNavigationBarLargeTitle() {
         router.navigationController.navigationBar.prefersLargeTitles = true
     }
+    
+    func presentFollowersFor(_ favorite: Follower) {
+        parent?.startUserListCoordinator(withText: favorite.login, navRouter: router as? NavigationRouter)
+    }
 }
 
 extension FavoritesCoordinator: FavoritesControllerDelegate {
