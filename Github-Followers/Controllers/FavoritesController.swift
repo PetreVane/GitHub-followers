@@ -63,13 +63,18 @@ class FavoritesController: UIViewController {
 
     func fetchFavorites() {
         let favorites = fileManager.retrieveSavedFollowers()
+        print("You've got \(favorites.count) favorites")
         if favorites.isEmpty {
             tableView.isHidden = true
             showEmptyState(withMessage: "You've got no favorite users yet.\n Consider adding some favorites. \n 👍🏻", view: view)
         } else {
             tableView.isHidden = false
             tableViewCells = favorites
-            DispatchQueue.main.async { self.tableView.reloadData() }
+            
+            DispatchQueue.main.async {
+                self.view.bringSubviewToFront(self.tableView)
+                self.tableView.reloadData()
+            }
         }
     }
 }
@@ -102,7 +107,16 @@ extension FavoritesController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
+        let favoriteUser = tableViewCells[indexPath.row]
+        tableViewCells.remove(at: indexPath.row)
+        fileManager.updateFavoritesList(with: favoriteUser, updateType: .remove) { [weak self] error in
+            
+            guard let self = self else { return }
+            guard let error = error else { return }
+            self.presentAlert(withTitle: "Ops, an error!", message: error.localizedDescription, buttonTitle: "Ok")
+        }
         
+        DispatchQueue.main.async { self.tableView.reloadData() }
     }
     
 }
