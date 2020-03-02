@@ -29,7 +29,7 @@ class EmptyState: UIView {
     /// - Parameter message: text passed to EmptyState label
     convenience init(message: String) {
         self.init(frame: .zero)
-        self.messageLabel.text = message        
+        self.messageLabel.text = message
     }
     
     private func configureLabel() {
@@ -56,7 +56,7 @@ class EmptyState: UIView {
         addSubview(logoView)
         
         // imageView
-        logoView.image = UIImage(named: "empty-state-logo")
+        logoView.image = Images.emptyStateLogo
         logoView.translatesAutoresizingMaskIntoConstraints = false
         
         // constraints

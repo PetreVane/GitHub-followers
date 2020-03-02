@@ -24,24 +24,21 @@ protocol Composer: class {
 extension Composer {
     
     /// Assigns text & image to a collectionView cell
-       /// - Parameter follower: Github follower instance
-       func show(_ follower: Follower) {
-           userNameLabel.text = follower.login
-           
-           // checks if the image already exists in cache
-           if let cachedImage = cacheManager.retrieveImage(withIdentifier: follower.avatarURL) {
-
-               DispatchQueue.main.async { self.avatarImageView.image = cachedImage }; return
-           }
-           
-           // if there is no image in cache, proceeds with fetching the image from the network
-           networkManager.fetchAvatars(from: follower.avatarURL)  { [weak self] image in
-                           
-               guard let self = self else { return }
-               DispatchQueue.main.async { self.avatarImageView.image = image }
-               
-               // saves image to cache
-               self.cacheManager.saveImage(withIdentifier: follower.avatarURL, image: image)
-           }
-       }
+    /// - Parameter follower: Github follower instance
+    func show(_ follower: Follower) {
+        userNameLabel.text = follower.login
+        
+        // checks if the image already exists in cache
+        if let cachedImage = cacheManager.retrieveImage(withIdentifier: follower.avatarURL) {
+            DispatchQueue.main.async { self.avatarImageView.image = cachedImage }; return
+        }
+        
+        // if there is no image in cache, proceeds with fetching the image from the network
+        networkManager.fetchAvatars(from: follower.avatarURL)  { [weak self] image in
+            guard let self = self else { return }
+            DispatchQueue.main.async { self.avatarImageView.image = image }
+            // saves image to cache
+            self.cacheManager.saveImage(withIdentifier: follower.avatarURL, image: image)
+        }
+    }
 }

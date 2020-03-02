@@ -110,7 +110,5 @@ class HeaderCard: UIViewController {
         locationNameLabel.backgroundColor = .systemBackground
         bioLabel.text = user.bio ?? "User has no bio"
         bioLabel.numberOfLines = 3
-//        bioLabel
     }
-
 }
