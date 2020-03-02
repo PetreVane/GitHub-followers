@@ -53,6 +53,7 @@
 		0BC091ED23BA15E800E3548B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC091EC23BA15E800E3548B /* SceneDelegate.swift */; };
 		0BC091F423BA15ED00E3548B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BC091F323BA15ED00E3548B /* Assets.xcassets */; };
 		0BC091F723BA15ED00E3548B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BC091F523BA15ED00E3548B /* LaunchScreen.storyboard */; };
+		0BDBA0F3240D983200D2C62E /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDBA0F2240D983200D2C62E /* UIView+Ext.swift */; };
 		0BDD052B23F29FB500C5496F /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDD052A23F29FB500C5496F /* Coordinator.swift */; };
 		0BDD052E23F2A05000C5496F /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDD052D23F2A05000C5496F /* MainCoordinator.swift */; };
 /* End PBXBuildFile section */
@@ -106,6 +107,7 @@
 		0BC091F323BA15ED00E3548B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0BC091F623BA15ED00E3548B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0BC091F823BA15ED00E3548B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0BDBA0F2240D983200D2C62E /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		0BDD052A23F29FB500C5496F /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		0BDD052D23F2A05000C5496F /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -210,6 +212,7 @@
 				0B85B0EE23C6104B00449C82 /* UIViewController+Ext.swift */,
 				0B5F855E240572ED00A988CF /* FileManager+Ext.swift */,
 				0BAF815D240D8C27005DA603 /* UIView+Ext.swift */,
+				0BDBA0F2240D983200D2C62E /* UIView+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				0B975F0523EAFA92005B3588 /* PersistenceManager.swift in Sources */,
 				0BA55A0223E1881C00EEC650 /* ReusableCardView.swift in Sources */,
 				0B8A74C123C7C4E700179F89 /* AvatarImageView.swift in Sources */,
+				0BDBA0F3240D983200D2C62E /* UIView+Ext.swift in Sources */,
 				0B2899F723BE3BD0002D84F8 /* FavoritesController.swift in Sources */,
 				0BAF815E240D8C27005DA603 /* UIView+Ext.swift in Sources */,
 				0BA35A2123FEC24500B97706 /* NavigationRouter.swift in Sources */,
