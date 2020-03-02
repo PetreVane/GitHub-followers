@@ -44,9 +44,9 @@ class HeaderCard: UIViewController {
     
     /// Adds custom subviews to current ViewController
     func addSubViews() {
-        
         let customViews = [followerImageView, userNameLabel, realNameLabel, locationNameLabel, locationView, bioLabel]
         locationView.translatesAutoresizingMaskIntoConstraints = false
+        
         customViews.forEach { customView in
             view.addSubview(customView)
         }
@@ -94,12 +94,12 @@ class HeaderCard: UIViewController {
 
     }
     
+    /// Prepares subviews to be displayed with user data
+    /// - Parameter user: user object 
     func configureUIElements(for user: User) {
+        
         NetworkManager.sharedInstance.fetchAvatars(from: user.avatarURL) { avatar in
-            DispatchQueue.main.async {
-                self.followerImageView.image = avatar
-            }
-            
+            DispatchQueue.main.async { self.followerImageView.image = avatar }
         }
         userNameLabel.text = user.login
         realNameLabel.text = user.name ?? "Name not available"

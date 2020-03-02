@@ -20,7 +20,6 @@ class FollowersCard: ReusableCardController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureViews()
     }
     

@@ -77,7 +77,6 @@ class UsersListController: UIViewController {
     
     /// Initializes and configures the CollectionView
     func configureCollectionView() {
-        
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: FlowLayout.configureCollectionViewFlowLayout(for: view))
         view.addSubview(collectionView)
         collectionView.delegate = self
