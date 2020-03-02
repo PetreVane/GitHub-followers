@@ -12,7 +12,7 @@ import UIKit
 class AlertViewController: UIViewController {
     
     //MARK: - Initialization
-    let containerView = UIView()
+    let containerView = AlertContainerView()
     let titleLabel = TitleLabel(textAlignment: .center, fontSize: 20)
     let bodyLabel = BodyLabel(textAlignment: .left)
     let actionButton = CustomButton(backgroundColor: .systemRed, title: "Ok, let's move on")
@@ -39,7 +39,7 @@ class AlertViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // white color with 75 % opacity
-        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.75) // UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)
         configureContainerView()
         configureActionButton()
         configureTitleLabel()
@@ -53,16 +53,7 @@ class AlertViewController: UIViewController {
     func configureContainerView() {
         view.addSubview(containerView)
         
-        // containerView attributes
-        containerView.backgroundColor = .systemBackground
-        containerView.layer.cornerRadius = 15
-        containerView.layer.borderWidth = 2
-        containerView.layer.borderColor = UIColor.tertiarySystemBackground.cgColor
-        containerView.layer.backgroundColor = UIColor.systemBackground.cgColor
-        containerView.translatesAutoresizingMaskIntoConstraints = false
-        
         // containerView constraints
-        
         NSLayoutConstraint.activate([
             containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
