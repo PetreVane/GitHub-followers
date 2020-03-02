@@ -37,7 +37,7 @@ class FavoritesCoordinator: NSObject, Coordinator {
     }
     
     func presentFollowersFor(_ favorite: Follower) {
-        parent?.startUserListCoordinator(withText: favorite.login, navRouter: router as? NavigationRouter)
+        parent?.startUserListCoordinator(withText: favorite.login, navigationRouter: router as? NavigationRouter)
     }
 }
 

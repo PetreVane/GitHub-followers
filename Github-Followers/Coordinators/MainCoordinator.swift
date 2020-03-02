@@ -39,16 +39,17 @@ class MainCoordinator: NSObject, Coordinator {
     
     /// Starts UserList view controller coordinator
     /// - Parameter text: user typed text, contained by Search Controller textField
-    func startUserListCoordinator(withText text: String, navRouter: NavigationRouter? = nil) {
+    /// - Parameter navigationRouter: navigationRouter objects which conforms to Router protocol
+    func startUserListCoordinator(withText text: String, navigationRouter: NavigationRouter? = nil) {
         
-        let navigationRouter = navRouter ?? router as! NavigationRouter
-
+        let navigationRouter = navigationRouter ?? router as! NavigationRouter
+        
         /*
-         Makes sure the passed in navRouter is not nil.
-         If it is, then it uses the MainCoordinator router. This is useful when invoking UserListCoordinator from
-         SearchCoordinator and passing in SearchCoordinator router ( which also owns a navigationControler).
+         Makes sure the passed in navigationRouter is not nil.
+         If it is, then this method calls the MainCoordinator router (NavigatioRouter object). This is useful when invoking UserListCoordinator from
+         SearchCoordinator and passing forward the SearchCoordinator NavigationRouter ( which also owns a navigationControler object, responsible with pushing the UserListVC on top of SearchVC).
          
-         But when invoking UserListCoordinator from FavoritesCoordinator, navRouter argument needs to receive a Router object, otherwhise tapping a cell ( tableView.didSelectRowAtIndexPath ) will spawn a UserListController object attached to SearchController navigation bar.
+         But when invoking UserListCoordinator from FavoritesCoordinator, the navigationRouter argument needs to receive a new Router object, otherwhise tapping a cell (tableView.didSelectRowAtIndexPath) will spawn an UserListVC object attached to SearchVC's navigationRouter, and therfore presented by SearchVC navigationController.
          */
         
         
