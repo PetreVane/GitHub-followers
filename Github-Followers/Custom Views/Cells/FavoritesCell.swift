@@ -52,7 +52,7 @@ class FavoritesCell: UITableViewCell, Composer {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        avatarImageView.image = AvatarImageView.imagePlaceholder
+        avatarImageView.image = Images.imagePlaceholder
         userNameLabel.text = nil
     }
     

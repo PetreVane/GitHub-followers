@@ -64,7 +64,7 @@ class SearchController: UIViewController {
         
         // adds image view
         view.addSubview(logoImageView)
-        logoImageView.image = UIImage(named: "gh-logo")
+        logoImageView.image = Images.logoImage
         
         // sets padding for topConstraint depending on the type of device
         let topConstraintPadding: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 20 : 80
