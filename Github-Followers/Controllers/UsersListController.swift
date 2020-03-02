@@ -41,10 +41,10 @@ class UsersListController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         configureNavigationBar()
-        configureSearchController()
         configureCollectionView()
         fetchFollowers(for: typedUserName, at: pageNumber)
         configureDataSource()
+        configureSearchController()
     }
     
     override func viewWillAppear( _ animated: Bool) {
@@ -85,7 +85,6 @@ class UsersListController: UIViewController {
     
     /// Initializes and configures SearchBar
     func configureSearchController() {
-        
         let searchController = UISearchController()
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self

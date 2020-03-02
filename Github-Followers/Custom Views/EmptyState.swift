@@ -16,7 +16,6 @@ class EmptyState: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         configureLabel()
         configureLogo()
     }
@@ -36,15 +35,18 @@ class EmptyState: UIView {
         let padding: CGFloat = 40
         addSubview(messageLabel)
         
-        
         // custom label settings
         messageLabel.numberOfLines = 3
         messageLabel.textColor = .secondaryLabel
-                
+        
+        // checks if device is iPhone SE and sets a smaller padding for
+        let labelCenterYConstant: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? -100 : -150
+        let messageLabelCenterConstraint = messageLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: labelCenterYConstant)
+        messageLabelCenterConstraint.isActive = true
+        
         // constraints
         NSLayoutConstraint.activate([
         
-            messageLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -155),
             messageLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
             messageLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
             messageLabel.heightAnchor.constraint(equalToConstant: padding * 5)
