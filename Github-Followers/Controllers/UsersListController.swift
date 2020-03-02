@@ -87,7 +87,6 @@ class UsersListController: UIViewController {
     func configureSearchController() {
         let searchController = UISearchController()
         searchController.searchResultsUpdater = self
-        searchController.searchBar.delegate = self
         searchController.searchBar.placeholder = "Search for a user here ..."
         searchController.obscuresBackgroundDuringPresentation = false
         navigationItem.searchController = searchController
@@ -198,21 +197,22 @@ extension UsersListController: UICollectionViewDelegate {
     }
 }
 
-extension UsersListController: UISearchResultsUpdating, UISearchBarDelegate {
+extension UsersListController: UISearchResultsUpdating {
 
     func updateSearchResults(for searchController: UISearchController) {
 
         guard let filter = searchController.searchBar.text?.lowercased() else { return }
-        guard !filter.isEmpty else { return }
+        guard !filter.isEmpty else { showFollowers(); return }
         isFilteringActive = true
         filteredFollowers = unfilteredFollowers.filter { $0.login.lowercased().contains(filter) }
         updateData(with: filteredFollowers)
     }
-
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        isFilteringActive = false
+    
+    /// Reloads collectionView with unfiltered followers
+    private func showFollowers() {
         updateData(with: unfilteredFollowers)
         filteredFollowers.removeAll()
+        isFilteringActive = false
     }
 }
 
