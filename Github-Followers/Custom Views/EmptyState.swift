@@ -11,7 +11,7 @@ import UIKit
 /// View shown when a user has no Followers
 class EmptyState: UIView {
 
-    let messageLabel =  TitleLabel(textAlignment: .center, fontSize: 20)
+    let messageLabel = TitleLabel(textAlignment: .center, fontSize: 20)
     let logoView = UIImageView()
 
     override init(frame: CGRect) {
@@ -27,12 +27,9 @@ class EmptyState: UIView {
     
     /// Initializes EmptyState with text
     /// - Parameter message: text passed to EmptyState label
-    init(message: String) {
-        super.init(frame: .zero)
-        self.messageLabel.text = message
-        configureLabel()
-        configureLogo()
-        
+    convenience init(message: String) {
+        self.init(frame: .zero)
+        self.messageLabel.text = message        
     }
     
     private func configureLabel() {

@@ -77,6 +77,7 @@ class ReusableCardView: UIView {
     /// - Parameter count: Int representing the number of repo, gist or followers
     func set(contentType: ContentType, withCount count: Int) {
         
+        countLabel.text = String(count)
         switch contentType {
         case .gist:
             symbolImage.image = UIImage(systemName: SFSymbols.gist)
@@ -91,8 +92,5 @@ class ReusableCardView: UIView {
             symbolImage.image = UIImage(systemName: SFSymbols.following)
             titleLabel.text = "Following"
         }
-        
-        // not sure about this
-        countLabel.text = String(count)
     }
 }

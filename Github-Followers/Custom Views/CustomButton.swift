@@ -15,8 +15,6 @@ class CustomButton: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        // adding customisation
         configure()
     }
     
@@ -28,30 +26,24 @@ class CustomButton: UIButton {
     /// - Parameters:
     ///   - backgroundColor: your custom background color
     ///   - title: your custom title
-    init(backgroundColor: UIColor, title: String) {
-        super.init(frame: .zero)
+    convenience init(backgroundColor: UIColor, title: String) {
+        self.init(frame: .zero)
         self.backgroundColor = backgroundColor
         self.setTitle(title, for: .normal)
-        
-        //adding customization
-        configure() 
     }
     
      //MARK: - Configuration
     
     /// Sets custom corner radius & font for buttons
     private func configure() {
-        
         // shape
         layer.cornerRadius = 10
         
         // color
 //        titleLabel?.textColor = .white
         setTitleColor(.white, for: .normal)
-        
         //font
         titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
-        
         // autoLayout
         translatesAutoresizingMaskIntoConstraints = false
     }
@@ -61,6 +53,5 @@ class CustomButton: UIButton {
         self.backgroundColor = color
         setTitle(title, for: .normal)
     }
-    
 }
 
