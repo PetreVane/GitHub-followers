@@ -19,6 +19,8 @@ class SearchController: UIViewController {
     let logoImageView = UIImageView()
     let userNameTextField = TextField()
     let followButton = CustomButton(backgroundColor: .systemIndigo, title: "Show followers")
+    var logoImageViewTopConstraint: NSLayoutConstraint!
+    
     var isUserNameEntered: Bool {
         return userNameTextField.text!.isEmpty ? false : true
     }
@@ -64,10 +66,14 @@ class SearchController: UIViewController {
         view.addSubview(logoImageView)
         logoImageView.image = UIImage(named: "gh-logo")
         
+        // sets padding for topConstraint depending on the type of device
+        let topConstraintPadding: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 20 : 80
+        logoImageViewTopConstraint = logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topConstraintPadding)
+        logoImageViewTopConstraint.isActive = true
+        
         // sets constraints
         NSLayoutConstraint.activate([
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80),
             logoImageView.heightAnchor.constraint(equalToConstant: 200),
             logoImageView.widthAnchor.constraint(equalToConstant: 200)
         ])
@@ -110,7 +116,7 @@ class SearchController: UIViewController {
     /// Keyboard dissmis
     func dismissKeyboardGesture() {
         // have a gesture
-        let tapGesture = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:)))
         // adds gesture to view
         view.addGestureRecognizer(tapGesture)
     }
