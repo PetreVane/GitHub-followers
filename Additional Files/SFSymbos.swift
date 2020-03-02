@@ -16,5 +16,4 @@ enum SFSymbols {
     static let repos = "folder"
     static let followers = "heart"
     static let following = "person.3"
-    
 }
