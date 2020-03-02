@@ -14,7 +14,7 @@ protocol UserListCoordinatorDelegate: class {
 
 class UsersListController: UIViewController {
     
- //MARK: - Initialization
+ //MARK: - Initialization -
     
     /// Main Section of CollectionView with Diffable Data Source
     enum Section: CaseIterable {
@@ -29,6 +29,7 @@ class UsersListController: UIViewController {
     var pageNumber = 1
     var userHasMoreFollowers = true
     var isFilteringActive = false
+    var isLoadingMoreFollowers = false
     private let networkManager = NetworkManager.sharedInstance
     private let fileManager = PersistenceManager.sharedInstance
     
@@ -52,6 +53,7 @@ class UsersListController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
+     //MARK: - Configuration methods -
     
     /// Configure NavigationBar
     ///
@@ -83,6 +85,16 @@ class UsersListController: UIViewController {
         collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: FollowerCell.reuseIdentifier)
     }
     
+    /// Configures CollectionView Diffable DataSource
+    func configureDataSource() {
+        diffDataSource = UICollectionViewDiffableDataSource<Section, Follower>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, follower) -> UICollectionViewCell? in
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCell.reuseIdentifier, for: indexPath) as? FollowerCell else { return UICollectionViewCell() }
+            
+            cell.show(follower)
+            return cell
+        })
+    }
+    
     /// Initializes and configures SearchBar
     func configureSearchController() {
         let searchController = UISearchController()
@@ -92,13 +104,15 @@ class UsersListController: UIViewController {
         navigationItem.searchController = searchController
       }
     
+    //MARK: - Networking -
+    
     /// Fetches information about a given Github follower
     /// - Parameters:
     ///   - user: GitHub user for which the request is mafe
     ///   - page: page number; this is useful for a user that has multiple followers that do not fit in a single page
     func fetchFollowers(for user: String, at page: Int) {
-
         presentLoadingView()
+        isLoadingMoreFollowers = true
         networkManager.fetchFollowers(for: user, page: pageNumber) { [weak self] result in
             
             guard let self = self else { return }
@@ -117,19 +131,10 @@ class UsersListController: UIViewController {
                     DispatchQueue.main.async { self.showEmptyState(withMessage: message, view: self.view); return }
                 }
             }
+            self.isLoadingMoreFollowers = false
         }
     }
-        
-    /// Configures CollectionView Diffable DataSource
-    func configureDataSource() {
-        diffDataSource = UICollectionViewDiffableDataSource<Section, Follower>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, follower) -> UICollectionViewCell? in
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCell.reuseIdentifier, for: indexPath) as? FollowerCell else { return UICollectionViewCell() }
             
-            cell.show(follower)
-            return cell
-        })
-    }
-    
     /// Updates CollectionView with data
     /// - Parameter followers: array of Follwer instances, each representing a GitHub follower
     func updateData(with followers: [Follower]) {
@@ -182,7 +187,7 @@ extension UsersListController: UICollectionViewDelegate {
         let remainingContent = contentHeight - offsetY
         
         if remainingContent < frameHeight {
-        guard userHasMoreFollowers else { return }
+        guard userHasMoreFollowers, !isLoadingMoreFollowers else { return }
         // reached the end of the content
             pageNumber += 1
             fetchFollowers(for: typedUserName, at: pageNumber)
@@ -229,11 +234,12 @@ extension UsersListController: FollowerInfoControllerDelegate {
     ///
     /// This method triggers of chain of actions, which ends up with reloading the entire collectionView with data for a given user
     private func updateFollowersListWithData(for user: User) {
+        self.title = user.login
         unfilteredFollowers.removeAll()
         pageNumber = 1
         updateData(with: unfilteredFollowers)
         fetchFollowers(for: user.login, at: pageNumber)
-        self.title = user.login
+        collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
     }
 }
 
