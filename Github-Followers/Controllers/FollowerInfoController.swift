@@ -187,6 +187,8 @@ extension FollowerInfoController: FollowersCardDelegate {
 
 extension FollowerInfoController {
     
+    /// Creates an instance of itself and assigns the calling object as delegate
+    /// - Parameter delegate: delegate object
     class func instantiate(parentCoordinator: FollowerInfoCoordinatorDelegate) -> FollowerInfoController {
         let viewController = FollowerInfoController()
         viewController.coordinator = parentCoordinator

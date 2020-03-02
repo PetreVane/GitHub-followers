@@ -142,6 +142,9 @@ extension SearchController: UITextFieldDelegate {
 
 
 extension SearchController {
+    
+    /// Creates an instance of itself and assigns the calling object as delegate
+    /// - Parameter delegate: delegate object
     class func instantiate(parentCoordinator: SearchControllerCoordinatorDelegate) -> SearchController {
         let viewController = SearchController()
         viewController.coordinator = parentCoordinator

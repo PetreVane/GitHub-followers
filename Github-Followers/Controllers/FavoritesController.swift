@@ -43,12 +43,19 @@ class FavoritesController: UIViewController {
     //MARK: - Configuration -
 
     
+    /// Configures basic properties of the view
     private func configureView() {
         view.backgroundColor = .systemBackground
         title = "Favorites"
         coordinator?.setNavigationBarLargeTitle()
     }
     
+    /// Configures tableView
+    ///
+    /// - adds tableView to FavoritesVC & sets its size
+    /// - sets row height
+    /// - sets this view as tableView delegate
+    /// - registers a cell
     func configureTableView() {
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -56,14 +63,16 @@ class FavoritesController: UIViewController {
         tableView.rowHeight = 80
         tableView.delegate = self
         tableView.dataSource = self
-        
-        // register cell
+        // registers cell
         tableView.register(FavoritesCell.self, forCellReuseIdentifier: FavoritesCell.reuseIdentifier)
     }
-
+    
+    /// Fetches list of favorites from local plist file
+    ///
+    /// - shows an emptyScreen view if there are no favorites
     func fetchFavorites() {
+        
         let favorites = fileManager.retrieveSavedFollowers()
-        print("You've got \(favorites.count) favorites")
         if favorites.isEmpty {
             tableView.isHidden = true
             showEmptyState(withMessage: "You've got no favorite users yet.\n Consider adding some favorites. \n 👍🏻", view: view)
@@ -123,6 +132,8 @@ extension FavoritesController: UITableViewDelegate {
 
 extension FavoritesController {
     
+    /// Creates an instance of itself and assigns the calling object as delegate
+    /// - Parameter delegate: delegate object
     static func instantiate(delegate: FavoritesControllerDelegate) -> FavoritesController {
         let viewController = FavoritesController()
         viewController.delegate = delegate
