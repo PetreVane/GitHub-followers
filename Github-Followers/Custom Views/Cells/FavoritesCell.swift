@@ -10,9 +10,10 @@ import UIKit
 
 class FavoritesCell: UITableViewCell {
 
+    static let reuseIdentifier = "FavoritesCell"
     let avatarImageView = AvatarImageView(frame: .zero)
     let userNameLabel = TitleLabel(textAlignment: .left, fontSize: 25)
-    static let reuseIdentifier = "FavoritesCell"
+    
     let networkManager = NetworkManager.sharedInstance
     let cacheManager = CacheManager.sharedInstance
     
