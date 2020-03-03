@@ -52,6 +52,7 @@
 		0BC091ED23BA15E800E3548B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC091EC23BA15E800E3548B /* SceneDelegate.swift */; };
 		0BC091F423BA15ED00E3548B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BC091F323BA15ED00E3548B /* Assets.xcassets */; };
 		0BC091F723BA15ED00E3548B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BC091F523BA15ED00E3548B /* LaunchScreen.storyboard */; };
+		0BD7B911240E78AD00310F1E /* UITableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7B910240E78AD00310F1E /* UITableView+Ext.swift */; };
 		0BDD052B23F29FB500C5496F /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDD052A23F29FB500C5496F /* Coordinator.swift */; };
 		0BDD052E23F2A05000C5496F /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDD052D23F2A05000C5496F /* MainCoordinator.swift */; };
 /* End PBXBuildFile section */
@@ -104,6 +105,7 @@
 		0BC091F323BA15ED00E3548B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0BC091F623BA15ED00E3548B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0BC091F823BA15ED00E3548B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0BD7B910240E78AD00310F1E /* UITableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Ext.swift"; sourceTree = "<group>"; };
 		0BDD052A23F29FB500C5496F /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		0BDD052D23F2A05000C5496F /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -207,6 +209,7 @@
 			children = (
 				0B85B0EE23C6104B00449C82 /* UIViewController+Ext.swift */,
 				0B5F855E240572ED00A988CF /* FileManager+Ext.swift */,
+				0BD7B910240E78AD00310F1E /* UITableView+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -443,6 +446,7 @@
 				0BA55A0423E1D5FA00EEC650 /* ReusableCardController.swift in Sources */,
 				0B8A74BC23C7870E00179F89 /* ErrorManager.swift in Sources */,
 				0BDD052E23F2A05000C5496F /* MainCoordinator.swift in Sources */,
+				0BD7B911240E78AD00310F1E /* UITableView+Ext.swift in Sources */,
 				0BA55A0923E1EE6900EEC650 /* RepoCard.swift in Sources */,
 				0B04D0AD23F5AB0D0055A6E8 /* UserListCoordinator.swift in Sources */,
 				0BAF815A240D6EC1005DA603 /* Composer.swift in Sources */,
