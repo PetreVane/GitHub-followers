@@ -8,8 +8,9 @@
 
 import UIKit
 
+//adopted by UserListCoordinator
 protocol UserListCoordinatorDelegate: class {
-    func userListControllerDidSelectFollower(_ viewController: UsersListController, follower: Follower)
+    func userListControllerDidSelectFollower(follower: Follower)
 }
 
 class UsersListController: UIViewController {
@@ -22,6 +23,9 @@ class UsersListController: UIViewController {
     }
     
     private weak var coordinator: UserListCoordinatorDelegate?
+    private let networkManager = NetworkManager.sharedInstance
+    private let fileManager = PersistenceManager.sharedInstance
+    
     var typedUserName: String!
     var user: User?
     var unfilteredFollowers: [Follower] = []
@@ -29,17 +33,14 @@ class UsersListController: UIViewController {
     var pageNumber = 1
     var userHasMoreFollowers = true
     var isFilteringActive = false
-    private let networkManager = NetworkManager.sharedInstance
-    private let fileManager = PersistenceManager.sharedInstance
-    
+
     // collectionView
     var collectionView: UICollectionView!
     var diffDataSource: UICollectionViewDiffableDataSource<Section, Follower>!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
         configureNavigationBar()
         configureCollectionView()
         fetchFollowers(for: typedUserName, at: pageNumber)
@@ -51,7 +52,6 @@ class UsersListController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
-    
     
     /// Configure NavigationBar
     ///
@@ -96,7 +96,6 @@ class UsersListController: UIViewController {
     ///   - user: GitHub user for which the request is mafe
     ///   - page: page number; this is useful for a user that has multiple followers that do not fit in a single page
     func fetchFollowers(for user: String, at page: Int) {
-
         presentLoadingView()
         networkManager.fetchFollowers(for: user, page: pageNumber) { [weak self] result in
             
@@ -122,8 +121,8 @@ class UsersListController: UIViewController {
     /// Configures CollectionView Diffable DataSource
     func configureDataSource() {
         diffDataSource = UICollectionViewDiffableDataSource<Section, Follower>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, follower) -> UICollectionViewCell? in
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCell.reuseIdentifier, for: indexPath) as? FollowerCell else { return UICollectionViewCell() }
             
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCell.reuseIdentifier, for: indexPath) as? FollowerCell else { return UICollectionViewCell() }
             cell.show(follower)
             return cell
         })
@@ -192,14 +191,13 @@ extension UsersListController: UICollectionViewDelegate {
         
         let listOfFollowers = isFilteringActive ? filteredFollowers : unfilteredFollowers
         let tappedFollower = listOfFollowers[indexPath.item]
-        coordinator?.userListControllerDidSelectFollower(self, follower: tappedFollower)
+        coordinator?.userListControllerDidSelectFollower(follower: tappedFollower)
     }
 }
 
 extension UsersListController: UISearchResultsUpdating {
 
     func updateSearchResults(for searchController: UISearchController) {
-
         guard let filter = searchController.searchBar.text?.lowercased() else { return }
         guard !filter.isEmpty else { showFollowers(); return }
         isFilteringActive = true

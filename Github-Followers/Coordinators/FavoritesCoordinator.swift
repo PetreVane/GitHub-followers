@@ -19,28 +19,27 @@ class FavoritesCoordinator: NSObject, Coordinator {
         self.router = navigationRouter
     }
     
-    
-    // navigationRouter is not passed to controller yet, but it should.
+    /// Starts Favorites (View)Controller
     func start() {
-        let viewController = FavoritesController.instantiate(delegate: self)
-        viewController.coordinator = self
+        let viewController = FavoritesController.instantiate(coordinator: self)
         viewController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
         router.present(viewController, animated: true, onDismiss: onDismissAction)
     }
     
+    /// Removes itself from parent's list of child coordinators
     func onDismissAction() {
         parent?.remove(self)
     }
     
+    /// Sets NavigationBar with large titles
     func setNavigationBarLargeTitle() {
         router.navigationController.navigationBar.prefersLargeTitles = true
     }
     
+    /// Asks the parent coordinator to instantiate UserListCoordinator
+    /// - Parameter favorite: Follower object for which the UserListController is (eventually) called
     func presentFollowersFor(_ favorite: Follower) {
         parent?.startUserListCoordinator(withText: favorite.login, navigationRouter: router as? NavigationRouter)
     }
 }
 
-extension FavoritesCoordinator: FavoritesControllerDelegate {
-    
-}

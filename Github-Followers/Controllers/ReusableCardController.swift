@@ -33,7 +33,6 @@ class ReusableCardController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         configureCardView()
         layoutCustomViews()
         configureStackView()
@@ -54,7 +53,6 @@ class ReusableCardController: UIViewController {
     ///
     /// Adds left & right views to stackView
     private func configureStackView() {
-        
         // stackView arrangement
         stackView.axis = .horizontal
         stackView.distribution = .equalSpacing
@@ -69,14 +67,12 @@ class ReusableCardController: UIViewController {
     ///
     /// Sets stackView & button constraintspo.
     private func layoutCustomViews() {
-        
         let padding: CGFloat = 20
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
         let listOfViews = [stackView, actionButton]
         listOfViews.forEach { view.addSubview($0) }
 
-        
         NSLayoutConstraint.activate([
         
             stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: padding),

@@ -8,8 +8,9 @@
 
 import UIKit
 
+//adopted by SearchCoordinator
 protocol SearchControllerCoordinatorDelegate: class {
-    func searchControllerDidPressSearchButton(_ viewController: SearchController, withText text: String)
+    func searchControllerDidPressSearchButton(withText text: String)
 }
 
 class SearchController: UIViewController {
@@ -35,23 +36,17 @@ class SearchController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
-        // Do any additional setup after loading the view.
         view.backgroundColor = .systemBackground
         configureLogoView()
         configureTextField()
         configureFollowButton()
         dismissKeyboardGesture()
-        
-        //delegates
         userNameTextField.delegate = self
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
@@ -59,10 +54,7 @@ class SearchController: UIViewController {
     
     /// Adds image & sets imageView constraints
     func configureLogoView() {
-        // autoLayout
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
-        
-        // adds image view
         view.addSubview(logoImageView)
         logoImageView.image = Images.logoImage
         
@@ -71,7 +63,6 @@ class SearchController: UIViewController {
         logoImageViewTopConstraint = logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topConstraintPadding)
         logoImageViewTopConstraint.isActive = true
         
-        // sets constraints
         NSLayoutConstraint.activate([
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logoImageView.heightAnchor.constraint(equalToConstant: 200),
@@ -83,10 +74,8 @@ class SearchController: UIViewController {
     
     /// Sets textField constraints
     func configureTextField() {
-        // adds textField to view
         view.addSubview(userNameTextField)
         
-        // sets constraints
         NSLayoutConstraint.activate([
             userNameTextField.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 48),
             userNameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
@@ -100,17 +89,14 @@ class SearchController: UIViewController {
     ///Sets button constraints
     func configureFollowButton() {
         view.addSubview(followButton)
+        followButton.addTarget(self, action: #selector(didPressSearchButton), for: .touchUpInside)
         
-        // sets constraints
         NSLayoutConstraint.activate([
             followButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
             followButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50),
             followButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50),
             followButton.heightAnchor.constraint(equalToConstant: 50)
         ])
-
-        //add target
-        followButton.addTarget(self, action: #selector(didPressSearchButton), for: .touchUpInside)
     }
     
     /// Keyboard dissmis
@@ -123,11 +109,10 @@ class SearchController: UIViewController {
     
     // didPressSearchButton informs its delegate
     @objc func didPressSearchButton() {
-
         guard isUserNameEntered else { presentAlert(withTitle: "Empty username", message: "Please enter someone's unsername. We need to know who to look for 🧐", buttonTitle: "Dismiss"); return }
 
         if let userTypedText = userNameTextField.text {
-            coordinator?.searchControllerDidPressSearchButton(self, withText: userTypedText)
+            coordinator?.searchControllerDidPressSearchButton(withText: userTypedText)
         }
                         
         // dismisses the keyboard before transition

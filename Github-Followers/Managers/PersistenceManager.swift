@@ -77,14 +77,10 @@ struct PersistenceManager {
         let fileToSaveInto = URL(fileURLWithPath: Keys.followers, relativeTo: userDocumentsDirectoryPath).appendingPathExtension("plist")
         
         do {
-            
             let encodedData = try plistEncoder.encode(followers)
             try encodedData.write(to: fileToSaveInto, options: .atomic)
             return nil
             
-        } catch {
-            return .failedSavingData
-        }
+        } catch { return .failedSavingData }
     }
-    
 }

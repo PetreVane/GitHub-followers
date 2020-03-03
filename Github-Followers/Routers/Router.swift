@@ -20,14 +20,12 @@ protocol Router: class {
      ///   - animated: pass true to animate the transition
     func present(_ viewController: UIViewController, animated: Bool)
     
-    
     /// Presents a viewController
     /// - Parameters:
     ///   - viewController: ViewController that should be presented
     ///   - animated: pass true to animate the transition
     ///   - onDismiss: closure to be executed when the viewController is dismissed
     func present(_ viewController: UIViewController, animated: Bool, onDismiss: (() -> Void)?)
-    
     
     /// Dismisses a ViewController
     /// - Parameter animated: pass true to animate the transition

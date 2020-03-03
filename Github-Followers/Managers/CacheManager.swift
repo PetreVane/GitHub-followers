@@ -13,7 +13,6 @@ struct CacheManager {
     static let sharedInstance = CacheManager()
     static let cache = NSCache<NSString, UIImage>()
     
-    
     /// Save images to cache
     /// - Parameters:
     ///   - key: used to save images to cache
@@ -23,7 +22,6 @@ struct CacheManager {
         let cachingKey = NSString(string: key)
         CacheManager.cache.setObject(image, forKey: cachingKey)
     }
-    
     
     /// Retrieves images from cache
     /// - Parameter key: used in saving the image to cache

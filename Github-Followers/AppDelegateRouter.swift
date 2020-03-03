@@ -42,6 +42,7 @@ class AppDelegateRouter {
     
     /// Configures NavigationBar Appearance
     func configureNavigationBar() {
+        
         // change general appearance
         UINavigationBar.appearance().tintColor = .systemIndigo
     }

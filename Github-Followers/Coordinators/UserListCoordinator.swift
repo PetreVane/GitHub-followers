@@ -49,7 +49,7 @@ extension UserListCoordinator: UserListCoordinatorDelegate {
     /// - Parameters:
     ///   - viewController: view controller informing its delegate that a cell has been pressed
     ///   - follower: follower cell presed by user
-    func userListControllerDidSelectFollower(_ viewController: UsersListController, follower: Follower) {
+    func userListControllerDidSelectFollower(follower: Follower) {
         parent?.startFollowerInfoCoordinator(forFollower: follower)
     }
 }

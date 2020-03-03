@@ -21,7 +21,6 @@ class MainCoordinator: NSObject, Coordinator {
     
     /// Starts Search view controller coordinator
     func startSearchCoordinator() {
-        
         let searchCoordinator = SearchCoordinator(navigationRouter: router as! NavigationRouter)
         searchCoordinator.parent = self
         searchCoordinator.start()

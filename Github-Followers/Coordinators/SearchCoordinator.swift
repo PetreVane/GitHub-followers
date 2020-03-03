@@ -40,7 +40,7 @@ extension SearchCoordinator: SearchControllerCoordinatorDelegate {
     /// - Parameters:
     ///   - viewController: Search view controller
     ///   - text: text contained by SearchController textField
-    func searchControllerDidPressSearchButton(_ viewController: SearchController, withText text: String) {
+    func searchControllerDidPressSearchButton(withText text: String) {
         parent?.startUserListCoordinator(withText : text)
     }
 }

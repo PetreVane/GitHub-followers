@@ -8,29 +8,18 @@
 
 import UIKit
 
-protocol FavoritesControllerDelegate: class {
-    
-}
-
 class FavoritesController: UIViewController {
 
      //MARK: - Initialization -
     
-    // delegates
-    private weak var delegate: FavoritesControllerDelegate?
     weak var coordinator: FavoritesCoordinator?
-    
-    //managers
     private let fileManager = PersistenceManager.sharedInstance
-    
     let tableView = UITableView()
     var tableViewCells: [Follower] = []
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         configureView()
         configureTableView()
     }
@@ -42,7 +31,6 @@ class FavoritesController: UIViewController {
     
     //MARK: - Configuration -
 
-    
     /// Configures basic properties of the view
     private func configureView() {
         view.backgroundColor = .systemBackground
@@ -102,7 +90,6 @@ extension FavoritesController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: FavoritesCell.reuseIdentifier, for: indexPath) as? FavoritesCell else { return UITableViewCell() }
         let favoriteUser = tableViewCells[indexPath.row]
         cell.show(favoriteUser)
-       
         return cell
     }
 }
@@ -125,8 +112,7 @@ extension FavoritesController: UITableViewDelegate {
             guard let self = self else { return }
             guard let error = error else { self.tableViewCells.remove(at: indexPath.row); return }
             self.presentAlert(withTitle: "Ops, an error!", message: error.localizedDescription, buttonTitle: "Ok")
-        }
-        DispatchQueue.main.async { self.tableView.reloadData() }
+        }; DispatchQueue.main.async { self.tableView.reloadData() }
     }
 }
 
@@ -134,9 +120,9 @@ extension FavoritesController {
     
     /// Creates an instance of itself and assigns the calling object as delegate
     /// - Parameter delegate: delegate object
-    static func instantiate(delegate: FavoritesControllerDelegate) -> FavoritesController {
+    static func instantiate(coordinator: FavoritesCoordinator) -> FavoritesController {
         let viewController = FavoritesController()
-        viewController.delegate = delegate
+        viewController.coordinator = coordinator
         return viewController
     }
 }

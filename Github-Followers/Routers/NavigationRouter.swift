@@ -53,7 +53,6 @@ extension NavigationRouter: Router {
     /// - sets the viewController into navigationController's list of viewControllers
     /// - calls the present method of the parentVC and passes in the navigationController containg the ViewController
     func presentModally( _ viewController: UIViewController, animated: Bool) {
-        
         addCancelButton(to: viewController)
         navigationController.setViewControllers([viewController], animated: animated)
         baseViewController?.present(navigationController, animated: animated, completion: nil)
@@ -77,7 +76,6 @@ extension NavigationRouter: Router {
     /// - executes the closure
     /// - removes the closure from dictionary and cancel the association between ViewController and closure
     func performOnDismissAction(for viewController: UIViewController) {
-        
         guard let onDismissAction = onDismissForViewController[viewController] else { return }
         onDismissAction()
         onDismissForViewController.removeValue(forKey: viewController)
@@ -86,7 +84,6 @@ extension NavigationRouter: Router {
 
 
 extension NavigationRouter: UINavigationControllerDelegate {
-    
     
     /// Called just after the navigation controller displays a view controller’s view and navigation item properties.
     /// - Parameters:
@@ -97,7 +94,6 @@ extension NavigationRouter: UINavigationControllerDelegate {
     /// - makes sure the navigationController list of ViewControlled no longer contains the dismissed viewController
     /// - calls any closures for the dismissed viewController, if any
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
-        
         guard let dismissedViewController = navigationController.transitionCoordinator?.viewController(forKey: .from) else { return }
         guard !navigationController.viewControllers.contains(dismissedViewController) else { return }
         performOnDismissAction(for: dismissedViewController)
