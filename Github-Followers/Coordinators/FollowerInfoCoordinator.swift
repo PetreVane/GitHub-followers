@@ -45,10 +45,11 @@ class FollowerInfoCoordinator: Coordinator {
     func didStartController(_ viewController: FollowerInfoController) {
         parent?.setFollowerInfoDelegate(viewController)
     }
+    
 }
 
 extension FollowerInfoCoordinator: FollowerInfoCoordinatorDelegate {
-    
+ 
     /// Asks the router to dismiss FolloweInfo ViewController 
     func dismissView() {
          router.dismiss(animated: true)

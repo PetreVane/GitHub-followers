@@ -54,11 +54,11 @@ struct PersistenceManager {
     /// - recodes data and returns an array of decoded Follower instances.
     /// - if decoding process fails, returns an empty array
     func retrieveSavedFollowers() -> [Follower] {
-        print("retrieveSavedFollowers called")
+        
         let noFollowers: [Follower] = []
         let plistDecoder = PropertyListDecoder()
-        let file = userDocumentsDirectoryPath.appendingPathComponent(Keys.followers).appendingPathExtension("plist")
-        guard let retrievedData = try? Data(contentsOf: file) else { return noFollowers }
+        let localFile = userDocumentsDirectoryPath.appendingPathComponent(Keys.followers).appendingPathExtension("plist")
+        guard let retrievedData = try? Data(contentsOf: localFile) else { return noFollowers }
         guard let decodedFollowers = try? plistDecoder.decode([Follower].self, from: retrievedData) else { return noFollowers }
 
         return decodedFollowers
@@ -71,7 +71,6 @@ struct PersistenceManager {
     /// - reads the content of the file and appends new content (follower) to it
     /// - rewrites the file to user's Documents directory
     func saveFollowers(_ followers: [Follower]) -> ErrorManager? {
-        print("SaveFavorites called")
         
         let plistEncoder = PropertyListEncoder()
         plistEncoder.outputFormat = .xml

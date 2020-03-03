@@ -9,7 +9,7 @@
 import UIKit
 
 // adopted by FollowerCell & FavoritesCell
-/// Groups a set of objects into a tree structure so they may be manipulated as though they were one object
+/// (Should) Group a set of objects into a tree-like structure so they may be manipulated as though they were one object.
 protocol Composer: class {
     
     var avatarImageView: AvatarImageView { get set }

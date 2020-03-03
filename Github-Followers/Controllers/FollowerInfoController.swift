@@ -63,8 +63,8 @@ class FollowerInfoController: UIViewController {
             case .success(let user):
                 DispatchQueue.main.async {
                     self.add(childVC: HeaderCard(user: user), to: self.headerViewContainer)
-                    self.initRepoCard(for: user)
-                    self.initFollowersCard(for: user)
+                    self.initRepoCard(for: user, delegate: self)
+                    self.initFollowersCard(for: user, delegate: self)
                     self.setDateLabelText(withDate: user.createdAt)
                 }
             }
@@ -117,9 +117,8 @@ class FollowerInfoController: UIViewController {
     /// - Parameter user: User instance, returned by network request
     ///
     ///Adds an instance of RepoCard to its corresponding container and sets the FollowerInfoVC as delegate for RepoCard
-    private func initRepoCard(for user: User) {
+    private func initRepoCard(for user: User, delegate: RepoCardDelegate) {
         let repoCard = RepoCard(user: user)
-        repoCard.delegate = self
         add(childVC: repoCard, to: repoCardViewContainer)
     }
     
@@ -128,9 +127,8 @@ class FollowerInfoController: UIViewController {
     /// - Parameter user: User instance, returned by network request
     ///
     ///Adds an instance of FollowerCard to its corresponding container and sets the FollowerInfoVC as delegate for FollowerCard
-    private func initFollowersCard(for user: User) {
+    private func initFollowersCard(for user: User, delegate: FollowersCardDelegate) {
         let followerCard = FollowersCard(user: user)
-        followerCard.delegate = self
         add(childVC: followerCard, to: followersCardViewContainer)
     }
     
