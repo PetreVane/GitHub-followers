@@ -51,7 +51,6 @@ class MainCoordinator: NSObject, Coordinator {
          But when invoking UserListCoordinator from FavoritesCoordinator, the navigationRouter argument needs to receive a new Router object, otherwhise tapping a cell (tableView.didSelectRowAtIndexPath) will spawn an UserListVC object attached to SearchVC's navigationRouter, and therfore presented by SearchVC navigationController.
          */
         
-        
         let userListCoordinator = UserListCoordinator(navigationRouter: navigationRouter)
         userListCoordinator.parent = self
         childCoordinators.append(userListCoordinator)

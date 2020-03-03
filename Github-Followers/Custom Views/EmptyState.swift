@@ -31,11 +31,10 @@ class EmptyState: UIView {
         self.messageLabel.text = message
     }
     
+    /// Sets constraints & prepares label for displaying
     private func configureLabel() {
         let padding: CGFloat = 40
         addSubview(messageLabel)
-        
-        // custom label settings
         messageLabel.numberOfLines = 3
         messageLabel.textColor = .secondaryLabel
         
@@ -54,14 +53,12 @@ class EmptyState: UIView {
         
     }
     
+    /// Sets constraints & prepares imageView(logo) for displaying
     private func configureLogo() {
         addSubview(logoView)
-        
-        // imageView
         logoView.image = Images.emptyStateLogo
         logoView.translatesAutoresizingMaskIntoConstraints = false
         
-        // constraints
         NSLayoutConstraint.activate([
             
             logoView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1.3),

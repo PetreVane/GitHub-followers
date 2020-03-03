@@ -15,17 +15,17 @@ import UIKit
 class HeaderCard: UIViewController {
 
     let followerImageView = AvatarImageView(frame: .zero)
-    let userNameLabel = TitleLabel(textAlignment: .left, fontSize: 34)
-    let realNameLabel = SecondaryTitleLabel(fontSize: 18)
-    let locationView = UIImageView()
-    let locationNameLabel = SecondaryTitleLabel(fontSize: 15)
+    var userNameLabel = TitleLabel(textAlignment: .left, fontSize: 20)
+    var realNameLabel = SecondaryTitleLabel(fontSize: 15)
     let bioLabel = BodyLabel(textAlignment: .left)
-    var user: User!
     
+    let locationView = UIImageView()
+    let locationNameLabel = SecondaryTitleLabel(fontSize: 10)
+    
+    var user: User!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         addSubViews()
         configureUIElements(for: user)
         setConstraints()
@@ -40,8 +40,7 @@ class HeaderCard: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
+            
     /// Adds custom subviews to current ViewController
     func addSubViews() {
         let customViews = [followerImageView, userNameLabel, realNameLabel, locationNameLabel, locationView, bioLabel]

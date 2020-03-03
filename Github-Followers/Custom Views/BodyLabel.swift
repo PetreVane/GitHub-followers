@@ -29,11 +29,9 @@ class BodyLabel: UILabel {
     
      //MARK: - Configuration
     
+    /// Configures label properties
     private func configure() {
-        //autoLayout
         translatesAutoresizingMaskIntoConstraints = false
-        
-        // text attributes
         textColor = .secondaryLabel
         font = UIFont.systemFont(ofSize: 15)
         adjustsFontSizeToFitWidth = true

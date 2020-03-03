@@ -19,6 +19,7 @@ class AlertContainerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    /// Sets visual properties of AlerContainer View
     private func configure() {
     // containerView attributes
         backgroundColor = .systemBackground

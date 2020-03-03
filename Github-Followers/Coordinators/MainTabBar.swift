@@ -17,7 +17,6 @@ import UIKit
 class MainTabBar: UITabBarController {
     
     let mainCoordinator = MainCoordinator()
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()

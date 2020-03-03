@@ -13,7 +13,7 @@ protocol RepoCardDelegate: class {
     func didTapProfileButton(forUser user: User)
 }
 
-/// Concrete implementation / configuration of views inherited from ReusableCardController
+/// Concrete implementation of UIViews inherited from ReusableCardController
 class RepoCard: ReusableCardController {
     
     weak var delegate: RepoCardDelegate?

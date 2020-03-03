@@ -9,7 +9,9 @@
 import UIKit
 
 // adopted by FollowerCell & FavoritesCell
-/// (Should) Group a set of objects into a tree-like structure so they may be manipulated as though they were one object.
+/// Defines a number of properties and implements a method, each Cell should have
+///
+/// - contains a defaul implementation of e network request, responsible with fetching the imageViews, shown by each cell
 protocol Composer: class {
     
     var avatarImageView: AvatarImageView { get set }

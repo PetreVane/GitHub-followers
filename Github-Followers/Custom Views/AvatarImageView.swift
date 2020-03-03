@@ -20,6 +20,7 @@ class AvatarImageView: UIImageView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    /// Sets visual properties of AvatarImageView
     private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
         layer.cornerRadius = 15

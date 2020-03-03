@@ -48,7 +48,6 @@ class ReusableCardView: UIView {
         let visualElements = [symbolImage, titleLabel, countLabel]
         visualElements.forEach { self.addSubview($0) }
         
-        
         NSLayoutConstraint.activate([
         
             symbolImage.topAnchor.constraint(equalTo: self.topAnchor),

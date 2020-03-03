@@ -12,7 +12,7 @@ import UIKit
 protocol FollowerInfoControllerDelegate: class {
     func didRequestFollowers(for user: User)
 }
-// adopted by FollowerInfoCoordinator ( extension)
+// adopted by FollowerInfoCoordinator (extension)
 protocol FollowerInfoCoordinatorDelegate: class {
     func dismissView()
 }
@@ -20,8 +20,6 @@ protocol FollowerInfoCoordinatorDelegate: class {
 class FollowerInfoController: UIViewController {
     
     // MARK: - Properties -
-    
-    // delegates
     private weak var coordinator: FollowerInfoCoordinatorDelegate?
     weak var delegate: FollowerInfoControllerDelegate?
     // properties
@@ -34,7 +32,6 @@ class FollowerInfoController: UIViewController {
     let repoCardViewContainer = UIView()
     let followersCardViewContainer = UIView()
     let dateLabel = SecondaryTitleLabel(fontSize: 14)
-    
     
     // MARK: - LifeCycle -
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -62,7 +59,6 @@ class FollowerInfoController: UIViewController {
     func fetchDetails(for follower: Follower) {
         let GHUser = follower.login
         networkManager.fetchDetails(for: GHUser) { [weak self] result in
-            
             guard let self = self else { return }
             
             switch result {
@@ -82,15 +78,16 @@ class FollowerInfoController: UIViewController {
     
     // MARK: - Configuration methods -
     
+    /// Adds a scrollView to View & sets scrollView constraints
     private func configureScrollView() {
-        // embeds scrollView into ViewController's view
         view.addSubview(scrollView)
+        
         // contentView needs to be embeded inside scrollView; all other elements will be embeded inside contentView
         scrollView.addSubview(contentView)
         scrollView.pinToEdgesOf(superView: view)
         contentView.pinToEdgesOf(superView: scrollView)
 
-        // When dealing with scrollViews, embeded contentView needs to know an explicit width and height.
+        // embeded contentView needs to have an explicit width and height
         NSLayoutConstraint.activate([
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             contentView.heightAnchor.constraint(equalToConstant: 600)
@@ -101,16 +98,11 @@ class FollowerInfoController: UIViewController {
     ///
     /// Each of the container object contains a child View Controller, except the dateLabel
     private func configureCustomViews() {
-        
-        // label configuration
         dateLabel.textAlignment = .center
         dateLabel.backgroundColor = .systemBackground
         
-        // constrain properties
         let padding: CGFloat = 20
         let height: CGFloat = 140
-        
-        // custom views list
         let listOfViews = [headerViewContainer, repoCardViewContainer, followersCardViewContainer, dateLabel]
 
         listOfViews.forEach { customView in
@@ -138,7 +130,6 @@ class FollowerInfoController: UIViewController {
         ])
     }
         
-    
     /// Creates an instance of RepoCard and adds it to container
     /// - Parameter user: User instance, returned by network request
     ///
@@ -148,7 +139,6 @@ class FollowerInfoController: UIViewController {
         add(childVC: repoCard, to: repoCardViewContainer)
     }
     
-    
     /// Creates an instance of FollowerCard and adds it to container
     /// - Parameter user: User instance, returned by network request
     ///
@@ -157,7 +147,6 @@ class FollowerInfoController: UIViewController {
         let followerCard = FollowersCard(user: user, delegate: delegate)
         add(childVC: followerCard, to: followersCardViewContainer)
     }
-    
     
     /// Adds a child ViewController to a container
     /// - Parameters:
@@ -169,7 +158,6 @@ class FollowerInfoController: UIViewController {
         childVC.view.frame = container.bounds
         childVC.didMove(toParent: self)
     }
-    
     
     /// Adds Date to DateLabel
     /// - Parameter date: date at which the GitHub account has been created

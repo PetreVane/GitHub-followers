@@ -36,19 +36,17 @@ class CustomButton: UIButton {
     
     /// Sets custom corner radius & font for buttons
     private func configure() {
-        // shape
-        layer.cornerRadius = 10
-        
-        // color
-//        titleLabel?.textColor = .white
-        setTitleColor(.white, for: .normal)
-        //font
-        titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
-        // autoLayout
         translatesAutoresizingMaskIntoConstraints = false
+        layer.cornerRadius = 10
+        setTitleColor(.white, for: .normal)   //titleLabel?.textColor = .white
+        titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
     }
     
     
+    /// Sets button color and title
+    /// - Parameters:
+    ///   - color: background color of button
+    ///   - title: text shown on button
     func setButton(color: UIColor, title: String) {
         self.backgroundColor = color
         setTitle(title, for: .normal)

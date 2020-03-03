@@ -10,6 +10,7 @@ import UIKit
 
 extension FileManager {
     
+    /// Returns an URL to .documentDirectory in .userDomainMask for this app
     static var documentsDirectory: URL {
         return `default`.urls(for: .documentDirectory, in: .userDomainMask)[0]
     }

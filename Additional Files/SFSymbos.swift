@@ -9,8 +9,8 @@
 import Foundation
 
 
+/// Contains references to SFSymbols
 enum SFSymbols {
-
     static let location = "mappin.and.ellipse"
     static let gist = "text.alignleft"
     static let repos = "folder"

@@ -26,8 +26,8 @@ class SecondaryTitleLabel: UILabel {
     }
     
     
+    /// Configures label's properties
     private func configure() {
-        
         translatesAutoresizingMaskIntoConstraints = false
         adjustsFontSizeToFitWidth = true
         minimumScaleFactor = 0.9

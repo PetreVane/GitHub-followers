@@ -26,7 +26,6 @@ class TextField: UITextField {
     
     /// Adds customization to TextField
     private func configure() {
-        // autoLayout
         translatesAutoresizingMaskIntoConstraints = false
         
         // shape
