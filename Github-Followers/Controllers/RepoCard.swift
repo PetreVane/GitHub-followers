@@ -23,6 +23,14 @@ class RepoCard: ReusableCardController {
         configureViews()
     }
     
+    init(user: User, delegate: RepoCardDelegate) {
+        super.init(user: user)
+        self.delegate = delegate
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     /// Calls a method on a superClass property, to set its content type
     ///
@@ -36,5 +44,6 @@ class RepoCard: ReusableCardController {
     /// Tells the delegate that the 'GitHub profile' button was tapped.
     override func actionButtonTapped() {
         delegate?.didTapProfileButton(forUser: user)
+        print("Called delegate?.didTapProfileButton(forUser: user) in RepoCard")
     }
 }

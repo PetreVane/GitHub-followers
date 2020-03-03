@@ -23,6 +23,15 @@ class FollowersCard: ReusableCardController {
         configureViews()
     }
     
+    init(user: User, delegate: FollowersCardDelegate) {
+        super.init(user: user)
+        self.delegate = delegate
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     /// Calls a method on a superClass property, to set its content type
     ///
