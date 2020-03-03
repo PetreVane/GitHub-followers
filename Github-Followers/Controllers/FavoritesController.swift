@@ -65,6 +65,7 @@ class FavoritesController: UIViewController {
         tableView.dataSource = self
         // registers cell
         tableView.register(FavoritesCell.self, forCellReuseIdentifier: FavoritesCell.reuseIdentifier)
+        tableView.removeEmptyCells()
     }
     
     /// Fetches list of favorites from local plist file
@@ -115,19 +116,18 @@ extension FavoritesController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
         guard editingStyle == .delete else { return }
         let favoriteUser = tableViewCells[indexPath.row]
-        tableViewCells.remove(at: indexPath.row)
+        
         fileManager.updateFavoritesList(with: favoriteUser, updateType: .remove) { [weak self] error in
             
             guard let self = self else { return }
-            guard let error = error else { return }
+            guard let error = error else { self.tableViewCells.remove(at: indexPath.row); return }
             self.presentAlert(withTitle: "Ops, an error!", message: error.localizedDescription, buttonTitle: "Ok")
         }
-        
         DispatchQueue.main.async { self.tableView.reloadData() }
     }
-    
 }
 
 extension FavoritesController {
