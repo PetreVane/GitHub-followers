@@ -29,9 +29,5 @@ What's different from Sean's project:
 Sean Allen take-home project is available here: https://seanallen.teachable.com/
 
 
+<img width="201" alt="image" src="https://user-images.githubusercontent.com/22425017/75874154-76466000-5e11-11ea-9ecc-27b40e1537ff.png">  <img width="201" alt="image" src="https://user-images.githubusercontent.com/22425017/75874267-a988ef00-5e11-11ea-95ac-7889c38243e2.png"> <img width="201" alt="image" src="https://user-images.githubusercontent.com/22425017/75876718-80b72880-5e16-11ea-84fc-89c76818e135.png"> <img width="215" alt="image" src="https://user-images.githubusercontent.com/22425017/75877201-6fbae700-5e17-11ea-9872-b761fb38717c.png">
 
-<img width="401" alt="image" src="https://user-images.githubusercontent.com/22425017/75874154-76466000-5e11-11ea-9ecc-27b40e1537ff.png">
-
-<img width="405" alt="image" src="https://user-images.githubusercontent.com/22425017/75874267-a988ef00-5e11-11ea-95ac-7889c38243e2.png">
-
-<img width="383" alt="image" src="https://user-images.githubusercontent.com/22425017/75874727-a4786f80-5e12-11ea-8d6f-26213bdd318f.png">
