@@ -15,7 +15,7 @@ protocol UserListCoordinatorDelegate: class {
 
 class UsersListController: UIViewController {
     
- //MARK: - Initialization
+ //MARK: - Initialization -
     
     /// Main Section of CollectionView with Diffable Data Source
     enum Section: CaseIterable {
@@ -38,6 +38,8 @@ class UsersListController: UIViewController {
     var collectionView: UICollectionView!
     var diffDataSource: UICollectionViewDiffableDataSource<Section, Follower>!
     
+     //MARK: - LifeCycle  -
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,6 +55,7 @@ class UsersListController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
+     //MARK: - Configurations -
     /// Configure NavigationBar
     ///
     /// Configures Navigation Bar and viewController's title & background color
@@ -91,9 +94,10 @@ class UsersListController: UIViewController {
         navigationItem.searchController = searchController
       }
     
+     //MARK: - Networking -
     /// Fetches information about a given Github follower
     /// - Parameters:
-    ///   - user: GitHub user for which the request is mafe
+    ///   - user: GitHub user for which the request is made
     ///   - page: page number; this is useful for a user that has multiple followers that do not fit in a single page
     func fetchFollowers(for user: String, at page: Int) {
         presentLoadingView()
@@ -107,14 +111,20 @@ class UsersListController: UIViewController {
                 self.presentAlert(withTitle: "What? An error!? 😕", message: error.localizedDescription , buttonTitle: "Dismiss")
                 
             case .success(let followers):
-                if followers.count < 100 { self.userHasMoreFollowers = false }
-                self.unfilteredFollowers.append(contentsOf: followers)
-                self.updateData(with: self.unfilteredFollowers)
-                if self.unfilteredFollowers.isEmpty {
-                    let message = "This user has no followers yet. Go follow this user 😀"
-                    DispatchQueue.main.async { self.showEmptyState(withMessage: message, view: self.view); return }
-                }
+                self.updateUI(with: followers)
             }
+        }
+    }
+    
+    /// Updates collectionView with result returned by newtork request
+    /// - Parameter followers: list of followers to be displayed by collectionView
+    private func updateUI(with followers: [Follower]) {
+        if followers.count < 100 { self.userHasMoreFollowers = false }
+        unfilteredFollowers.append(contentsOf: followers)
+        updateData(with: self.unfilteredFollowers)
+        if unfilteredFollowers.isEmpty {
+            let message = "This user has no followers yet. Go follow this user 😀"
+            DispatchQueue.main.async { self.showEmptyState(withMessage: message, view: self.view); return }
         }
     }
         
@@ -144,23 +154,28 @@ class UsersListController: UIViewController {
     /// Makes a network request aimed at getting the avatar URL for the given follower
     private func fetchDetails(for follower: String) {
         presentLoadingView()
-        networkManager.fetchDetails(for: follower) { [weak self] result in 
-            
+        networkManager.fetchDetails(for: follower) { [weak self] result in
             guard let self = self else { return }
             self.dismissLoadingView()
             
             switch result {
             case .failure(_):
                 self.presentAlert(withTitle: "Error", message: "Something is not right yet...", buttonTitle: "I'll try later")
+                
             case .success(let user):
                 let follower = Follower(login: user.login, avatarURL: user.avatarURL)
-                
-                self.fileManager.updateFavoritesList(with: follower, updateType: .add) { [weak self] error in
-                    guard let self = self else { return }
-                    guard error == nil else { self.presentAlert(withTitle: "What? An error?!", message: error!.localizedDescription, buttonTitle: "Ok"); return }
-                    self.presentAlert(withTitle: "Success 🥳", message: "\(user.login.capitalized) successfully added to favorites!", buttonTitle: "Cool")
-                }
+                self.saveFollowerToLocalFile(follower)
             }
+        }
+    }
+    
+    /// Calls a method on PersistanceManager and saves the given Follower into local plist fils
+    /// - Parameter follower: follower object to be saved in local plist file
+    private func saveFollowerToLocalFile(_ follower: Follower) {
+        self.fileManager.updateFavoritesList(with: follower, updateType: .add) { [weak self] error in
+            guard let self = self else { return }
+            guard error == nil else { self.presentAlert(withTitle: "What? An error?!", message: error!.localizedDescription, buttonTitle: "Ok"); return }
+            self.presentAlert(withTitle: "Success 🥳", message: "\(follower.login.capitalized) successfully added to favorites!", buttonTitle: "Cool")
         }
     }
 }

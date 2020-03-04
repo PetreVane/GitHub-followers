@@ -44,6 +44,5 @@ class RepoCard: ReusableCardController {
     /// Tells the delegate that the 'GitHub profile' button was tapped.
     override func actionButtonTapped() {
         delegate?.didTapProfileButton(forUser: user)
-        print("Called delegate?.didTapProfileButton(forUser: user) in RepoCard")
     }
 }
