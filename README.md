@@ -3,8 +3,6 @@ Simple (storyBoard free) iOS app which lists your Github followers.
 This app uses Sean Allen's take-home project, as starting point. 
 But it diverges from Sean implementation in various ways. 
 
-Status: Completed. 
-
 What's similar to Sean's project:
 - the visual interface is similar 
 - used the same assets
