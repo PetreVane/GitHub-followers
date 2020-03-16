@@ -9,7 +9,7 @@
 import UIKit
 
 /// Rounded imageView representing the AvatarImage, owned by HeaderCard.
-class AvatarImageView: UIImageView {
+public class AvatarImageView: UIImageView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

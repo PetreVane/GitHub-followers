@@ -9,7 +9,7 @@
 import UIKit
 
 /// Custom UILabel subclass
-class SecondaryTitleLabel: UILabel {
+public class SecondaryTitleLabel: UILabel {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,7 +33,5 @@ class SecondaryTitleLabel: UILabel {
         minimumScaleFactor = 0.9
         lineBreakMode = .byTruncatingTail
         backgroundColor = .secondaryLabel
-        
     }
-    
 }

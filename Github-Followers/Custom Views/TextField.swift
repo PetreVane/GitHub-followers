@@ -9,7 +9,7 @@
 import UIKit
 
 /// Custom UITextField subclass
-class TextField: UITextField {
+public class TextField: UITextField {
 
      //MARK: - Initialization
     

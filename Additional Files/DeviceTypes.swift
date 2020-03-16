@@ -9,7 +9,7 @@
 import UIKit
 
 /// Gets screen size details
-enum ScreenSize {
+public enum ScreenSize {
     static let width        = UIScreen.main.bounds.size.width
     static let height       = UIScreen.main.bounds.size.height
     static let maxLength    = max(ScreenSize.width, ScreenSize.height)
@@ -18,7 +18,7 @@ enum ScreenSize {
 
 
 /// Gets device type details
-enum DeviceTypes {
+public enum DeviceTypes {
     static let idiom                    = UIDevice.current.userInterfaceIdiom
     static let nativeScale              = UIScreen.main.nativeScale
     static let scale                    = UIScreen.main.scale

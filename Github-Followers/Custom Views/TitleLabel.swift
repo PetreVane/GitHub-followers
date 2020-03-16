@@ -9,7 +9,7 @@
 import UIKit
 
 /// Custom UILabel subclass
-class TitleLabel: UILabel {
+public class TitleLabel: UILabel {
 
      //MARK: - Initialization
     
@@ -41,7 +41,6 @@ class TitleLabel: UILabel {
         // visual attributes
         layer.cornerRadius = 10
         backgroundColor = UIColor.systemBackground
-        
     }
 }
 

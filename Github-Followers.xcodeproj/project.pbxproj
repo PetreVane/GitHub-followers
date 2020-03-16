@@ -71,6 +71,7 @@
 		0B2899F623BE3BD0002D84F8 /* FavoritesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesController.swift; sourceTree = "<group>"; };
 		0B2899F823BFA383002D84F8 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		0B2899FA23BFAA3B002D84F8 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		0B39CB1B241FD421004BD0D0 /* CustomUIElements */ = {isa = PBXFileReference; lastKnownFileType = folder; name = CustomUIElements; path = ../../../SwiftPackages/CustomUIElements; sourceTree = "<group>"; };
 		0B3C694224044718007BEF14 /* FavoritesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCell.swift; sourceTree = "<group>"; };
 		0B5F855E240572ED00A988CF /* FileManager+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Ext.swift"; sourceTree = "<group>"; };
 		0B60B2E723D07958003042C0 /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
@@ -333,6 +334,7 @@
 		0BC091E923BA15E700E3548B /* Github-Followers */ = {
 			isa = PBXGroup;
 			children = (
+				0B39CB1B241FD421004BD0D0 /* CustomUIElements */,
 				0B85B0FA23C66EF900449C82 /* Support */,
 				0B8A74B723C7800600179F89 /* Managers */,
 				0B85B0F523C63FB400449C82 /* Models */,

@@ -9,7 +9,7 @@
 import UIKit
 
 
-struct FlowLayout {
+public struct FlowLayout {
     
     /// Determines how CollectionViewFlowLayout should look like
     /// - Parameter view: view in which the CollectionViewFlowLayout is presented (self)

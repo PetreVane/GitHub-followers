@@ -9,7 +9,7 @@
 import UIKit
 
 /// Custom UILabel subclass
-class BodyLabel: UILabel {
+public class BodyLabel: UILabel {
     
      //MARK: - Initialization
 
