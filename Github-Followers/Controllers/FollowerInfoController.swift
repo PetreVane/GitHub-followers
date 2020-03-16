@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CustomUIElements
 
 // adopted by UserListController (extension)
 protocol FollowerInfoControllerDelegate: class {

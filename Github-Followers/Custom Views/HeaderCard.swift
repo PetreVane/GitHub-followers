@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CustomUIElements
 
 /// Card like ViewController presented by FollowerInfoController
 ///

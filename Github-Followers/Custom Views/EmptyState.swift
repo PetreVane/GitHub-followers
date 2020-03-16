@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CustomUIElements
+import DeviceTypes
 
 /// View shown when a user has no Followers
 class EmptyState: UIView {

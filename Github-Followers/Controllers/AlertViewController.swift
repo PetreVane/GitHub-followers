@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CustomUIElements
 
 /// Presents a containerView as an AlertController
 class AlertViewController: UIViewController {

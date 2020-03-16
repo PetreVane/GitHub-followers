@@ -9,7 +9,7 @@
 import UIKit
 
 /// Contains an enumerations of references to image assets
-enum Images {
+public enum Images {
     
     static let imagePlaceholder = UIImage(named: "avatar-placeholder")
     static let logoImage = UIImage(named: "gh-logo")

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CustomUIElements
+import DeviceTypes
 
 //adopted by SearchCoordinator
 protocol SearchControllerCoordinatorDelegate: class {

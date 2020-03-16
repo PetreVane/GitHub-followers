@@ -13,7 +13,7 @@ public struct FlowLayout {
     
     /// Determines how CollectionViewFlowLayout should look like
     /// - Parameter view: view in which the CollectionViewFlowLayout is presented (self)
-   static func configureCollectionViewFlowLayout(for view: UIView) -> UICollectionViewFlowLayout {
+   public static func configureCollectionViewFlowLayout(for view: UIView) -> UICollectionViewFlowLayout {
         
         let flowLayout = UICollectionViewFlowLayout()
         // gets the width of the screen

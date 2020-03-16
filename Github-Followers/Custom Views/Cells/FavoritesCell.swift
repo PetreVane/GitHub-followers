@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CustomUIElements
 
 class FavoritesCell: UITableViewCell, Composer {
     

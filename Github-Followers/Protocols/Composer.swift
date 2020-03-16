@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import CustomUIElements
+
+
 
 // adopted by FollowerCell & FavoritesCell
 /// Defines a number of properties and implements a method, each Cell should have

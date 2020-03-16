@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CustomUIElements
 
 /// Custom UICollectionViewCell subclass, owned by UserListController collectionView
 class FollowerCell: UICollectionViewCell, Composer {
