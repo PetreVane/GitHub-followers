@@ -14,3 +14,5 @@ Some of the goals of this projects are:
 
 
 Sean Allen take-home project is available here: https://seanallen.teachable.com/
+
+
