@@ -1,5 +1,5 @@
 # GitHub-followers
-Simple (storyBoard free) iOS app which lists your Github followers. 
+StoryBoard free iOS app which lists your Github followers. 
 This app uses Sean Allen's take-home project, as starting point. 
 But it diverges from Sean implementation in various ways. 
 
